@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ParisObject list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Thumbnail</th>
+                <th>Album</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parisObject in parisObjects %}
+            <tr>
+                <td><a href="{{ path('object_show', { 'id': parisObject.id }) }}">{{ parisObject.id }}</a></td>
+                <td>{{ parisObject.name }}</td>
+                <td>{{ parisObject.price }}</td>
+                <td>{{ parisObject.description }}</td>
+                <td>{{ parisObject.type }}</td>
+                <td>{{ parisObject.thumbnail }}</td>
+                <td>{{ parisObject.album }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('object_show', { 'id': parisObject.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('object_edit', { 'id': parisObject.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('object_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

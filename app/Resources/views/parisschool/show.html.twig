@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ParisSchool</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parisSchool.id }}</td>
+            </tr>
+            <tr>
+                <th>Uai</th>
+                <td>{{ parisSchool.uai }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ parisSchool.name }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ parisSchool.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Cp</th>
+                <td>{{ parisSchool.cp }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ parisSchool.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ parisSchool.latitude }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('school_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('school_edit', { 'id': parisSchool.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
