@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ParisRestaurant</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parisRestaurant.id }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ parisRestaurant.category }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ parisRestaurant.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Lat</th>
+                <td>{{ parisRestaurant.lat }}</td>
+            </tr>
+            <tr>
+                <th>Lng</th>
+                <td>{{ parisRestaurant.lng }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ parisRestaurant.location }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ parisRestaurant.name }}</td>
+            </tr>
+            <tr>
+                <th>Originalid</th>
+                <td>{{ parisRestaurant.originalid }}</td>
+            </tr>
+            <tr>
+                <th>Polarity</th>
+                <td>{{ parisRestaurant.polarity }}</td>
+            </tr>
+            <tr>
+                <th>Subcategory</th>
+                <td>{{ parisRestaurant.subcategory }}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td>{{ parisRestaurant.details }}</td>
+            </tr>
+            <tr>
+                <th>Reviews</th>
+                <td>{{ parisRestaurant.reviews }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('restaurant_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('restaurant_edit', { 'id': parisRestaurant.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

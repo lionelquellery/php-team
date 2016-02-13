@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ParisFlat list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Thumbnail</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Album</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parisFlat in parisFlats %}
+            <tr>
+                <td><a href="{{ path('parisflat_show', { 'id': parisFlat.id }) }}">{{ parisFlat.id }}</a></td>
+                <td>{{ parisFlat.type }}</td>
+                <td>{{ parisFlat.longitude }}</td>
+                <td>{{ parisFlat.latitude }}</td>
+                <td>{{ parisFlat.thumbnail }}</td>
+                <td>{{ parisFlat.date }}</td>
+                <td>{{ parisFlat.price }}</td>
+                <td>{{ parisFlat.album }}</td>
+                <td>{{ parisFlat.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('parisflat_show', { 'id': parisFlat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('parisflat_edit', { 'id': parisFlat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('parisflat_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
