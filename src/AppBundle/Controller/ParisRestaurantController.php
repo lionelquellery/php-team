@@ -12,7 +12,7 @@ use AppBundle\Form\ParisRestaurantType;
 /**
  * ParisRestaurant controller.
  *
- * @Route("/restaurant")
+ * @Route("school/{uai}/restaurant")
  */
 class ParisRestaurantController extends Controller
 {

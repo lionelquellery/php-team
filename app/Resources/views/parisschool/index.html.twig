@@ -19,7 +19,7 @@
         <tbody>
         {% for parisSchool in parisSchools %}
             <tr>
-                <td><a href="{{ path('school_show', { 'id': parisSchool.id }) }}">{{ parisSchool.id }}</a></td>
+                <td><a href="{{ path('school_show', { 'uai': parisSchool.uai }) }}">{{ parisSchool.name }}</a></td>
                 <td>{{ parisSchool.uai }}</td>
                 <td>{{ parisSchool.name }}</td>
                 <td>{{ parisSchool.adresse }}</td>
@@ -29,10 +29,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('school_show', { 'id': parisSchool.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('school_edit', { 'id': parisSchool.id }) }}">edit</a>
+                            <a href="{{ path('school_show', { 'uai': parisSchool.uai }) }}">show</a>
                         </li>
                     </ul>
                 </td>
@@ -40,10 +37,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('school_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}
