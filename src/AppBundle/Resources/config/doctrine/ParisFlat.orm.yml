@@ -1,0 +1,48 @@
+AppBundle\Entity\ParisFlat:
+    type: entity
+    table: paris_flat
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: integer
+            nullable: false
+            unsigned: false
+        longitude:
+            type: integer
+            nullable: false
+            unsigned: false
+        latitude:
+            type: integer
+            nullable: false
+            unsigned: false
+        thumbnail:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        date:
+            type: integer
+            nullable: false
+            unsigned: false
+        price:
+            type: integer
+            nullable: false
+            unsigned: false
+        album:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        description:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+    lifecycleCallbacks: {  }

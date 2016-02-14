@@ -15,7 +15,7 @@ class ParisRestaurant
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -38,30 +38,16 @@ class ParisRestaurant
     /**
      * @var string
      *
-     * @ORM\Column(name="lat", type="string", length=10, nullable=true)
+     * @ORM\Column(name="latitude", type="decimal", precision=14, scale=12, nullable=true)
      */
-    private $lat;
+    private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lng", type="string", length=5, nullable=true)
+     * @ORM\Column(name="longitude", type="decimal", precision=14, scale=13, nullable=true)
      */
-    private $lng;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="location", type="decimal", precision=14, scale=12, nullable=true)
-     */
-    private $location;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="decimal", precision=14, scale=13, nullable=true)
-     */
-    private $name;
+    private $longitude;
 
     /**
      * @var string
@@ -76,27 +62,6 @@ class ParisRestaurant
      * @ORM\Column(name="polarity", type="string", length=60, nullable=true)
      */
     private $polarity;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="subCategory", type="integer", nullable=true)
-     */
-    private $subcategory;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="details", type="integer", nullable=true)
-     */
-    private $details;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="reviews", type="integer", nullable=true)
-     */
-    private $reviews;
 
 
 }

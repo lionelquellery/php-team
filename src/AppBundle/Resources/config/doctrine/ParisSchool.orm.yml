@@ -1,0 +1,43 @@
+AppBundle\Entity\ParisSchool:
+    type: entity
+    table: paris_school
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        uai:
+            type: string
+            nullable: false
+            length: 8
+            fixed: false
+        name:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        adresse:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        cp:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        longitude:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        latitude:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+    lifecycleCallbacks: {  }

@@ -15,7 +15,7 @@ class ParisRestaurant
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -38,30 +38,16 @@ class ParisRestaurant
     /**
      * @var string
      *
-     * @ORM\Column(name="lat", type="string", length=10, nullable=true)
+     * @ORM\Column(name="latitude", type="decimal", precision=14, scale=12, nullable=true)
      */
-    private $lat;
+    private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lng", type="string", length=5, nullable=true)
+     * @ORM\Column(name="longitude", type="decimal", precision=14, scale=13, nullable=true)
      */
-    private $lng;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="location", type="decimal", precision=14, scale=12, nullable=true)
-     */
-    private $location;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="decimal", precision=14, scale=13, nullable=true)
-     */
-    private $name;
+    private $longitude;
 
     /**
      * @var string
@@ -76,27 +62,6 @@ class ParisRestaurant
      * @ORM\Column(name="polarity", type="string", length=60, nullable=true)
      */
     private $polarity;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="subCategory", type="integer", nullable=true)
-     */
-    private $subcategory;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="details", type="integer", nullable=true)
-     */
-    private $details;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="reviews", type="integer", nullable=true)
-     */
-    private $reviews;
 
 
 
@@ -157,95 +122,49 @@ class ParisRestaurant
     }
 
     /**
-     * Set lat
+     * Set latitude
      *
-     * @param string $lat
+     * @param string $latitude
      * @return ParisRestaurant
      */
-    public function setLat($lat)
+    public function setLatitude($latitude)
     {
-        $this->lat = $lat;
+        $this->latitude = $latitude;
 
         return $this;
     }
 
     /**
-     * Get lat
+     * Get latitude
      *
      * @return string 
      */
-    public function getLat()
+    public function getLatitude()
     {
-        return $this->lat;
+        return $this->latitude;
     }
 
     /**
-     * Set lng
+     * Set longitude
      *
-     * @param string $lng
+     * @param string $longitude
      * @return ParisRestaurant
      */
-    public function setLng($lng)
+    public function setLongitude($longitude)
     {
-        $this->lng = $lng;
+        $this->longitude = $longitude;
 
         return $this;
     }
 
     /**
-     * Get lng
+     * Get longitude
      *
      * @return string 
      */
-    public function getLng()
+    public function getLongitude()
     {
-        return $this->lng;
-    }
-
-    /**
-     * Set location
-     *
-     * @param string $location
-     * @return ParisRestaurant
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string 
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return ParisRestaurant
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
+        return $this->longitude;
     }
 
     /**
@@ -292,74 +211,5 @@ class ParisRestaurant
     public function getPolarity()
     {
         return $this->polarity;
-    }
-
-    /**
-     * Set subcategory
-     *
-     * @param integer $subcategory
-     * @return ParisRestaurant
-     */
-    public function setSubcategory($subcategory)
-    {
-        $this->subcategory = $subcategory;
-
-        return $this;
-    }
-
-    /**
-     * Get subcategory
-     *
-     * @return integer 
-     */
-    public function getSubcategory()
-    {
-        return $this->subcategory;
-    }
-
-    /**
-     * Set details
-     *
-     * @param integer $details
-     * @return ParisRestaurant
-     */
-    public function setDetails($details)
-    {
-        $this->details = $details;
-
-        return $this;
-    }
-
-    /**
-     * Get details
-     *
-     * @return integer 
-     */
-    public function getDetails()
-    {
-        return $this->details;
-    }
-
-    /**
-     * Set reviews
-     *
-     * @param integer $reviews
-     * @return ParisRestaurant
-     */
-    public function setReviews($reviews)
-    {
-        $this->reviews = $reviews;
-
-        return $this;
-    }
-
-    /**
-     * Get reviews
-     *
-     * @return integer 
-     */
-    public function getReviews()
-    {
-        return $this->reviews;
     }
 }

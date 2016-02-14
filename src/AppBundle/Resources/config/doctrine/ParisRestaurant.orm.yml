@@ -1,0 +1,44 @@
+AppBundle\Entity\ParisRestaurant:
+    type: entity
+    table: paris_restaurant
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        category:
+            type: string
+            nullable: true
+            length: 55
+            fixed: false
+        adresse:
+            type: string
+            nullable: true
+            length: 98
+            fixed: false
+        latitude:
+            type: decimal
+            nullable: true
+            precision: 14
+            scale: 12
+        longitude:
+            type: decimal
+            nullable: true
+            precision: 14
+            scale: 13
+        originalid:
+            type: string
+            nullable: true
+            length: 51
+            fixed: false
+            column: originalId
+        polarity:
+            type: string
+            nullable: true
+            length: 60
+            fixed: false
+    lifecycleCallbacks: {  }
