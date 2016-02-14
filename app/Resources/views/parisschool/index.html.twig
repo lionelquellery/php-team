@@ -1,31 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>ParisSchool list</h1>
+<h1>ParisSchool list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Adresse</th>
-                <th>Cp</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for parisSchool in parisSchools %}
-            <tr>
-                <td><a href="{{ path('school_show', { 'uai': parisSchool.uai }) }}">{{ parisSchool.name }}</a></td>
-                <td>{{ parisSchool.adresse }}</td>
-                <td>{{ parisSchool.cp }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('school_show', { 'uai': parisSchool.uai }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Adresse</th>
+      <th>Cp</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for parisSchool in parisSchools %}
+    <tr>
+      <td><a href="{{ path('school_show', { 'uai': parisSchool.uai }) }}">{{ parisSchool.name }}</a></td>
+      <td>{{ parisSchool.adresse }}</td>
+      <td>{{ parisSchool.cp }}</td>
+      <td>
+        <ul>
+          <li>
+            <a href="{{ path('school_show', { 'uai': parisSchool.uai }) }}">show</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

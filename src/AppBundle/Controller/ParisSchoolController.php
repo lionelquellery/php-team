@@ -42,20 +42,21 @@ class ParisSchoolController extends Controller
     public function showAction(ParisSchool $parisSchool)
     {
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getRepository('AppBundle:ParisRestaurant');
 
         $lat = $parisSchool->getLatitude();
         $long = $parisSchool->getLongitude();
 
-        $query = $em->createQuery(
-            'SELECT r
-            FROM AppBundle:ParisRestaurant r
-            WHERE r.latitude < :latup   AND r.latitude > :latdown
-            AND   r.longitude < :longup AND r.longitude > :longdown')
-            ->setParameter('latup', $lat+0.005 )
-            ->setParameter('latdowm', $lat-0.005 )
-            ->setParameter('longup', $long+0.005 )
-            ->setParameter('longdown', $long-0.005 );
+        $query = $em->createQueryBuilder('r')
+          ->where('r.latitude < :latup')
+          ->setParameter('latup', $lat+0.001)
+          ->andWhere('r.latitude > :latdown')
+          ->setParameter('latdown', $lat-0.001)
+          ->andWhere('r.longitude < :longup')
+          ->setParameter('longup', $long+0.001)
+          ->andWhere('r.longitude > :longdown')
+          ->setParameter('longdown', $long-0.001)
+          ->getQuery();
 
         $restaurants = $query->getResult();
 
