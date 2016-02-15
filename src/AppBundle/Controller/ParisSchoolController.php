@@ -25,13 +25,19 @@ class ParisSchoolController extends Controller
      * @Route("/", name="school_index")
      * @Method("GET")
      */
-  public function indexAction()
+  public function indexAction(Request $request)
   {
+    $location = $request->query->get('location');
+    
     $em = $this->getDoctrine()->getManager();
-    $query = $em->createQuery(
-      'SELECT s
-        FROM AppBundle:ParisSchool s'
-    );
+
+    if($location == NULL){
+      $query = $em->createQuery('SELECT s FROM AppBundle:ParisSchool s');
+    }else{
+      $query = $em->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.cp = :loc')
+        ->setParameter('loc', '750'.$location);
+    }
+
     $school = $query->getArrayResult();
 
     return new JsonResponse($school);
@@ -44,8 +50,15 @@ class ParisSchoolController extends Controller
      * @Route("/{uai}/", name="school_show")
      * @Method("GET")
      */
-  public function showAction(ParisSchool $parisSchool)
+  public function showAction(ParisSchool $parisSchool, Request $request)
   {
+
+    $rayon = $request->query->get('rayon');
+
+    if($rayon != NULL)
+      $distance = $rayon/100000;
+    else
+      $distance = 0.001;
 
     $school = array(
       'id'       => $parisSchool->getId(),
@@ -64,13 +77,13 @@ class ParisSchoolController extends Controller
 
     $query = $em->createQueryBuilder('r')
       ->where('r.latitude < :latup')
-      ->setParameter('latup', $lat+0.001)
+      ->setParameter('latup', $lat+$distance)
       ->andWhere('r.latitude > :latdown')
-      ->setParameter('latdown', $lat-0.001)
+      ->setParameter('latdown', $lat-$distance)
       ->andWhere('r.longitude < :longup')
-      ->setParameter('longup', $long+0.001)
+      ->setParameter('longup', $long+$distance)
       ->andWhere('r.longitude > :longdown')
-      ->setParameter('longdown', $long-0.001)
+      ->setParameter('longdown', $long-$distance)
       ->getQuery();
 
     $restaurants = $query->getArrayResult();

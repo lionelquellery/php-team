@@ -19,6 +19,26 @@ This app runs on:
 - Run `composer selfupdate`
 - Run `composer install`
 
+# Utilisation
+
+### /school/
+
+Return all schools in Paris
+
+##### Parameters : 
+- location : the distict's number in which the school is. Retrieve all schools if empty
+
+### /school/{uai}/
+
+Return the school's infos and all restaurants in a given radius
+
+##### Parameters :
+- radius : the radius in which restaurants must be to be returned. In meters. Default 100m. 
+
+### /school/{uai}/restaurant/{id}/
+
+Return infos about the selected restaurant
+
 <!-- Symfony Standard Edition
 ========================
 
