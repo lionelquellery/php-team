@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Admin School</h1>
+
+<ul>
+
+  {% for school in parisSchool %}
+
+  <li>
+  <div>{{ school.name }}</div>
+  <div><a href="{{ path('school_edit', { 'uai': school.uai }) }}">Edit</a></div>
+  </li>
+
+  {% endfor %}
+
+</ul>
+
+{% endblock %}
