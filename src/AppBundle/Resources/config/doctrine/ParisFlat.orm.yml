@@ -10,6 +10,16 @@ AppBundle\Entity\ParisFlat:
             generator:
                 strategy: IDENTITY
     fields:
+        uai:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        name:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
         type:
             type: integer
             nullable: false

@@ -22,6 +22,20 @@ class ParisFlat
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="uai", type="string", length=10, nullable=false)
+     */
+    private $uai;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="type", type="integer", nullable=false)
@@ -87,6 +101,52 @@ class ParisFlat
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set uai
+     *
+     * @param string $uai
+     * @return ParisFlat
+     */
+    public function setUai($uai)
+    {
+        $this->uai = $uai;
+
+        return $this;
+    }
+
+    /**
+     * Get uai
+     *
+     * @return string 
+     */
+    public function getUai()
+    {
+        return $this->uai;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return ParisFlat
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

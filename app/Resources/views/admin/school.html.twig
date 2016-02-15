@@ -9,7 +9,7 @@
 
   <li>
   <div>{{ school.name }}</div>
-  <div><a href="{{ path('school_edit', { 'uai': school.uai }) }}">Edit</a></div>
+  <div><a href="{{ path('admin_show', { 'uai': school.uai }) }}">Edit</a></div>
   </li>
 
   {% endfor %}

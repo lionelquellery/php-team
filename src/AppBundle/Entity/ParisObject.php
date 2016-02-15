@@ -24,6 +24,13 @@ class ParisObject
     /**
      * @var string
      *
+     * @ORM\Column(name="uai", type="string", length=10, nullable=false)
+     */
+    private $uai;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
@@ -73,6 +80,29 @@ class ParisObject
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set uai
+     *
+     * @param string $uai
+     * @return ParisObject
+     */
+    public function setUai($uai)
+    {
+        $this->uai = $uai;
+
+        return $this;
+    }
+
+    /**
+     * Get uai
+     *
+     * @return string 
+     */
+    public function getUai()
+    {
+        return $this->uai;
     }
 
     /**

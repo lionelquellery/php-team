@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div>Name : {{obj.name}}</div>
+
+<a href="{{ path('admin_show', {'uai': app.request.attributes.get("uai")} ) }}">Back to school</a>
+
+{% endblock %}

@@ -24,6 +24,13 @@ class ParisObject
     /**
      * @var string
      *
+     * @ORM\Column(name="uai", type="string", length=10, nullable=false)
+     */
+    private $uai;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
