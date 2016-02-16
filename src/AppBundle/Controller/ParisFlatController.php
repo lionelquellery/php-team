@@ -12,7 +12,7 @@ use AppBundle\Form\ParisFlatType;
 /**
  * ParisFlat controller.
  *
- * @Route("school/{uai}/flat")
+ * @Route("flat")
  */
 class ParisFlatController extends Controller
 {
