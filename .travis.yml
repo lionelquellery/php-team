@@ -9,9 +9,5 @@ deploy:
   api_key: "Y240953e1-0b0a-4da4-b84a-f9142c45a878"
 
 
-
-
-  
-
 notifications:
     slack: phpteams:bxqLzCrk3eNzvZkrrV4g4Dvq
