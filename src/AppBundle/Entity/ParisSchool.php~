@@ -64,4 +64,152 @@ class ParisSchool
     private $latitude;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set uai
+     *
+     * @param string $uai
+     * @return ParisSchool
+     */
+    public function setUai($uai)
+    {
+        $this->uai = $uai;
+
+        return $this;
+    }
+
+    /**
+     * Get uai
+     *
+     * @return string 
+     */
+    public function getUai()
+    {
+        return $this->uai;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return ParisSchool
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return ParisSchool
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param string $cp
+     * @return ParisSchool
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return string 
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param float $longitude
+     * @return ParisSchool
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return float 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param float $latitude
+     * @return ParisSchool
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return float 
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
 }

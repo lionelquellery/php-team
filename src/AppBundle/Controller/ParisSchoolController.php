@@ -27,18 +27,11 @@ class ParisSchoolController extends Controller
      */
   public function indexAction(Request $request)
   {
+
     $location = $request->query->get('location');
-    
+
     $em = $this->getDoctrine()->getManager();
-
-    if($location == NULL){
-      $query = $em->createQuery('SELECT s FROM AppBundle:ParisSchool s');
-    }else{
-      $query = $em->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.cp = :loc')
-        ->setParameter('loc', '750'.$location);
-    }
-
-    $school = $query->getArrayResult();
+    $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
 
     return new JsonResponse($school);
 
@@ -53,41 +46,16 @@ class ParisSchoolController extends Controller
   public function showAction(ParisSchool $parisSchool, Request $request)
   {
 
-    $rayon = $request->query->get('rayon');
-
-    if($rayon != NULL)
-      $distance = $rayon/100000;
-    else
-      $distance = 0.001;
-
-    $school = array(
-      'id'       => $parisSchool->getId(),
-      'uai'      => $parisSchool->getUai(),
-      'name'     => $parisSchool->getName(),
-      'adresse'  => $parisSchool->getAdresse(),
-      'cp'       => $parisSchool->getCp(),
-      'lat'      => $parisSchool->getLatitude(),
-      'long'     => $parisSchool->getLongitude(),
-    );
-
-    $em = $this->getDoctrine()->getRepository('AppBundle:ParisRestaurant');
-
-    $lat = $parisSchool->getLatitude();
-    $long = $parisSchool->getLongitude();
-
-    $query = $em->createQueryBuilder('r')
-      ->where('r.latitude < :latup')
-      ->setParameter('latup', $lat+$distance)
-      ->andWhere('r.latitude > :latdown')
-      ->setParameter('latdown', $lat-$distance)
-      ->andWhere('r.longitude < :longup')
-      ->setParameter('longup', $long+$distance)
-      ->andWhere('r.longitude > :longdown')
-      ->setParameter('longdown', $long-$distance)
-      ->getQuery();
-
-    $restaurants = $query->getArrayResult();
-
+    $radius = $request->query->get('radius');
+    
+    $em = $this->getDoctrine()->getManager();
+    
+    $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
+    
+    $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
+    
+    $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($parisSchool->getLatitude(), $parisSchool->getLongitude(), $radiusRatio);
+        
     return new JsonResponse(array(
       'school'      => $school,
       'restaurants' => $restaurants
