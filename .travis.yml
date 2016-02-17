@@ -3,9 +3,8 @@ script: php bin/phpunit -c app/
 before_script:
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
-  
-notifications:
-  email: false
+
+
 
 deploy:
   provider: heroku
@@ -13,3 +12,4 @@ deploy:
 
 notifications:
     slack: phpteams:bxqLzCrk3eNzvZkrrV4g4Dvq
+    email: false

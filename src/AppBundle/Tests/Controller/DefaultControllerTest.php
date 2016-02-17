@@ -9,13 +9,32 @@ class DefaultControllerTest extends WebTestCase
     /**
      *
      */
-    public function testIndex()
+    public function testRouterSchool()
     {
         //test of all route  user (functional test)
         $yann = static::createClient();
-        $yann->request('GET','/school/');
+        $yann->request('GET','/school/',array('CONTENT_TYPE'=>'application/json'));
         $this->assertEquals('200',$yann->getResponse()->getStatusCode());
 
 
+
+    }
+
+
+    public function testRouterUser()
+    {
+        // test for router user
+        $lionel = static::createClient();
+        $lionel->request('GET','/user/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals('200',$lionel->getResponse()->getStatusCode());
+    }
+
+
+    public function testRouterUser()
+    {
+        // test for router user
+        $lionel = static::createClient();
+        $lionel->request('GET','/user/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals('200',$lionel->getResponse()->getStatusCode());
     }
 }
