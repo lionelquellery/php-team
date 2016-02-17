@@ -89,6 +89,9 @@ class UserRepository extends EntityRepository
   public function verifyUser($mail, $pass) 
   {
 
+    if(is_null($mail) || is_null($pass))
+      return array("statut" => 'Data missing');
+
     $em = $this->getEntityManager();
 
     $query = $em
