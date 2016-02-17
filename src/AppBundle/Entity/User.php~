@@ -24,9 +24,16 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="user_key", type="string", length=200, nullable=false)
+     * @ORM\Column(name="userkey", type="string", length=50, nullable=false)
      */
-    private $userKey;
+    private $userkey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pass", type="string", length=20, nullable=false)
+     */
+    private $pass;
 
     /**
      * @var string

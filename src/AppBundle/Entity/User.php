@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
@@ -28,6 +27,13 @@ class User
      * @ORM\Column(name="userkey", type="string", length=50, nullable=false)
      */
     private $userkey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pass", type="string", length=20, nullable=false)
+     */
+    private $pass;
 
     /**
      * @var string
@@ -56,7 +62,7 @@ class User
     }
 
     /**
-     * Set userKey
+     * Set userkey
      *
      * @param string $userkey
      * @return User
@@ -76,6 +82,29 @@ class User
     public function getUserkey()
     {
         return $this->userkey;
+    }
+
+    /**
+     * Set pass
+     *
+     * @param string $pass
+     * @return User
+     */
+    public function setPass($pass)
+    {
+        $this->pass = $pass;
+
+        return $this;
+    }
+
+    /**
+     * Get pass
+     *
+     * @return string 
+     */
+    public function getPass()
+    {
+        return $this->pass;
     }
 
     /**

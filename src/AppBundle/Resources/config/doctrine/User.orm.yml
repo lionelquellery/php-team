@@ -1,7 +1,6 @@
 AppBundle\Entity\User:
     type: entity
     table: user
-    repositoryClass: AppBundle\Repository\UserRepository
     id:
         id:
             type: integer
@@ -16,7 +15,11 @@ AppBundle\Entity\User:
             nullable: false
             length: 50
             fixed: false
-            column: userkey
+        pass:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
         mail:
             type: string
             nullable: false
