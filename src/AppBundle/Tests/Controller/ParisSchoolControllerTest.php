@@ -6,38 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ParisSchoolControllerTest extends WebTestCase
 {
-    public function testCompleteScenario()
+    public function testRouterParisSchool()
     {
-        // Create a new client to browse the application
+        //test of all route  user (functional test)
         $client = static::createClient();
+        $client->request('GET','/school/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals('200',$client->getResponse()->getStatusCode());
 
-        // Create a new entry in the database
-        $crawler = $client->request('GET', '/school/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /school/");
 
-        // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
-            'appbundle_parisschool[field_name]' => 'Test',
-            // ... other fields to fill
-        ));
-    }
-    /**
-     * @dataProvider urlProvider
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = self::createClient();
-        $client->request('GET', $url);
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function urlProvider()
-    {
-        return array(
-            array('/school/')
-            // ...
-        );
     }
     /*
     public function testCompleteScenario()
