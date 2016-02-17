@@ -42,7 +42,7 @@ class UserRepository extends EntityRepository
 
   }
 
-  public function newUser($token, $mail)
+  public function newUser($token, $mail, $pass)
   {
 
     $em = $this->getEntityManager();
@@ -52,35 +52,55 @@ class UserRepository extends EntityRepository
       ->setParameter('mail', $mail);
 
     if(empty($query->getResult()))
-      return $this->insertNewUser($token, $mail);
+      return $this->insertNewUser($token, $mail, $pass);
     else
       return array('status' => 'user already registered');
 
   }
 
-  public function insertNewUser($token, $mail)
+  public function insertNewUser($token, $mail, $pass)
   {
 
     $user = new User();
     $user->setMail($mail);
     $user->setUserkey($token);
     $user->setRights(0);
+    $user->setPass($pass);
 
     $em = $this->getEntityManager();
 
     $em->persist($user);
     $em->flush();
 
-    $this->registrationMail($token, $mail);
-
     return array("status" => 'User saved');
 
   }
 
-  public function registerNewUser($mail)
+  public function registerNewUser($mail,$pass)
   {
 
-    return $this->newUser($this->generateToken(), $mail);
+    if(is_null($mail) || is_null($pass))
+      return array("statut" => 'Data missing');
+    else
+      return $this->newUser($this->generateToken(), $mail, $pass);
+
+  }
+
+  public function verifyUser($mail, $pass) 
+  {
+
+    $em = $this->getEntityManager();
+
+    $query = $em
+      ->createQuery('SELECT u FROM AppBundle:User u WHERE u.mail = :mail')
+      ->setParameter('mail', $mail);
+
+    $user = $query->getArrayResult();
+
+    if($pass == $user[0]["pass"])
+      return $user;
+    else
+      return array("statut" => 'Not valid password');
 
   }
 

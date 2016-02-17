@@ -46,9 +46,32 @@ class UserController extends Controller
 
     $mail = $request->query->get('mail');
 
+    $pass = $request->query->get('pass');
+
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->registerNewUser($mail);
+    $response = $em->getRepository('AppBundle:User')->registerNewUser($mail,$pass);
+
+    return new JsonResponse($response);
+
+  }
+
+  /**
+     * Returns user token.
+     *
+     * @Route("/token/", name="user_token")
+     * @Method({"GET", "POST"})
+     */
+  public function tokenAction(Request $request)
+  {
+
+    $mail = $request->query->get('mail');
+
+    $pass = $request->query->get('pass');
+
+    $em = $this->getDoctrine()->getManager();
+
+    $response = $em->getRepository('AppBundle:User')->verifyUser($mail,$pass);
 
     return new JsonResponse($response);
 
