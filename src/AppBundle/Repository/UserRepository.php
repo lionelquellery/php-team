@@ -84,11 +84,4 @@ class UserRepository extends EntityRepository
 
   }
 
-  public function registrationMail($token, $mail)
-  {
-
-    mail($mail, 'StudentCheck Api access', 'Your api token : ', 'From: webmaster@example.com');
-
-  }
-
 }
