@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
@@ -24,9 +25,9 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="user_key", type="string", length=200, nullable=false)
+     * @ORM\Column(name="userkey", type="string", length=50, nullable=false)
      */
-    private $userKey;
+    private $userkey;
 
     /**
      * @var string
@@ -57,24 +58,24 @@ class User
     /**
      * Set userKey
      *
-     * @param string $userKey
+     * @param string $userkey
      * @return User
      */
-    public function setUserKey($userKey)
+    public function setUserkey($userkey)
     {
-        $this->userKey = $userKey;
+        $this->userkey = $userkey;
 
         return $this;
     }
 
     /**
-     * Get userKey
+     * Get userkey
      *
      * @return string 
      */
-    public function getUserKey()
+    public function getUserkey()
     {
-        return $this->userKey;
+        return $this->userkey;
     }
 
     /**

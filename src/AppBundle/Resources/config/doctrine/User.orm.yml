@@ -1,6 +1,7 @@
 AppBundle\Entity\User:
     type: entity
     table: user
+    repositoryClass: AppBundle\Repository\UserRepository
     id:
         id:
             type: integer
@@ -10,12 +11,12 @@ AppBundle\Entity\User:
             generator:
                 strategy: IDENTITY
     fields:
-        userKey:
+        userkey:
             type: string
             nullable: false
-            length: 200
+            length: 50
             fixed: false
-            column: user_key
+            column: userkey
         mail:
             type: string
             nullable: false
