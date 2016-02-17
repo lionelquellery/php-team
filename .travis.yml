@@ -3,7 +3,8 @@ script: php bin/phpunit -c app/
 before_script:
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
-  
+  - php app/console server:run
+
 notifications:
   email: false
 
