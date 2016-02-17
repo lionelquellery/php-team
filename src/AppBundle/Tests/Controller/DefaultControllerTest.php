@@ -15,7 +15,7 @@ class DefaultControllerTest extends WebTestCase
         $yann = static::createClient();
         $yann->request('GET','/school/');
         $this->assertEquals('200',$yann->getResponse()->getStatusCode());
-        
+
 
     }
 }

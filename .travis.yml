@@ -3,8 +3,9 @@ script: php bin/phpunit -c app/
 before_script:
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
-
-  all_branches: true
+  
+notifications:
+  email: false
 
 deploy:
   provider: heroku
