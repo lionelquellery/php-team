@@ -19,7 +19,7 @@ AppBundle\Entity\User:
         pass:
             type: string
             nullable: false
-            length: 20
+            length: 200
             fixed: false
         mail:
             type: string

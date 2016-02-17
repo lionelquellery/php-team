@@ -23,14 +23,24 @@ class UserController extends Controller
      * Lists all User entities.
      *
      * @Route("/", name="user_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-  public function indexAction()
+  public function indexAction(Request $request)
   {
+
+    $key = $request->query->get('key');
 
     $em = $this->getDoctrine()->getManager();
 
-    $users = $em->getRepository('AppBundle:User')->findAll();
+    if(is_null($key)){
+      $users = array("statut" => 'Data missing');
+    }
+    else {
+      if($em->getRepository('AppBundle:User')->verifyPermission($key) == true)
+        $users = $em->getRepository('AppBundle:User')->getAllUsers();
+      else
+        $users = array('status' => 'You don\'t have the rights to access these datas');
+    }
 
     return new JsonResponse($users);
   }

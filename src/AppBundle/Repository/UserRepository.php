@@ -7,6 +7,40 @@ use AppBundle\Entity\User;
 class UserRepository extends EntityRepository
 {
 
+  public function verifyPermission($key)
+  {
+
+    $em = $this->getEntityManager();
+
+    $query = $em
+      ->createQuery('SELECT u FROM AppBundle:User u WHERE u.userkey = :key')
+      ->setParameter('key', $key);
+
+    $rights = $query->getArrayResult();
+
+    if(!empty($rights)){
+      if($rights[0]['rights'] == '1')
+        return true;
+      else
+        return false;
+    }
+    else
+      return false;
+
+  }
+  
+  public function getAllUsers()
+  {
+    
+    $em = $this->getEntityManager();
+    
+    $query = $em
+      ->createQuery('SELECT u FROM AppBundle:User u');
+    
+    return $query->getArrayResult();
+    
+  }
+
   public function verifyKey($key)
   {
 
@@ -19,7 +53,7 @@ class UserRepository extends EntityRepository
     if(empty($query->getResult()))
       return false;
     else
-      return $query->getResult();
+      return true;
 
   }
 
@@ -46,7 +80,7 @@ class UserRepository extends EntityRepository
   {
 
     $em = $this->getEntityManager();
-
+    
     $query = $em
       ->createQuery('SELECT u FROM AppBundle:User u WHERE u.mail = :mail')
       ->setParameter('mail', $mail);
@@ -61,11 +95,13 @@ class UserRepository extends EntityRepository
   public function insertNewUser($token, $mail, $pass)
   {
 
+    $hashPassword = hash('sha256',$pass);
+    
     $user = new User();
     $user->setMail($mail);
     $user->setUserkey($token);
     $user->setRights(0);
-    $user->setPass($pass);
+    $user->setPass($hashPassword);
 
     $em = $this->getEntityManager();
 
@@ -100,8 +136,8 @@ class UserRepository extends EntityRepository
 
     $user = $query->getArrayResult();
 
-    if($pass == $user[0]["pass"])
-      return $user;
+    if(hash('sha256', $pass) == $user[0]["pass"])
+      return array('token' => $user[0]["userkey"]);
     else
       return array("statut" => 'Not valid password');
 
