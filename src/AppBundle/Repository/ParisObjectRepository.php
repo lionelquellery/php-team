@@ -18,7 +18,7 @@ class ParisObjectRepository extends EntityRepository
         $em = $this->getEntityManager();
 
         $query = $em->createQuery('SELECT o FROM AppBundle:ParisObject o
-    WHERE o.uai < :uai
+    WHERE o.uai = :uai
     ');
 
         $query->setParameters(array(
@@ -60,7 +60,8 @@ class ParisObjectRepository extends EntityRepository
             ->setDescription($response['description'])
             ->setType($response['type'])
             ->setThumbnail($response['thumbnail'])
-            ->setAlbum($response['album']);
+            ->setAlbum($response['album'])
+            ->setOwner($response['owner']);
 
         return $object;
     }

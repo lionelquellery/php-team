@@ -15,7 +15,7 @@ class User
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -31,7 +31,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="pass", type="string", length=20, nullable=false)
+     * @ORM\Column(name="pass", type="string", length=200, nullable=false)
      */
     private $pass;
 
@@ -50,106 +50,4 @@ class User
     private $rights;
 
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set userkey
-     *
-     * @param string $userkey
-     * @return User
-     */
-    public function setUserkey($userkey)
-    {
-        $this->userkey = $userkey;
-
-        return $this;
-    }
-
-    /**
-     * Get userkey
-     *
-     * @return string 
-     */
-    public function getUserkey()
-    {
-        return $this->userkey;
-    }
-
-    /**
-     * Set pass
-     *
-     * @param string $pass
-     * @return User
-     */
-    public function setPass($pass)
-    {
-        $this->pass = $pass;
-
-        return $this;
-    }
-
-    /**
-     * Get pass
-     *
-     * @return string 
-     */
-    public function getPass()
-    {
-        return $this->pass;
-    }
-
-    /**
-     * Set mail
-     *
-     * @param string $mail
-     * @return User
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string 
-     */
-    public function getMail()
-    {
-        return $this->mail;
-    }
-
-    /**
-     * Set rights
-     *
-     * @param integer $rights
-     * @return User
-     */
-    public function setRights($rights)
-    {
-        $this->rights = $rights;
-
-        return $this;
-    }
-
-    /**
-     * Get rights
-     *
-     * @return integer 
-     */
-    public function getRights()
-    {
-        return $this->rights;
-    }
 }
