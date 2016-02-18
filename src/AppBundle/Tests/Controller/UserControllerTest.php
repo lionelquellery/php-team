@@ -20,21 +20,14 @@ class UserControllerTest extends WebTestCase
 
         $this->assertGreaterThan(0, $crawler->filter('body:contains("name")')->count(), 'Missing element body:contains("name")');
 
-
-
-
-
         // create a new user
 
 
 
-
-
-
-
-
-
     }
+
+
+
     /*
     public function testCompleteScenario()
     {
