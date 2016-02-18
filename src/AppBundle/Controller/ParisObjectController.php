@@ -6,13 +6,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Entity\ParisObject;
 use AppBundle\Form\ParisObjectType;
 
 /**
  * ParisObject controller.
  *
- * @Route("object")
+ * @Route("school/{uai}/object")
  */
 class ParisObjectController extends Controller
 {
@@ -22,15 +23,15 @@ class ParisObjectController extends Controller
      * @Route("/", name="object_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($uai)
     {
+
         $em = $this->getDoctrine()->getManager();
 
-        $parisObjects = $em->getRepository('AppBundle:ParisObject')->findAll();
+        $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
 
-        return $this->render('parisobject/index.html.twig', array(
-            'parisObjects' => $parisObjects,
-        ));
+        return new JsonResponse($parisObjects);
+
     }
 
     /**

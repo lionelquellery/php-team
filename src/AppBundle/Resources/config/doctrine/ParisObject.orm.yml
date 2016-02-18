@@ -1,6 +1,7 @@
 AppBundle\Entity\ParisObject:
     type: entity
     table: paris_object
+    repositoryClass : AppBundle\Repository\ParisObjectRepository
     id:
         id:
             type: integer
