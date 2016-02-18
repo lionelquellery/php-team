@@ -40,22 +40,23 @@ class ParisObjectController extends Controller
      * @Route("/new", name="object_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(ParisObject $parisObject)
+    public function newAction(Request $request, $uai)
     {
-        $response = array(
-            'uai' => $parisObject->getUai(),
-            'name'  => $parisObject->getName(),
-            'price'      => $parisObject->getPrice(),
-            'description'     => $parisObject->getDescription(),
-            'type'     => $parisObject->getType(),
-            'thumbnail'     => $parisObject->getThumbnail(),
-            'album'     => $parisObject->getAlbum()
-        );
 
-        return $this->render('parisobject/new.html.twig', array(
-            'parisObject' => $parisObject,
-            'form' => $form->createView(),
-        ));
+        $response = $request->query->all();
+
+        $em = $this->getDoctrine()->getManager();
+        $object = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($object);
+        $em->flush();
+
+        $id = array('id'=>$object->getId());
+
+        return new JsonResponse($id);
+
     }
 
     /**

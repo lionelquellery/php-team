@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use AppBundle\Entity\ParisObject;
 
 class ParisObjectRepository extends EntityRepository
 {
@@ -47,6 +48,21 @@ class ParisObjectRepository extends EntityRepository
 
         return $query->getArrayResult();
 
+    }
+
+    public function insertObject($response, $uai)
+    {
+
+        $object = new parisObject();
+        $object->setUai($uai)
+            ->setName($response['name'])
+            ->setPrice($response['price'])
+            ->setDescription($response['description'])
+            ->setType($response['type'])
+            ->setThumbnail($response['thumbnail'])
+            ->setAlbum($response['album']);
+
+        return $object;
     }
 
 }
