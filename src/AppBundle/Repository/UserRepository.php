@@ -6,7 +6,7 @@ use AppBundle\Entity\User;
 
 class UserRepository extends EntityRepository
 {
-
+  
   public function verifyPermission($key)
   {
 
@@ -28,17 +28,17 @@ class UserRepository extends EntityRepository
       return false;
 
   }
-  
+
   public function getAllUsers()
   {
-    
+
     $em = $this->getEntityManager();
-    
+
     $query = $em
       ->createQuery('SELECT u FROM AppBundle:User u');
-    
+
     return $query->getArrayResult();
-    
+
   }
 
   public function verifyKey($key)
@@ -80,7 +80,7 @@ class UserRepository extends EntityRepository
   {
 
     $em = $this->getEntityManager();
-    
+
     $query = $em
       ->createQuery('SELECT u FROM AppBundle:User u WHERE u.mail = :mail')
       ->setParameter('mail', $mail);
@@ -96,7 +96,7 @@ class UserRepository extends EntityRepository
   {
 
     $hashPassword = hash('sha256',$pass);
-    
+
     $user = new User();
     $user->setMail($mail);
     $user->setUserkey($token);

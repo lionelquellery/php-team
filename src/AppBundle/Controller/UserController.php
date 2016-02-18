@@ -35,7 +35,7 @@ class UserController extends Controller
     if(is_null($key)){
       $users = array("statut" => 'Data missing');
     }
-    else {
+    else{
       if($em->getRepository('AppBundle:User')->verifyPermission($key) == true)
         $users = $em->getRepository('AppBundle:User')->getAllUsers();
       else
