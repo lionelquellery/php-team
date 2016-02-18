@@ -1,19 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Admin School</h1>
+
+<h1>WELLCOME TO THE ADMINE</h1>
+
+<h2>School</h2>
 
 <ul>
-
-  {% for school in parisSchool %}
-
+  {% for school in schools %}
+  
   <li>
-  <div>{{ school.name }}</div>
-  <div><a href="{{ path('admin_show', { 'uai': school.uai }) }}">Edit</a></div>
+    
+    <div>{{school.name}}</div>
+    <div>{{school.uai}}</div>
+    <a href="{{path('admin_schoolshow', {'key':key, 'uai': school.uai}) }}">See school</a>
+    
   </li>
-
+  
   {% endfor %}
-
 </ul>
+
+<a href="{{path('admin_index', {'key':key})}}">Back to the index</a>
 
 {% endblock %}

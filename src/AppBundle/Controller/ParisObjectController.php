@@ -12,7 +12,7 @@ use AppBundle\Form\ParisObjectType;
 /**
  * ParisObject controller.
  *
- * @Route("school/{uai}/object")
+ * @Route("object")
  */
 class ParisObjectController extends Controller
 {

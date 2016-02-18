@@ -6,12 +6,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Entity\ParisSchool;
-use AppBundle\Form\ParisSchoolType;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\User;
 use AppBundle\Entity\ParisFlat;
-use AppBundle\Form\ParisFlatType;
-use AppBundle\Entity\ParisObject;
-use AppBundle\Form\ParisObjectType;
 
 /**
  * Admin controller.
@@ -21,158 +19,162 @@ use AppBundle\Form\ParisObjectType;
 class AdminController extends Controller
 {
   /**
+     * Index of Admin.
+     *
      * @Route("/", name="admin_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
   public function indexAction(Request $request)
   {
 
+    $key = $request->query->get('key');
+
     $em = $this->getDoctrine()->getManager();
 
-    $parisSchool = $em->getRepository('AppBundle:ParisSchool')->findAll();
-
-    return $this->render('admin/index.html.twig', array(
-      'parisSchool' => $parisSchool,
-    ));
+    if($em->getRepository('AppBundle:User')->verifyPermission($key) == true)
+      return $this->render('admin/index.html.twig', array(
+        'key' => $key
+      ));
+    else{
+      $users = array('status' => 'You don\'t have the rights to access these datas');
+      return new JsonResponse($users);
+    }
   }
 
   /**
+     * See all schools
+     *
      * @Route("/school/", name="admin_school")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-  public function schoolAction()
+  public function schoolAction(Request $request)
   {
+
+    $key = $request->query->get('key');
 
     $em = $this->getDoctrine()->getManager();
 
-    $parisSchool = $em->getRepository('AppBundle:ParisSchool')->findAll();
-
-    return $this->render('admin/school.html.twig', array(
-      'parisSchool' => $parisSchool,
-    ));
-
+    if($em->getRepository('AppBundle:User')->verifyPermission($key) == true){
+      $schools = $em->getRepository('AppBundle:ParisSchool')->findAll();
+      return $this->render('admin/school.html.twig',array(
+        'schools' => $schools,
+        'key'     => $key
+      ));
+    }
+    else{
+      $users = array('status' => 'You don\'t have the rights to access these datas');
+      return new JsonResponse($users);
+    }
   }
 
   /**
-     * Displays a form to edit an existing ParisObject entity.
+     * See all users
      *
-     * @Route("/school/{uai}/show/", name="admin_show")
+     * @Route("/user/", name="admin_user")
      * @Method({"GET", "POST"})
      */
-  public function showAction(Request $request, ParisSchool $parisSchool)
+  public function userAction(Request $request)
   {
 
-    $uai = $parisSchool->getUai();
+    $key = $request->query->get('key');
 
-    $em = $this->getDoctrine()->getRepository('AppBundle:ParisObject');
+    $em = $this->getDoctrine()->getManager();
 
-    $query = $em->createQueryBuilder('o')
-      ->where('o.uai = :uai')
-      ->setParameter('uai', $uai)
-      ->getQuery();
-
-    $objects = $query->getResult();
-
-    $em = $this->getDoctrine()->getRepository('AppBundle:ParisFlat');
-
-    $query = $em->createQueryBuilder('f')
-      ->where('f.uai = :uai')
-      ->setParameter('uai', $uai)
-      ->getQuery();
-
-    $flats = $query->getResult();
-
-    return $this->render('admin/show.html.twig', array(
-      'school'  => $parisSchool,
-      'objects' => $objects,
-      'flats'   => $flats,
-    ));
+    if($em->getRepository('AppBundle:User')->verifyPermission($key) == true){
+      $users = $em->getRepository('AppBundle:User')->getAllUsers($key);      
+      return $this->render('admin/user.html.twig', array(
+        'users' => $users,
+        'key'   => $key
+      ));
+    }
+    else{
+      $users = array('status' => 'You don\'t have the rights to access these datas');
+      return new JsonResponse($users);
+    }
   }
 
   /**
-     * Displays a form to edit an existing ParisFlat entity.
+     * Delete user
      *
-     * @Route("/school/{uai}/show/flat/{id}/", name="admin_flat")
-     * @Method({"GET", "POST"})
+     * @Route("/user/delete/{id}/", name="admin_deleteuser")
+     * @Method({"GET", "POST", "DELETE"})
      */
-  public function flatAction(Request $request, ParisFlat $parisFlat)
+  public function duserAction(Request $request, $id)
   {
 
-    return $this->render('admin/subshow.html.twig', array(
-      'obj'  => $parisFlat,
-    ));
+    $key = $request->query->get('key');
+
+    $em = $this->getDoctrine()->getManager();
+
+    if($em->getRepository('AppBundle:User')->verifyPermission($key) == true){
+      return $this->render('admin/duser.html.twig', array(
+        'id' => $id,
+        'key'   => $key
+      ));
+    }
+    else{
+      $users = array('status' => 'You don\'t have the rights to access these datas');
+      return new JsonResponse($users);
+    }
   }
 
   /**
-     * Displays a form to edit an existing ParisObject entity.
+     * See one school
      *
-     * @Route("/school/{uai}/show/object/{id}/", name="admin_object")
+     * @Route("/school/{uai}/", name="admin_schoolshow")
      * @Method({"GET", "POST"})
      */
-  public function objectAction(Request $request, ParisObject $parisObject)
+  public function schoolshowAction(Request $request, $uai)
   {
 
-    return $this->render('admin/subshow.html.twig', array(
-      'obj'  => $parisObject,
-    ));
+    $key = $request->query->get('key');
+
+    $em = $this->getDoctrine()->getManager();
+
+    if($em->getRepository('AppBundle:User')->verifyPermission($key) == true){
+
+      $school = $em->getRepository('AppBundle:ParisSchool')->getByUai($uai);
+
+      $flats  = $em->getRepository('AppBundle:ParisFlat')->getFlatsByUai($uai);
+
+      return $this->render('admin/schoolshow.html.twig', array(
+        'flats'   => $flats,
+        'key'     => $key,
+        'schools' => $school
+      ));
+    }
+    else{
+      $users = array('status' => 'You don\'t have the rights to access these datas');
+      return new JsonResponse($users);
+    }
   }
 
-  //  /**
-  //       * Deletes a ParisObject entity.
-  //       *
-  //       * @Route("/school/{uai}/show/", name="object_delete")
-  //       * @Method("DELETE")
-  //       */
-  //  public function deleteAction(Request $request, ParisObject $parisObject)
-  //  {
-  //    $form = $this->createDeleteForm($parisObject);
-  //    $form->handleRequest($request);
-  //
-  //    if ($form->isSubmitted() && $form->isValid()) {
-  //      $em = $this->getDoctrine()->getManager();
-  //      $em->remove($parisObject);
-  //      $em->flush();
-  //    }
-  //
-  //    return $this->redirectToRoute('admin_show');
-  //  }
-  //
-  //  /**
-  //     * Creates a form to delete a ParisObject entity.
-  //     *
-  //     * @param ParisObject $parisObject The ParisObject entity
-  //     *
-  //     * @return \Symfony\Component\Form\Form The form
-  //     */
-  //  private function createDeleteForm(ParisObject $parisObject)
-  //  {
-  //    return $this->createFormBuilder()
-  //      ->setAction($this->generateUrl('object_delete', array('id' => $parisObject->getId())))
-  //      ->setMethod('DELETE')
-  //      ->getForm()
-  //      ;
-  //  }
+  /**
+     * See one school
+     *
+     * @Route("/school/{uai}/flat/{id}", name="admin_flatshow")
+     * @Method({"GET", "POST"})
+     */
+  public function flatshowAction(Request $request, $id)
+  {
 
-  //  /**
-  //     * @Route("/flat", name="flats")
-  //     */
-  //  public function flatAction(Request $request)
-  //  {
-  //
-  //    return $this->render('admin/index.html.twig', array(
-  //      'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-  //    ));
-  //  }
-  //
-  //  /**
-  //     * @Route("/object", name="objects")
-  //     */
-  //  public function objectAction(Request $request)
-  //  {
-  //
-  //    return $this->render('admin/index.html.twig', array(
-  //      'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-  //    ));
-  //  }
+    $key = $request->query->get('key');
+
+    $em = $this->getDoctrine()->getManager();
+
+    if($em->getRepository('AppBundle:User')->verifyPermission($key) == true){
+
+      $flat = $em->getRepository('AppBundle:ParisFlat')->getFlatbyId($id);
+
+      return $this->render('admin/schoolshow.html.twig', array(
+        'flat'    => $flat,
+        'key'     => $key
+      ));
+    }
+    else{
+      $users = array('status' => 'You don\'t have the rights to access these datas');
+      return new JsonResponse($users);
+    }
+  }
 
 }

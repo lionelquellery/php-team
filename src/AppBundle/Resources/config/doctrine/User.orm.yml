@@ -1,6 +1,7 @@
 AppBundle\Entity\User:
     type: entity
     table: user
+    repositoryClass : AppBundle\Repository\UserRepository
     id:
         id:
             type: integer
@@ -10,17 +11,17 @@ AppBundle\Entity\User:
             generator:
                 strategy: IDENTITY
     fields:
-        name:
+        userkey:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+        pass:
             type: string
             nullable: false
             length: 200
             fixed: false
-        school:
-            type: string
-            nullable: false
-            length: 8
-            fixed: false
-        password:
+        mail:
             type: string
             nullable: false
             length: 200
@@ -29,19 +30,4 @@ AppBundle\Entity\User:
             type: integer
             nullable: false
             unsigned: false
-        surname:
-            type: string
-            nullable: false
-            length: 200
-            fixed: false
-        flats:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
-        objects:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
     lifecycleCallbacks: {  }

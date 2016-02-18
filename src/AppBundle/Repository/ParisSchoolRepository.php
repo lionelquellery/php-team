@@ -49,5 +49,18 @@ class ParisSchoolRepository extends EntityRepository
     return $school;
     
   }
+  
+  public function getByUai($uai)
+  {
+    
+    $em = $this->getEntityManager();
+
+    $query = $em
+      ->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.uai = :uai')
+      ->setParameter('uai', $uai);
+    
+    return $query->getResult();
+    
+  }
 
 }

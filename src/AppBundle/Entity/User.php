@@ -24,23 +24,23 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=200, nullable=false)
+     * @ORM\Column(name="userkey", type="string", length=50, nullable=false)
      */
-    private $name;
+    private $userkey;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="school", type="string", length=8, nullable=false)
+     * @ORM\Column(name="pass", type="string", length=20, nullable=false)
      */
-    private $school;
+    private $pass;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=200, nullable=false)
+     * @ORM\Column(name="mail", type="string", length=200, nullable=false)
      */
-    private $password;
+    private $mail;
 
     /**
      * @var integer
@@ -48,27 +48,6 @@ class User
      * @ORM\Column(name="rights", type="integer", nullable=false)
      */
     private $rights;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="surname", type="string", length=200, nullable=false)
-     */
-    private $surname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="flats", type="text", length=65535, nullable=false)
-     */
-    private $flats;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="objects", type="text", length=65535, nullable=false)
-     */
-    private $objects;
 
 
 
@@ -83,72 +62,72 @@ class User
     }
 
     /**
-     * Set name
+     * Set userkey
      *
-     * @param string $name
+     * @param string $userkey
      * @return User
      */
-    public function setName($name)
+    public function setUserkey($userkey)
     {
-        $this->name = $name;
+        $this->userkey = $userkey;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get userkey
      *
      * @return string 
      */
-    public function getName()
+    public function getUserkey()
     {
-        return $this->name;
+        return $this->userkey;
     }
 
     /**
-     * Set school
+     * Set pass
      *
-     * @param string $school
+     * @param string $pass
      * @return User
      */
-    public function setSchool($school)
+    public function setPass($pass)
     {
-        $this->school = $school;
+        $this->pass = $pass;
 
         return $this;
     }
 
     /**
-     * Get school
+     * Get pass
      *
      * @return string 
      */
-    public function getSchool()
+    public function getPass()
     {
-        return $this->school;
+        return $this->pass;
     }
 
     /**
-     * Set password
+     * Set mail
      *
-     * @param string $password
+     * @param string $mail
      * @return User
      */
-    public function setPassword($password)
+    public function setMail($mail)
     {
-        $this->password = $password;
+        $this->mail = $mail;
 
         return $this;
     }
 
     /**
-     * Get password
+     * Get mail
      *
      * @return string 
      */
-    public function getPassword()
+    public function getMail()
     {
-        return $this->password;
+        return $this->mail;
     }
 
     /**
@@ -172,74 +151,5 @@ class User
     public function getRights()
     {
         return $this->rights;
-    }
-
-    /**
-     * Set surname
-     *
-     * @param string $surname
-     * @return User
-     */
-    public function setSurname($surname)
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    /**
-     * Get surname
-     *
-     * @return string 
-     */
-    public function getSurname()
-    {
-        return $this->surname;
-    }
-
-    /**
-     * Set flats
-     *
-     * @param string $flats
-     * @return User
-     */
-    public function setFlats($flats)
-    {
-        $this->flats = $flats;
-
-        return $this;
-    }
-
-    /**
-     * Get flats
-     *
-     * @return string 
-     */
-    public function getFlats()
-    {
-        return $this->flats;
-    }
-
-    /**
-     * Set objects
-     *
-     * @param string $objects
-     * @return User
-     */
-    public function setObjects($objects)
-    {
-        $this->objects = $objects;
-
-        return $this;
-    }
-
-    /**
-     * Get objects
-     *
-     * @return string 
-     */
-    public function getObjects()
-    {
-        return $this->objects;
     }
 }
