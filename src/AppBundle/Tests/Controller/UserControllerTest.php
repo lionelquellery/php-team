@@ -10,8 +10,16 @@ class UserControllerTest extends WebTestCase
     {
         //test of all route  user (functional test)
         $client = static::createClient();
-        $client->request('GET','/user/',array('CONTENT_TYPE'=>'application/json'));
+        $crawler = $client->request('GET','/user/',array('CONTENT_TYPE'=>'application/json'));
         $this->assertEquals('200',$client->getResponse()->getStatusCode());
+
+
+        $this->assertGreaterThan(0, $crawler->filter('body:contains("lionel")')->count(), 'Missing element body:contains("lionel")');
+
+        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+
+
+
 
 
 
