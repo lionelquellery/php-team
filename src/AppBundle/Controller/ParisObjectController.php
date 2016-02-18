@@ -40,19 +40,17 @@ class ParisObjectController extends Controller
      * @Route("/new", name="object_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(ParisObject $parisObject)
     {
-        $parisObject = new ParisObject();
-        $form = $this->createForm('AppBundle\Form\ParisObjectType', $parisObject);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($parisObject);
-            $em->flush();
-
-            return $this->redirectToRoute('object_show', array('id' => $parisobject->getId()));
-        }
+        $response = array(
+            'uai' => $parisObject->getUai(),
+            'name'  => $parisObject->getName(),
+            'price'      => $parisObject->getPrice(),
+            'description'     => $parisObject->getDescription(),
+            'type'     => $parisObject->getType(),
+            'thumbnail'     => $parisObject->getThumbnail(),
+            'album'     => $parisObject->getAlbum()
+        );
 
         return $this->render('parisobject/new.html.twig', array(
             'parisObject' => $parisObject,
@@ -66,14 +64,13 @@ class ParisObjectController extends Controller
      * @Route("/{id}", name="object_show")
      * @Method("GET")
      */
-    public function showAction(ParisObject $parisObject)
+    public function showAction($id)
     {
-        $deleteForm = $this->createDeleteForm($parisObject);
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render('parisobject/show.html.twig', array(
-            'parisObject' => $parisObject,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($id);
+
+        return new JsonResponse($parisObject);
     }
 
     /**
