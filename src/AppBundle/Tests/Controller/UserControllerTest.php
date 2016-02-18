@@ -18,6 +18,16 @@ class UserControllerTest extends WebTestCase
 
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
+        $this->assertGreaterThan(0, $crawler->filter('body:contains("name")')->count(), 'Missing element body:contains("name")');
+
+
+
+
+
+        // create a new user
+
+
+
 
 
 
