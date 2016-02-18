@@ -45,8 +45,8 @@ AppBundle\Entity\ParisObject:
             length: 65535
             fixed: false
         owner:
-            type: integer
+            type: string
             nullable: false
-            length: 255
+            length: 50
             fixed: false
     lifecycleCallbacks: {  }

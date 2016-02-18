@@ -71,9 +71,9 @@ class ParisObject
     private $album;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="owner", type="integer", length=255, nullable=false)
+     * @ORM\Column(name="owner", type="integer", length=50, nullable=false)
      */
     private $owner;
 

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931068f5-5956-40b1-bb3b-24661335c3f9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ParisRestaurant.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ParisRestaurant.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ParisSchool.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ParisSchool.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/ParisObjectType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/ParisObjectType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/symfony.sql" afterPath="$PROJECT_DIR$/symfony.sql" />
     </list>
@@ -56,21 +50,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParisObjectType.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParisObjectType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ParisObjectType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5014045">
+            <state vertical-scroll-proportion="-13.730769">
               <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParisObject.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.orm.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="24" selection-start-line="14" selection-start-column="12" selection-end-line="17" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParisObject.orm.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParisObject.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.6363635">
-              <caret line="75" column="60" selection-start-line="75" selection-start-column="60" selection-end-line="75" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.37335286">
+              <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -118,10 +132,10 @@
         <option value="$PROJECT_DIR$/app/Resources/views/parisschool/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/ParisObjectType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" />
       </list>
     </option>
   </component>
@@ -758,22 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9308943">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6363635">
-          <caret line="75" column="60" selection-start-line="75" selection-start-column="60" selection-end-line="75" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.846153">
@@ -798,8 +796,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ParisObjectType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5014045">
+        <state vertical-scroll-proportion="-13.730769">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="24" selection-start-line="14" selection-start-column="12" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37335286">
+          <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
           <folding />
         </state>
       </provider>
