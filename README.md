@@ -19,6 +19,43 @@ This app runs on:
 - Run `composer selfupdate`
 - Run `composer install`
 
+# Utilisation
+
+### /school/
+
+Return all schools in Paris
+
+##### Parameters : 
+- location : the distict's number in which the school is. Retrieve all schools if empty
+
+### /school/{uai}/
+
+Return the school's infos and all restaurants in a given radius
+
+##### Parameters :
+- radius : the radius in which restaurants must be to be returned. In meters. Default 100m. 
+
+### /school/{uai}/restaurant/{id}/
+
+Return infos about the selected restaurant
+
+### /user/new/
+
+Create new user account 
+
+#### Parameters :
+- mail (REQUIRED) : your mail
+- pass (REQUIRED) : your account password
+
+### /user/token/
+
+Return your account's token
+
+#### Parameters : 
+- mail (REQUIRED) : your mail's account
+- pass (REQUIRED) : your password's account
+
+
 <!-- Symfony Standard Edition
 ========================
 

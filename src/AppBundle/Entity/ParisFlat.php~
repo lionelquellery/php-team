@@ -1,0 +1,95 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ParisFlat
+ *
+ * @ORM\Table(name="paris_flat")
+ * @ORM\Entity
+ */
+class ParisFlat
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uai", type="string", length=10, nullable=false)
+     */
+    private $uai;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type", type="integer", nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="longitude", type="integer", nullable=false)
+     */
+    private $longitude;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="latitude", type="integer", nullable=false)
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="thumbnail", type="string", length=255, nullable=false)
+     */
+    private $thumbnail;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="date", type="integer", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price", type="integer", nullable=false)
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="album", type="text", length=65535, nullable=false)
+     */
+    private $album;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     */
+    private $description;
+
+
+}

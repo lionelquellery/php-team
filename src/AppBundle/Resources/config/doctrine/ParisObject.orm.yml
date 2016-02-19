@@ -1,0 +1,46 @@
+AppBundle\Entity\ParisObject:
+    type: entity
+    table: paris_object
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        uai:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        name:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        price:
+            type: integer
+            nullable: false
+            unsigned: false
+        description:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        type:
+            type: integer
+            nullable: false
+            unsigned: false
+        thumbnail:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        album:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+    lifecycleCallbacks: {  }

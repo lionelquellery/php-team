@@ -1,0 +1,33 @@
+AppBundle\Entity\User:
+    type: entity
+    table: user
+    repositoryClass : AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userkey:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+        pass:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+        mail:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+        rights:
+            type: integer
+            nullable: false
+            unsigned: false
+    lifecycleCallbacks: {  }

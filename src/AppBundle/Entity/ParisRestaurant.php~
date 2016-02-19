@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ParisRestaurant
+ *
+ * @ORM\Table(name="paris_restaurant")
+ * @ORM\Entity
+ */
+class ParisRestaurant
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=55, nullable=true)
+     */
+    private $category;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=98, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="decimal", precision=14, scale=12, nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="decimal", precision=14, scale=13, nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="originalId", type="string", length=51, nullable=true)
+     */
+    private $originalid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="polarity", type="string", length=60, nullable=true)
+     */
+    private $polarity;
+
+
+}
