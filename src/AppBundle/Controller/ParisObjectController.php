@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Entity\ParisObject;
-use AppBundle\Form\ParisObjectType;
 
 /**
  * ParisObject controller.
@@ -77,28 +76,20 @@ class ParisObjectController extends Controller
     /**
      * Displays a form to edit an existing ParisObject entity.
      *
-     * @Route("/{id}/edit", name="object_edit")
+     * @Route("/{id}/edit/", name="object_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, ParisObject $parisObject)
+    public function editAction(Request $request, $uai, $id)
     {
-        $deleteForm = $this->createDeleteForm($parisObject);
-        $editForm = $this->createForm('AppBundle\Form\ParisObjectType', $parisObject);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($parisObject);
-            $em->flush();
+        $response = $request->query->all();
 
-            return $this->redirectToRoute('object_edit', array('id' => $parisObject->getId()));
-        }
 
-        return $this->render('parisobject/edit.html.twig', array(
-            'parisObject' => $parisObject,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $object = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+
+        return new JsonResponse($object);
+
     }
 
     /**
@@ -107,18 +98,21 @@ class ParisObjectController extends Controller
      * @Route("/{id}", name="object_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, ParisObject $parisObject)
+    public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($parisObject);
-        $form->handleRequest($request);
+        $response = $request->query->all();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $object = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $uai);
+
+        if ( !is_null($object) )
+        {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($parisObject);
+            $em->persist($object);
             $em->flush();
         }
 
-        return $this->redirectToRoute('object_index');
+        return new JsonResponse($object);
     }
 
     /**
