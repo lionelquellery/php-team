@@ -114,6 +114,31 @@ class ParisObjectRepository extends EntityRepository
 
     }
 
+    public function deleteObject($response, $id)
+    {
+        $objectBDD = $this->getObject($id);
+
+        $hasRights = $this->checkRights($response['owner'], $objectBDD);
+
+        if( !is_null($hasRights) )
+        {
+            $em = $this->getEntityManager();
+            $qb = $em->createQueryBuilder();
+            $query = $qb->delete('AppBundle:ParisObject', 'o')
+                ->where('o.id = :id')
+                ->setParameter('id', $id)
+                ->getQuery();
+
+            $query->execute();
+
+            return $query->getArrayResult();
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public function updateObject($objectBDD, $response)
     {
 
@@ -182,11 +207,11 @@ class ParisObjectRepository extends EntityRepository
 
             if (is_null($admin) || empty($admin))
             {
-                return array("error" => "Wrong user id");
+                return null;
             }
             elseif ($admin[0]['rights'] === 0)
             {
-                return array("error" => "No rights");
+                return null;
             }
             else
             {

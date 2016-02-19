@@ -95,22 +95,15 @@ class ParisObjectController extends Controller
     /**
      * Deletes a ParisObject entity.
      *
-     * @Route("/{id}", name="object_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete/", name="object_delete")
+     * @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, $id)
     {
         $response = $request->query->all();
 
         $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $uai);
-
-        if ( !is_null($object) )
-        {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($object);
-            $em->flush();
-        }
+        $object = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id);
 
         return new JsonResponse($object);
     }
