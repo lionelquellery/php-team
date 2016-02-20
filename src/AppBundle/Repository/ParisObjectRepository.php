@@ -15,84 +15,125 @@ class ParisObjectRepository extends EntityRepository
      * @param null $userkey
      * @return array
      */
-    public function getObjects($uai, $userkey = null)
+    public function getObjects($uai, $userkey)
     {
 
         $em = $this->getEntityManager();
 
-        if (is_null($userkey))
+        $hasRight = $this->getUser($userkey);
+
+        if (!empty($hasRight))
         {
-            return array("error" => "no rights");
-        }
-        else{
 
-            $hasRight = $this->getAdmin($userkey);
-
-            if (!empty($hasRight))
+            if($hasRight[0]['rights'] === 1)
             {
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai');
 
-                if($hasRight[0]['rights'] === 1)
-                {
-                    $query = $em->createQueryBuilder()
-                        ->select('o')
-                        ->from('AppBundle:ParisObject', 'o')
-                        ->where('o.uai = :uai');
-
-                    $query->setParameters(array(
-                        'uai' => $uai
-                    ));
-                }
-                else
-                {
-                    $query = $em->createQueryBuilder()
-                        ->select('o')
-                        ->from('AppBundle:ParisObject', 'o')
-                        ->where('o.uai = :uai')
-                        ->andWhere('o.owner = :userkey');
-
-                    $query->setParameters(array(
-                        'uai' => $uai,
-                        'userkey' => $userkey
-                    ));
-                }
-
-                return $query->getQuery()->getArrayResult();
-
+                $query->setParameters(array(
+                    'uai' => $uai
+                ));
             }
             else
             {
-                return array("error" => "wrong userkey");
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai')
+                    ->andWhere('o.owner = :userkey');
+
+                $query->setParameters(array(
+                    'uai' => $uai,
+                    'userkey' => $userkey
+                ));
             }
 
+            $query = $query->getQuery()->getArrayResult();
+
+            if (!empty($query))
+            {
+                return $query;
+            }
+            else
+            {
+                return array("error" => "Something goes wrong, maybe you havn't objects yet ?");
+            }
 
         }
-
-
+        else
+        {
+            return array("error" => "wrong userkey");
+        }
 
     }
 
     /**
      * @param $uai
      * @param $id
+     * @param $userkey
      * @return array
      */
-    public function getObject($uai, $id)
+    public function getObject($uai, $id, $userkey)
     {
 
         $em = $this->getEntityManager();
+        $hasRight = $this->getUser($userkey);
 
-        $query = $em->createQueryBuilder()
-            ->select('o')
-            ->from('AppBundle:ParisObject', 'o')
-            ->where('o.uai = :uai')
-            ->andWhere('o.id = :id');
+        if (!empty($hasRight))
+        {
 
-        $query->setParameters(array(
-            'uai' => $uai,
-            'id' => $id
-        ));
 
-        return $query->getQuery()->getArrayResult();
+            if($hasRight[0]['rights'] === 1)
+            {
+
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai')
+                    ->andWhere('o.id = :id');
+
+                $query->setParameters(array(
+                    'uai' => $uai,
+                    'id' => $id
+                ));
+
+            }
+            else
+            {
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai')
+                    ->andWhere('o.id = :id')
+                    ->andWhere('o.owner = :userkey');
+
+                $query->setParameters(array(
+                    'uai' => $uai,
+                    'id' => $id,
+                    'userkey' => $userkey
+                ));
+
+            }
+
+            $query = $query->getQuery()->getArrayResult();
+
+            if (!empty($query))
+            {
+                return $query;
+            }
+            else
+            {
+                return array("error" => "not authorized");
+            }
+
+        }
+        else
+        {
+            return array("error" => "wrong userkey");
+        }
+
 
     }
 
@@ -245,7 +286,7 @@ class ParisObjectRepository extends EntityRepository
      * @param $userkey
      * @return array
      */
-    public function getAdmin($userkey)
+    public function getUser($userkey)
     {
         $em = $this->getEntityManager();
 
@@ -278,7 +319,7 @@ class ParisObjectRepository extends EntityRepository
         else
         {
             // Checking if the action is done by an admin
-            $admin = $this->getAdmin($userkey);
+            $admin = $this->getUser($userkey);
 
             if (is_null($admin) || empty($admin))
             {

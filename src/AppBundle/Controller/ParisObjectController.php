@@ -36,7 +36,7 @@ class ParisObjectController extends Controller
         else
         {
 
-            $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
+            $parisObjects =  array("error" => "no rights");
 
         }
 
@@ -72,14 +72,26 @@ class ParisObjectController extends Controller
     /**
      * Finds and displays a ParisObject entity.
      *
-     * @Route("/{id}", name="object_show")
-     * @Method("GET")
+     * @Route("/{id}/", name="object_show")
+     * @Method({"GET", "POST"})
      */
-    public function showAction($uai, $id)
+    public function showAction($uai, $id, Request $request)
     {
+
+        $response = $request->query->all();
         $em = $this->getDoctrine()->getManager();
 
-        $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id);
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] )){
+
+            $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id, $response['userkey']);
+
+        }
+        else
+        {
+
+            $parisObject =  array("error" => "no rights");
+
+        }
 
         return new JsonResponse($parisObject);
     }
