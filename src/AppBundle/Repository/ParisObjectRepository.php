@@ -12,23 +12,62 @@ class ParisObjectRepository extends EntityRepository
 
     /**
      * @param $uai
+     * @param null $userkey
      * @return array
      */
-    public function getObjects($uai)
+    public function getObjects($uai, $userkey = null)
     {
 
         $em = $this->getEntityManager();
 
-        $query = $em->createQueryBuilder()
-            ->select('o')
-            ->from('AppBundle:ParisObject', 'o')
-            ->where('o.uai = :uai');
+        if (is_null($userkey))
+        {
+            return array("error" => "no rights");
+        }
+        else{
 
-        $query->setParameters(array(
-            'uai'    => $uai
-        ));
+            $hasRight = $this->getAdmin($userkey);
 
-        return $query->getQuery()->getArrayResult();
+            if (!empty($hasRight))
+            {
+
+                if($hasRight[0]['rights'] === 1)
+                {
+                    $query = $em->createQueryBuilder()
+                        ->select('o')
+                        ->from('AppBundle:ParisObject', 'o')
+                        ->where('o.uai = :uai');
+
+                    $query->setParameters(array(
+                        'uai' => $uai
+                    ));
+                }
+                else
+                {
+                    $query = $em->createQueryBuilder()
+                        ->select('o')
+                        ->from('AppBundle:ParisObject', 'o')
+                        ->where('o.uai = :uai')
+                        ->andWhere('o.owner = :userkey');
+
+                    $query->setParameters(array(
+                        'uai' => $uai,
+                        'userkey' => $userkey
+                    ));
+                }
+
+                return $query->getQuery()->getArrayResult();
+
+            }
+            else
+            {
+                return array("error" => "wrong userkey");
+            }
+
+
+        }
+
+
 
     }
 
@@ -92,7 +131,7 @@ class ParisObjectRepository extends EntityRepository
 
         $updatedObject = $this->updateObject($objectBDD, $response);
 
-        $hasRights = $this->checkRights($response['owner'], $objectBDD);
+        $hasRights = $this->checkRights($response['owner'], $objectBDD[0]['owner']);
 
         if( !is_null($hasRights) )
         {
@@ -140,7 +179,7 @@ class ParisObjectRepository extends EntityRepository
     {
         $objectBDD = $this->getObject($uai, $id);
 
-        $hasRights = $this->checkRights($response['owner'], $objectBDD);
+        $hasRights = $this->checkRights($response['owner'], $objectBDD[0]['owner']);
 
         if( !is_null($hasRights) )
         {
@@ -230,7 +269,7 @@ class ParisObjectRepository extends EntityRepository
     {
 
         // If object owner is the good one
-        if ( $objectBDD[0]["owner"] === $userkey )
+        if ( $objectBDD === $userkey )
         {
 
             return true;

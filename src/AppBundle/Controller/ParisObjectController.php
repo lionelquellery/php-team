@@ -20,14 +20,25 @@ class ParisObjectController extends Controller
      * Lists all ParisObject entities.
      *
      * @Route("/", name="object_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function indexAction($uai)
+    public function indexAction($uai, Request $request)
     {
 
+        $response = $request->query->all();
         $em = $this->getDoctrine()->getManager();
 
-        $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] )){
+
+            $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai, $response['userkey']);
+
+        }
+        else
+        {
+
+            $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
+
+        }
 
         return new JsonResponse($parisObjects);
 
@@ -108,19 +119,4 @@ class ParisObjectController extends Controller
         return new JsonResponse($object);
     }
 
-    /**
-     * Creates a form to delete a ParisObject entity.
-     *
-     * @param ParisObject $parisObject The ParisObject entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(ParisObject $parisObject)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('object_delete', array('id' => $parisObject->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }
