@@ -26,25 +26,25 @@ class ParisFlatRepository extends EntityRepository
       if($hasRight[0]['rights'] === 1)
       {
         $query = $em->createQueryBuilder()
-            ->select('f')
-            ->from('AppBundle:ParisFlat', 'f')
-            ->where('f.uai = :uai');
+          ->select('f')
+          ->from('AppBundle:ParisFlat', 'f')
+          ->where('f.uai = :uai');
 
         $query->setParameters(array(
-            'uai' => $uai
+          'uai' => $uai
         ));
       }
       else
       {
         $query = $em->createQueryBuilder()
-            ->select('f')
-            ->from('AppBundle:ParisFlat', 'f')
-            ->where('f.uai = :uai')
-            ->andWhere('f.owner = :userkey');
+          ->select('f')
+          ->from('AppBundle:ParisFlat', 'f')
+          ->where('f.uai = :uai')
+          ->andWhere('f.owner = :userkey');
 
         $query->setParameters(array(
-            'uai' => $uai,
-            'userkey' => $userkey
+          'uai' => $uai,
+          'userkey' => $userkey
         ));
       }
 
@@ -52,17 +52,17 @@ class ParisFlatRepository extends EntityRepository
 
       if (!empty($query))
       {
-        return $query;
+        return array('code' => 200, 'response' => $query);
       }
       else
       {
-        return array("error" => "Something goes wrong, maybe you havn't objects yet ?");
+        return array('code' => 404, "response" => "Something goes wrong, maybe you havn't objects yet ?");
       }
 
     }
     else
     {
-      return array("error" => "wrong userkey");
+      return array('code' => 403,"response" => "wrong userkey");
     }
 
   }
@@ -87,30 +87,30 @@ class ParisFlatRepository extends EntityRepository
       {
 
         $query = $em->createQueryBuilder()
-            ->select('f')
-            ->from('AppBundle:ParisFlat', 'f')
-            ->where('f.uai = :uai')
-            ->andWhere('f.id = :id');
+          ->select('f')
+          ->from('AppBundle:ParisFlat', 'f')
+          ->where('f.uai = :uai')
+          ->andWhere('f.id = :id');
 
         $query->setParameters(array(
-            'uai' => $uai,
-            'id' => $id
+          'uai' => $uai,
+          'id' => $id
         ));
 
       }
       else
       {
         $query = $em->createQueryBuilder()
-            ->select('f')
-            ->from('AppBundle:ParisFlat', 'f')
-            ->where('f.uai = :uai')
-            ->andWhere('f.id = :id')
-            ->andWhere('f.owner = :userkey');
+          ->select('f')
+          ->from('AppBundle:ParisFlat', 'f')
+          ->where('f.uai = :uai')
+          ->andWhere('f.id = :id')
+          ->andWhere('f.owner = :userkey');
 
         $query->setParameters(array(
-            'uai' => $uai,
-            'id' => $id,
-            'userkey' => $userkey
+          'uai' => $uai,
+          'id' => $id,
+          'userkey' => $userkey
         ));
 
       }
@@ -119,17 +119,17 @@ class ParisFlatRepository extends EntityRepository
 
       if (!empty($query))
       {
-        return $query;
+        return array('code' => 200, 'response' => $query);
       }
       else
       {
-        return array("error" => "not authorized");
+        return array('code' => 401,"response" => "not authorized");
       }
 
     }
     else
     {
-      return array("error" => "wrong userkey");
+      return array('code' => 401,"response" => "wrong userkey");
     }
 
 
@@ -160,7 +160,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : name");
+        return array('code' => 401,"response" => "missing value : name");
       }
 
       if ( isset($response['price']) && !empty($response['price']))
@@ -169,7 +169,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : price");
+        return array('code' => 401,"response" => "missing value : price");
       }
 
       if ( isset($response['description']) && !empty($response['description']))
@@ -178,7 +178,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : description");
+        return array('code' => 401,"response" => "missing value : description");
       }
 
       if ( isset($response['type']) && !empty($response['type']))
@@ -187,7 +187,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : type");
+        return array('code' => 401,"response" => "missing value : type");
       }
 
       if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
@@ -196,7 +196,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : thumbnail");
+        return array('code' => 401,"response" => "missing value : thumbnail");
       }
 
       if ( isset($response['album']) && !empty($response['album']))
@@ -205,7 +205,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : album");
+        return array('code' => 401,"response" => "missing value : album");
       }
 
       if ( isset($response['longitude']) && !empty($response['longitude']))
@@ -214,7 +214,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : longitude");
+        return array('code' => 401,"response" => "missing value : longitude");
       }
 
       if ( isset($response['latitude']) && !empty($response['latitude']))
@@ -223,7 +223,7 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : latitude");
+        return array('code' => 401,"response" => "missing value : latitude");
       }
 
       if ( isset($response['date']) && !empty($response['date']))
@@ -232,19 +232,19 @@ class ParisFlatRepository extends EntityRepository
       }
       else
       {
-        return array("error" => "missing value : date");
+        return array('code' => 401,"response" => "missing value : date");
       }
 
 
       $em->persist($flat);
       $em->flush();
 
-      return array('Id'=> $flat->getId() );
+      return array('code' => 200, 'response' => array('Id'=> $flat->getId() ));
 
     }
     else
     {
-      return array("error" => "wrong userkey");
+      return array('code' => 403,"response" => "wrong userkey");
     }
   }
 
@@ -268,44 +268,44 @@ class ParisFlatRepository extends EntityRepository
       $em = $this->getEntityManager();
 
       $query = $em->createQueryBuilder()
-          ->update('AppBundle:ParisFlat', 'f')
-          ->set('f.uai', ':uai')
-          ->set('f.name', ':name')
-          ->set('f.price', ':price')
-          ->set('f.description', ':description')
-          ->set('f.type', ':type')
-          ->set('f.thumbnail', ':thumbnail')
-          ->set('f.album', ':album')
-          ->set('f.longitude', ':longitude')
-          ->set('f.latitude', ':latitude')
-          ->set('f.date', ':date')
-          ->where('f.id = :id')
-          ->setParameter('uai', $updatedFlat[0]['uai'])
-          ->setParameter('name', $updatedFlat[0]['name'])
-          ->setParameter('price', $updatedFlat[0]['price'])
-          ->setParameter('description', $updatedFlat[0]['description'])
-          ->setParameter('type', $updatedFlat[0]['type'])
-          ->setParameter('thumbnail', $updatedFlat[0]['thumbnail'])
-          ->setParameter('album', $updatedFlat[0]['album'])
-          ->setParameter('longitude', $updatedFlat[0]['longitude'])
-          ->setParameter('latitude', $updatedFlat[0]['latitude'])
-          ->setParameter('date', $updatedFlat[0]['date'])
-          ->setParameter('id', $updatedFlat[0]['id'])
-          ->getQuery();
+        ->update('AppBundle:ParisFlat', 'f')
+        ->set('f.uai', ':uai')
+        ->set('f.name', ':name')
+        ->set('f.price', ':price')
+        ->set('f.description', ':description')
+        ->set('f.type', ':type')
+        ->set('f.thumbnail', ':thumbnail')
+        ->set('f.album', ':album')
+        ->set('f.longitude', ':longitude')
+        ->set('f.latitude', ':latitude')
+        ->set('f.date', ':date')
+        ->where('f.id = :id')
+        ->setParameter('uai', $updatedFlat[0]['uai'])
+        ->setParameter('name', $updatedFlat[0]['name'])
+        ->setParameter('price', $updatedFlat[0]['price'])
+        ->setParameter('description', $updatedFlat[0]['description'])
+        ->setParameter('type', $updatedFlat[0]['type'])
+        ->setParameter('thumbnail', $updatedFlat[0]['thumbnail'])
+        ->setParameter('album', $updatedFlat[0]['album'])
+        ->setParameter('longitude', $updatedFlat[0]['longitude'])
+        ->setParameter('latitude', $updatedFlat[0]['latitude'])
+        ->setParameter('date', $updatedFlat[0]['date'])
+        ->setParameter('id', $updatedFlat[0]['id'])
+        ->getQuery();
 
       $result = $query->getArrayResult();
 
       if ( $result === 0 )
       {
-        $result = array("success" => "nothing to update");
+        $result = array('code' => 200, "response" => "nothing to update");
       }
       elseif ( $result === 1 )
       {
-        $result = array("success" => "value(s) updated");
+        $result = array('code' => 200,"response" => "value(s) updated");
       }
       else
       {
-        $result = array("error" => "something goes wrong");
+        $result = array('code' => 500,"response" => "something goes wrong");
       }
       return $result;
 
@@ -332,23 +332,23 @@ class ParisFlatRepository extends EntityRepository
       $em = $this->getEntityManager();
       $qb = $em->createQueryBuilder();
       $query = $qb->delete('AppBundle:ParisFlat', 'f')
-          ->where('f.id = :id')
-          ->setParameter('id', $id)
-          ->getQuery();
+        ->where('f.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery();
 
       $result = $query->execute();
 
       if ( $result === 0 )
       {
-        $result = array("success" => "deleted");
+        $result = array('code' => 200,"response" => "deleted");
       }
       elseif ( $result === 1 )
       {
-        $result = array("success" => "deleted");
+        $result = array('code' => 200,"response" => "deleted");
       }
       else
       {
-        $result = array("error" => "something goes wrong");
+        $result = array('code' => 500,"response" => "something goes wrong");
       }
       return $result;
     }
@@ -419,7 +419,7 @@ class ParisFlatRepository extends EntityRepository
     ');
 
     $query->setParameters(array(
-        'userkey' => $userkey
+      'userkey' => $userkey
     ));
 
     return $query->getArrayResult();

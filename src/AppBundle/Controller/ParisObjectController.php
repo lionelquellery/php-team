@@ -37,7 +37,7 @@ class ParisObjectController extends Controller
         else
         {
 
-            $result =  array("error" => "no rights");
+            $result =  array('code' => 401, "response" => "data missing");
 
         }
 
@@ -65,7 +65,7 @@ class ParisObjectController extends Controller
         }
         else
         {
-            $parisInsert = array("error" => "No arguments passed, nothing to create");
+            $parisInsert = array('code' => 401, "response" => "No arguments passed, nothing to create");
         }
 
 
@@ -96,7 +96,7 @@ class ParisObjectController extends Controller
         else
         {
 
-            $result =  array("error" => "no rights");
+            $result =  array('code' => 401, "response" => "Data missing");
 
         }
 
@@ -125,7 +125,7 @@ class ParisObjectController extends Controller
         else
         {
 
-            $result =  array("error" => "no rights");
+            $result =   array('code' => 401, "response" => "Data missing");
 
         }
 
@@ -153,7 +153,7 @@ class ParisObjectController extends Controller
         else
         {
 
-            $result =  array("error" => "no rights");
+            $result =  array('code' => 401, "response" => "Data missing");
 
         }
 

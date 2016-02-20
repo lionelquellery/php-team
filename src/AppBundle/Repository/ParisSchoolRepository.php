@@ -18,7 +18,7 @@ class ParisSchoolRepository extends EntityRepository
 
     $school = $query->getArrayResult();
 
-    return $school;
+    return array('code' => 200, 'response' => $school);
   }
 
   public function getRadius($radius)

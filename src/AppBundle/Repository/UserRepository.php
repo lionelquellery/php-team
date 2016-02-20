@@ -6,7 +6,7 @@ use AppBundle\Entity\User;
 
 class UserRepository extends EntityRepository
 {
-  
+
   public function verifyPermission($key)
   {
 
@@ -37,7 +37,7 @@ class UserRepository extends EntityRepository
     $query = $em
       ->createQuery('SELECT u FROM AppBundle:User u');
 
-    return $query->getArrayResult();
+    return array('code' => 200, 'response' => $query->getArrayResult());
 
   }
 
@@ -88,7 +88,7 @@ class UserRepository extends EntityRepository
     if(empty($query->getResult()))
       return $this->insertNewUser($token, $mail, $pass);
     else
-      return array('status' => 'user already registered');
+      return array('code'   => 409 ,'response' => 'user already registered');
 
   }
 
@@ -108,7 +108,7 @@ class UserRepository extends EntityRepository
     $em->persist($user);
     $em->flush();
 
-    return array("status" => 'User saved');
+    return array("code"   =>  200 ,"response" => 'User saved');
 
   }
 
@@ -116,7 +116,7 @@ class UserRepository extends EntityRepository
   {
 
     if(is_null($mail) || is_null($pass))
-      return array("statut" => 'Data missing');
+      return array('code'   => 401 ,"response" => 'Data missing');
     else
       return $this->newUser($this->generateToken(), $mail, $pass);
 
@@ -126,7 +126,7 @@ class UserRepository extends EntityRepository
   {
 
     if(is_null($mail) || is_null($pass))
-      return array("statut" => 'Data missing');
+      return array('code'   => 401 ,"response" => 'Data missing');
 
     $em = $this->getEntityManager();
 
@@ -137,9 +137,9 @@ class UserRepository extends EntityRepository
     $user = $query->getArrayResult();
 
     if(hash('sha256', $pass) == $user[0]["pass"])
-      return array('token' => $user[0]["userkey"]);
+      return array('code' => 200, 'response' => $user[0]["userkey"]);
     else
-      return array("statut" => 'Not valid password');
+      return array('code' => 403, 'response' => 'Not valid password');
 
   }
 
@@ -147,15 +147,15 @@ class UserRepository extends EntityRepository
   {
     $em = $this->getEntityManager();
     $query = $em
-        ->createQuery('DELETE FROM AppBundle:User u WHERE u.id = :id')
-        ->setParameter('id', $id);
+      ->createQuery('DELETE FROM AppBundle:User u WHERE u.id = :id')
+      ->setParameter('id', $id);
 
     $result = $query->execute();
 
     if($result == 1)
-      return array('status' => 'user '. $id .' deleted');
+      return array('code' => 200, 'response' => 'user '. $id .' deleted');
     else
-      return array('status' => 'an error occured');
+      return array('code' => 409,'response' => 'an error occured');
 
   }
 

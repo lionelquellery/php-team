@@ -28,13 +28,16 @@ class ParisRestaurantController extends Controller
   {
 
     $response = array(
-      'id'       => $parisRestaurant->getId(),
-      'category' => $parisRestaurant->getCategory(),
-      'adresse'  => $parisRestaurant->getAdresse(),
-      'lat'      => $parisRestaurant->getLatitude(),
-      'long'     => $parisRestaurant->getLongitude(),
+      'code'     => 200,
+      'response' => array(
+        'id'       => $parisRestaurant->getId(),
+        'category' => $parisRestaurant->getCategory(),
+        'adresse'  => $parisRestaurant->getAdresse(),
+        'lat'      => $parisRestaurant->getLatitude(),
+        'long'     => $parisRestaurant->getLongitude(),
+      )
     );
-        
+
     return new JsonResponse($response);
 
   }

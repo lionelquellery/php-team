@@ -47,18 +47,21 @@ class ParisSchoolController extends Controller
   {
 
     $radius = $request->query->get('radius');
-    
+
     $em = $this->getDoctrine()->getManager();
-    
+
     $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
-    
+
     $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
-    
+
     $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($parisSchool->getLatitude(), $parisSchool->getLongitude(), $radiusRatio);
-        
+
     return new JsonResponse(array(
-      'school'      => $school,
-      'restaurants' => $restaurants
+      'code'        => 200,
+      'response'    => array(
+        'school'      => $school,
+        'restaurants' => $restaurants
+      )
     ));
 
   }

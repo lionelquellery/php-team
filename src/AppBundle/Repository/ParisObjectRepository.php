@@ -57,17 +57,17 @@ class ParisObjectRepository extends EntityRepository
           
             if (!empty($query))
             {
-                return $query;
+                return array('code' => 200, 'response' => $query);
             }
             else
             {
-                return array("error" => "Something goes wrong, maybe you havn't objects yet ?");
+                return array('code' => 404, "response" => "Something goes wrong, maybe you havn't objects yet ?");
             }
 
         }
         else
         {
-            return array("error" => "wrong userkey");
+            return array('code' => 403, "response" => "wrong userkey");
         }
 
     }
@@ -124,17 +124,17 @@ class ParisObjectRepository extends EntityRepository
 
             if (!empty($query))
             {
-                return $query;
+                return array('code' => 200, 'response' => $query);
             }
             else
             {
-                return array("error" => "not authorized");
+                return array('code' => 403, "response" => "not authorized");
             }
 
         }
         else
         {
-            return array("error" => "wrong userkey");
+            return array('code' => 401, "response" => "wrong userkey");
         }
 
 
@@ -165,7 +165,7 @@ class ParisObjectRepository extends EntityRepository
             }
             else
             {
-                return array("error" => "missing value : name");
+                return array('code' => 401, "response" => "missing value : name");
             }
 
             if ( isset($response['price']) && !empty($response['price']))
@@ -174,7 +174,7 @@ class ParisObjectRepository extends EntityRepository
             }
             else
             {
-                return array("error" => "missing value : price");
+                return array('code' => 401, "response" => "missing value : price");
             }
 
             if ( isset($response['description']) && !empty($response['description']))
@@ -183,7 +183,7 @@ class ParisObjectRepository extends EntityRepository
             }
             else
             {
-                return array("error" => "missing value : description");
+                return array('code' => 401, "response" => "missing value : description");
             }
 
             if ( isset($response['type']) && !empty($response['type']))
@@ -192,7 +192,7 @@ class ParisObjectRepository extends EntityRepository
             }
             else
             {
-                return array("error" => "missing value : type");
+                return array('code' => 401, "response" => "missing value : type");
             }
 
             if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
@@ -201,7 +201,7 @@ class ParisObjectRepository extends EntityRepository
             }
             else
             {
-                return array("error" => "missing value : thumbnail");
+                return array('code' => 401, "response" => "missing value : thumbnail");
             }
 
             if ( isset($response['album']) && !empty($response['album']))
@@ -210,18 +210,18 @@ class ParisObjectRepository extends EntityRepository
             }
             else
             {
-                return array("error" => "missing value : album");
+                return array('code' => 401, "response" => "missing value : album");
             }
 
             $em->persist($object);
             $em->flush();
 
-            return array('Id'=> $object->getId() );
+            return array('code' => 200 , 'response' => array('Id'=> $object->getId()) );
 
         }
         else
         {
-            return array("error" => "wrong userkey");
+            return array('code' => 401, "response" => "wrong userkey");
         }
     }
 
@@ -268,15 +268,15 @@ class ParisObjectRepository extends EntityRepository
 
             if ( $result === 0 )
             {
-                $result = array("success" => "nothing to update");
+                $result = array('code' => 200, "response" => "nothing to update");
             }
             elseif ( $result === 1 )
             {
-                $result = array("success" => "value(s) updated");
+                $result = array('code' => 200, "response" => "value(s) updated");
             }
             else
             {
-                $result = array("error" => "something goes wrong");
+                $result = array('code' => 500, "response" => "something goes wrong");
             }
             return $result;
 
@@ -311,15 +311,15 @@ class ParisObjectRepository extends EntityRepository
 
             if ( $result === 0 )
             {
-                $result = array("success" => "deleted");
+                $result = array('code' => 200, "response" => "deleted");
             }
             elseif ( $result === 1 )
             {
-                $result = array("success" => "deleted");
+                $result = array('code' => 200, "response" => "deleted");
             }
             else
             {
-                $result = array("error" => "something goes wrong");
+                $result = array('code' => 500, "response" => "something goes wrong");
             }
             return $result;
         }
