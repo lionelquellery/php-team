@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931068f5-5956-40b1-bb3b-24661335c3f9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisFlat.orm.yml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisFlat.orm.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="php-team.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ParisObjectController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParisObjectController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6924157">
+            <state vertical-scroll-proportion="-18.961538">
               <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
               <folding>
                 <element signature="e#40#85#0#PHP" expanded="true" />
@@ -74,14 +68,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParisFlatRepository.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ParisFlatRepository.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-47.682926">
-              <caret line="230" column="23" selection-start-line="230" selection-start-column="23" selection-end-line="230" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.1554878">
+              <caret line="154" column="44" selection-start-line="154" selection-start-column="44" selection-end-line="154" selection-end-column="44" />
               <folding>
                 <element signature="e#41#75#0#PHP" expanded="true" />
-                <marker date="1456003107907" expanded="true" signature="9214:9275" placeholder="SELECT u FRO... AppBundle" />
+                <marker date="1456003658081" expanded="true" signature="9214:9275" placeholder="SELECT u FRO... AppBundle" />
               </folding>
             </state>
           </provider>
@@ -118,8 +112,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisFlat.orm.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php" />
       </list>
     </option>
   </component>
@@ -724,17 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-47.682926">
-          <caret line="230" column="23" selection-start-line="230" selection-start-column="23" selection-end-line="230" selection-end-column="23" />
-          <folding>
-            <element signature="e#41#75#0#PHP" expanded="true" />
-            <marker date="1456003107907" expanded="true" signature="9214:9275" placeholder="SELECT u FRO... AppBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -759,6 +742,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.961538">
+          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-53.615383">
@@ -769,12 +762,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6924157">
-          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.1554878">
+          <caret line="154" column="44" selection-start-line="154" selection-start-column="44" selection-end-line="154" selection-end-column="44" />
           <folding>
-            <element signature="e#40#85#0#PHP" expanded="true" />
+            <element signature="e#41#75#0#PHP" expanded="true" />
+            <marker date="1456003658081" expanded="true" signature="9214:9275" placeholder="SELECT u FRO... AppBundle" />
           </folding>
         </state>
       </provider>
