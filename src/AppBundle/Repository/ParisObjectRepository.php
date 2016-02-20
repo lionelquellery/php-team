@@ -19,39 +19,49 @@ class ParisObjectRepository extends EntityRepository
 
         $em = $this->getEntityManager();
 
-        $query = $em->createQuery('SELECT o FROM AppBundle:ParisObject o
-    WHERE o.uai = :uai
-    ');
+        $query = $em->createQueryBuilder()
+            ->select('o')
+            ->from('AppBundle:ParisObject', 'o')
+            ->where('o.uai = :uai');
 
         $query->setParameters(array(
             'uai'    => $uai
         ));
 
-        return $query->getArrayResult();
+        return $query->getQuery()->getArrayResult();
 
     }
 
     /**
+     * @param $uai
      * @param $id
      * @return array
      */
-    public function getObject($id)
+    public function getObject($uai, $id)
     {
 
         $em = $this->getEntityManager();
 
-        $query = $em->createQuery('SELECT o FROM AppBundle:ParisObject o
-    WHERE o.id = :id
-    ');
+        $query = $em->createQueryBuilder()
+            ->select('o')
+            ->from('AppBundle:ParisObject', 'o')
+            ->where('o.uai = :uai')
+            ->andWhere('o.id = :id');
 
         $query->setParameters(array(
-            'id'    => $id
+            'uai' => $uai,
+            'id' => $id
         ));
 
-        return $query->getArrayResult();
+        return $query->getQuery()->getArrayResult();
 
     }
 
+    /**
+     * @param $response
+     * @param $uai
+     * @return ParisObject
+     */
     public function insertObject($response, $uai)
     {
 
@@ -68,10 +78,17 @@ class ParisObjectRepository extends EntityRepository
         return $object;
     }
 
+
+    /**
+     * @param $response
+     * @param $uai
+     * @param $id
+     * @return array|null
+     */
     public function editObject($response, $uai, $id)
     {
 
-        $objectBDD = $this->getObject($id);
+        $objectBDD = $this->getObject($uai, $id);
 
         $updatedObject = $this->updateObject($objectBDD, $response);
 
@@ -114,9 +131,14 @@ class ParisObjectRepository extends EntityRepository
 
     }
 
-    public function deleteObject($response, $id)
+    /**
+     * @param $response
+     * @param $id
+     * @return array|null
+     */
+    public function deleteObject($response, $id, $uai)
     {
-        $objectBDD = $this->getObject($id);
+        $objectBDD = $this->getObject($uai, $id);
 
         $hasRights = $this->checkRights($response['owner'], $objectBDD);
 
@@ -139,6 +161,11 @@ class ParisObjectRepository extends EntityRepository
         }
     }
 
+    /**
+     * @param $objectBDD
+     * @param $response
+     * @return mixed
+     */
     public function updateObject($objectBDD, $response)
     {
 
@@ -175,6 +202,10 @@ class ParisObjectRepository extends EntityRepository
 
     }
 
+    /**
+     * @param $userkey
+     * @return array
+     */
     public function getAdmin($userkey)
     {
         $em = $this->getEntityManager();
@@ -190,6 +221,11 @@ class ParisObjectRepository extends EntityRepository
         return $query->getArrayResult();
     }
 
+    /**
+     * @param $userkey
+     * @param $objectBDD
+     * @return bool|null
+     */
     public function checkRights($userkey, $objectBDD)
     {
 

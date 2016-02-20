@@ -64,11 +64,11 @@ class ParisObjectController extends Controller
      * @Route("/{id}", name="object_show")
      * @Method("GET")
      */
-    public function showAction($id)
+    public function showAction($uai, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($id);
+        $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id);
 
         return new JsonResponse($parisObject);
     }
@@ -98,12 +98,12 @@ class ParisObjectController extends Controller
      * @Route("/{id}/delete/", name="object_delete")
      * @Method({"GET", "POST"})
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $id, $uai)
     {
         $response = $request->query->all();
 
         $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id);
+        $object = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id, $uai);
 
         return new JsonResponse($object);
     }
