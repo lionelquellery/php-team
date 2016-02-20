@@ -28,10 +28,4 @@ class ParisRestaurantRepositoryTest extends WebTestCase
 
     }
 
-
-
-
-
-
-
 }

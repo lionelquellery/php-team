@@ -27,15 +27,13 @@ class ParisSchoolRepositoryTest extends WebTestCase
 
     public function testgetLocation()
     {
-        $arrayu = $this->repo->getLocation(05);
-        $this->assertInternalType("array",$arrayu);
+        $location =  $this->repo->getLocation(05);
+        $this->assertInternalType("array",$location);
+
+        return $location;
 
 
     }
-
-
-
-
 
 
 }
