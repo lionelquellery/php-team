@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931068f5-5956-40b1-bb3b-24661335c3f9" name="Default" comment="" />
+    <list default="true" id="931068f5-5956-40b1-bb3b-24661335c3f9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/check.php" afterPath="$PROJECT_DIR$/app/check.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" />
+    </list>
     <ignored path="php-team.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -27,6 +33,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="105" column="96" selection-start-line="105" selection-start-column="96" selection-end-line="105" selection-end-column="96" />
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-25.833334">
+              <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
               <folding>
                 <element signature="e#40#85#0#PHP" expanded="true" />
               </folding>
@@ -42,6 +53,29 @@
               <folding>
                 <element signature="e#40#64#0#PHP" expanded="true" />
                 <marker date="1455979447000" expanded="true" signature="5329:5390" placeholder="SELECT u FRO... AppBundle" />
+              </folding>
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserRepository.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.76744187">
+              <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+              <folding>
+                <marker date="1455905610000" expanded="true" signature="275:328" placeholder="SELECT u FRO... AppBundle" />
+                <marker date="1455905610000" expanded="true" signature="679:709" placeholder="SELECT u FRO... AppBundle" />
+                <marker date="1455905610000" expanded="true" signature="872:925" placeholder="SELECT u FRO... AppBundle" />
+                <marker date="1455905610000" expanded="true" signature="1532:1583" placeholder="SELECT u FRO... AppBundle" />
+                <marker date="1455905610000" expanded="true" signature="2605:2656" placeholder="SELECT u FRO... AppBundle" />
+                <marker date="1455905610000" expanded="true" signature="3022:3067" placeholder="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -74,6 +108,7 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ParisRestaurant.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/parisschool/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php" />
+
         <option value="$PROJECT_DIR$/src/AppBundle/Form/ParisObjectType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" />
@@ -81,6 +116,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Service/ParisObjectService.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" />
+
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
+
       </list>
     </option>
   </component>
@@ -95,8 +134,13 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
+
     <option name="width" value="1440" />
     <option name="height" value="824" />
+
+    <option name="width" value="1680" />
+    <option name="height" value="981" />
+
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -171,6 +215,7 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AppBundle" />
+
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -343,6 +388,88 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+
+
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -360,36 +487,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php-team" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php-team" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
+
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -409,6 +507,13 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -466,10 +571,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17381974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+
+    <frame x="0" y="23" width="1680" height="981" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17261904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -507,6 +619,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -514,14 +627,25 @@
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
           </folding>
+
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+
           <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="53" selection-end-column="9" />
           <folding />
+
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+
         </state>
       </provider>
     </entry>
@@ -529,10 +653,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
             <marker date="1455979447000" expanded="true" signature="5329:5390" placeholder="SELECT u FRO... AppBundle" />
           </folding>
+
+
         </state>
       </provider>
     </entry>
@@ -568,10 +695,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
             <marker date="1455979447000" expanded="true" signature="5329:5390" placeholder="SELECT u FRO... AppBundle" />
           </folding>
+
+          <folding />
+
         </state>
       </provider>
     </entry>
@@ -579,9 +710,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
           </folding>
+
+
         </state>
       </provider>
     </entry>
@@ -589,7 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -604,9 +737,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
           </folding>
+
+          <folding />
+
         </state>
       </provider>
     </entry>
@@ -621,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -629,9 +765,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
           </folding>
+
+          <folding />
+
         </state>
       </provider>
     </entry>
@@ -645,8 +785,12 @@
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding />
+
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
         </state>
       </provider>
     </entry>
@@ -654,9 +798,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
           </folding>
+
+
         </state>
       </provider>
     </entry>
@@ -676,20 +823,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/ParisRestaurantControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
+
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
+        <state vertical-scroll-proportion="-6.12">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/ParisSchoolControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
+
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
+        <state vertical-scroll-proportion="-14.96">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/UserControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
+
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -697,6 +855,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
+
+
         <state vertical-scroll-proportion="-9.52">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
@@ -753,32 +913,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php">
       <provider selected="true" editor-type-id="text-editor">
+
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ParisRestaurantType.php">
+
+        <state vertical-scroll-proportion="0.16813187">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisSchool.php">
+
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisSchoolRepository.php">
+
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php">
+
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="10.538462">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">
+
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php">
+
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37921348">
@@ -787,6 +965,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisRestaurant.orm.yml">
+
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ParisRestaurantType.php">
+
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="68" />
@@ -797,6 +978,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
         </state>
       </provider>
     </entry>
@@ -836,8 +1018,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/admin/index.html.twig">
+
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.75">
+          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8081396">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -850,6 +1046,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/ParisObjectService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21488763">
@@ -861,10 +1058,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-34.192307">
           <caret line="120" column="27" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="27" />
+
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
           <folding />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ParisObjectType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5014045">
@@ -907,6 +1111,29 @@
           <folding>
             <element signature="e#40#64#0#PHP" expanded="true" />
             <marker date="1455979447000" expanded="true" signature="5329:5390" placeholder="SELECT u FRO... AppBundle" />
+
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.833334">
+          <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76744187">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding>
+            <marker date="1455905610000" expanded="true" signature="275:328" placeholder="SELECT u FRO... AppBundle" />
+            <marker date="1455905610000" expanded="true" signature="679:709" placeholder="SELECT u FRO... AppBundle" />
+            <marker date="1455905610000" expanded="true" signature="872:925" placeholder="SELECT u FRO... AppBundle" />
+            <marker date="1455905610000" expanded="true" signature="1532:1583" placeholder="SELECT u FRO... AppBundle" />
+            <marker date="1455905610000" expanded="true" signature="2605:2656" placeholder="SELECT u FRO... AppBundle" />
+            <marker date="1455905610000" expanded="true" signature="3022:3067" placeholder="DELETE FROM " />
+
           </folding>
         </state>
       </provider>

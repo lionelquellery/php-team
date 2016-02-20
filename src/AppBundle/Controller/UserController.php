@@ -87,4 +87,29 @@ class UserController extends Controller
 
   }
 
+  /**
+   * Delete a user.
+   *
+   * @Route("/delete/{id}/", name="user_delete")
+   * @Method({"GET", "DELETE"})
+   */
+  public function deleteAction(Request $request, $id)
+  {
+    $key = $request->query->get('key');
+    $em = $this->getDoctrine()->getManager();
+
+    if($em->getRepository('AppBundle:User')->verifyPermission($key)){
+
+      $status = $em->getRepository('AppBundle:User')->deleteUser($id);
+
+    }
+    else {
+      $status = array('status' => 'You don\'t have the rights to access these datas');
+    }
+    return new JsonResponse($status);
+
+  }
+
 }
+
+
