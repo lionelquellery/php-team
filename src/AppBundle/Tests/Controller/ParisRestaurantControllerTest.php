@@ -10,7 +10,7 @@ class ParisRestaurantControllerTest extends WebTestCase
     {
         //test of all route  user (functional test)
         $client = static::createClient();
-        $client->request('GET','/school/',array('CONTENT_TYPE'=>'application/json'));
+        $client->request('GET','/school/0750728J/restaurant/318545/',array('CONTENT_TYPE'=>'application/json'));
         $this->assertEquals('200',$client->getResponse()->getStatusCode());
 
 
