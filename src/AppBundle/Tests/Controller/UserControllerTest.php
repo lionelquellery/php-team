@@ -6,6 +6,33 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserControllerTest extends WebTestCase
 {
+    public function testRouterUser()
+    {
+        //test of all route  user (functional test)
+        $client = static::createClient();
+        $crawler = $client->request('GET','/user/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals('200',$client->getResponse()->getStatusCode());
+
+
+
+
+
+
+
+
+
+
+        // create a new user
+
+
+
+    }
+
+
+
+
+
+
     /*
     public function testCompleteScenario()
     {
