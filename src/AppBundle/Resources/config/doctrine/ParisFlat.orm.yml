@@ -1,6 +1,7 @@
 AppBundle\Entity\ParisFlat:
     type: entity
     table: paris_flat
+    repositoryClass : AppBundle\Repository\ParisFlatRepository
     id:
         id:
             type: integer

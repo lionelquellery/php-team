@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>WELLCOME TO THE ADMINE</h1>
+
+<h2>User</h2>
+
+<div>User {{id}} deleted</div>
+
+<a href="{{path('admin_user', {'key': key})}}">Back to users</a>
+
+{% endblock %}

@@ -39,6 +39,23 @@ Return the school's infos and all restaurants in a given radius
 
 Return infos about the selected restaurant
 
+### /user/new/
+
+Create new user account 
+
+#### Parameters :
+- mail (REQUIRED) : your mail
+- pass (REQUIRED) : your account password
+
+### /user/token/
+
+Return your account's token
+
+#### Parameters : 
+- mail (REQUIRED) : your mail's account
+- pass (REQUIRED) : your password's account
+
+
 <!-- Symfony Standard Edition
 ========================
 
