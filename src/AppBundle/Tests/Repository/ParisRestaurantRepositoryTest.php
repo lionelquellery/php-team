@@ -18,10 +18,7 @@ class ParisRestaurantRepositoryTest extends WebTestCase
             ->getRepository('AppBundle:ParisSchool');
     }
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     public function testgetPerimeter()
     {
         $perimeter = $this->repo->getPerimeter();
