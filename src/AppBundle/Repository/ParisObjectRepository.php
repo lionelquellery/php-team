@@ -145,17 +145,81 @@ class ParisObjectRepository extends EntityRepository
     public function insertObject($response, $uai)
     {
 
-        $object = new parisObject();
-        $object->setUai($uai)
-            ->setName($response['name'])
-            ->setPrice($response['price'])
-            ->setDescription($response['description'])
-            ->setType($response['type'])
-            ->setThumbnail($response['thumbnail'])
-            ->setAlbum($response['album'])
-            ->setOwner($response['owner']);
+        $hasRight = $this->getUser($response['userkey']);
 
-        return $object;
+        if (!empty($hasRight))
+        {
+
+            $em = $this->getEntityManager();
+
+            $object = new parisObject();
+            $object->setUai($uai);
+            $object->setOwner($response['userkey']);
+
+            if ( isset($response['name']) && !empty($response['name']))
+            {
+                $object->setName($response['name']);
+            }
+            else
+            {
+                return array("error" => "missing value : name");
+            }
+
+            if ( isset($response['price']) && !empty($response['price']))
+            {
+                $object->setPrice($response['price']);
+            }
+            else
+            {
+                return array("error" => "missing value : price");
+            }
+
+            if ( isset($response['description']) && !empty($response['description']))
+            {
+                $object->setDescription($response['description']);
+            }
+            else
+            {
+                return array("error" => "missing value : description");
+            }
+
+            if ( isset($response['type']) && !empty($response['type']))
+            {
+                $object->setType($response['type']);
+            }
+            else
+            {
+                return array("error" => "missing value : type");
+            }
+
+            if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
+            {
+                $object->setThumbnail($response['thumbnail']);
+            }
+            else
+            {
+                return array("error" => "missing value : thumbnail");
+            }
+
+            if ( isset($response['album']) && !empty($response['album']))
+            {
+                $object->setAlbum($response['album']);
+            }
+            else
+            {
+                return array("error" => "missing value : album");
+            }
+
+            $em->persist($object);
+            $em->flush();
+
+            return array('Id'=> $object->getId() );
+
+        }
+        else
+        {
+            return array("error" => "wrong userkey");
+        }
     }
 
 

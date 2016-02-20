@@ -26,10 +26,12 @@ class ParisObjectController extends Controller
     {
 
         $response = $request->query->all();
-        $em = $this->getDoctrine()->getManager();
 
-        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] )){
 
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
+            $em = $this->getDoctrine()->getManager();
             $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai, $response['userkey']);
 
         }
@@ -47,7 +49,7 @@ class ParisObjectController extends Controller
     /**
      * Creates a new ParisObject entity.
      *
-     * @Route("/new", name="object_new")
+     * @Route("/new/", name="object_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request, $uai)
@@ -55,17 +57,21 @@ class ParisObjectController extends Controller
 
         $response = $request->query->all();
 
-        $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ) )
+        {
+            $em = $this->getDoctrine()->getManager();
+            $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+
+        }
+        else
+        {
+            $parisInsert = array("error" => "No arguments passed, nothing to create");
+        }
 
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($object);
-        $em->flush();
 
-        $id = array('id'=>$object->getId());
-
-        return new JsonResponse($id);
+        return new JsonResponse($parisInsert);
 
     }
 
@@ -79,10 +85,12 @@ class ParisObjectController extends Controller
     {
 
         $response = $request->query->all();
-        $em = $this->getDoctrine()->getManager();
 
-        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] )){
 
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
+            $em = $this->getDoctrine()->getManager();
             $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id, $response['userkey']);
 
         }
