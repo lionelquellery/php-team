@@ -18,14 +18,6 @@ class ParisRestaurantRepositoryTest extends WebTestCase
             ->getRepository('AppBundle:ParisSchool');
     }
 
-    public function testgetPerimeter()
-    {
-        $long = null;
-        $lat = null;
-        $distance = null;
 
-        $perimeter = $this->repo->getPerimeter($lat, $long, $distance);
-
-    }
 
 }
