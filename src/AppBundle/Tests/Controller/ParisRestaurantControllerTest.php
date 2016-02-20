@@ -6,6 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ParisRestaurantControllerTest extends WebTestCase
 {
+    public function testRouterParisRestaurant()
+    {
+        //test of all route  user (functional test)
+        $client = static::createClient();
+        $client->request('GET','/school/0750728J/restaurant/318545/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals('200',$client->getResponse()->getStatusCode());
+
+
+
+
+    }
     /*
     public function testCompleteScenario()
     {

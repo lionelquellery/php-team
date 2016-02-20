@@ -6,6 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ParisObjectControllerTest extends WebTestCase
 {
+    public function testCompleteScenario()
+    {
+        // Create a new client to browse the application
+        $client = static::createClient();
+
+        // Create a new entry in the database
+        $crawler = $client->request('GET', '/school/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /object/");
+
+    }
+
     /*
     public function testCompleteScenario()
     {

@@ -6,6 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ParisSchoolControllerTest extends WebTestCase
 {
+    public function testRouterParisSchool()
+    {
+        //test of all route  user (functional test)
+        $client = static::createClient();
+        $client->request('GET','/school/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals('200',$client->getResponse()->getStatusCode());
+
+
+
+
+    }
     /*
     public function testCompleteScenario()
     {

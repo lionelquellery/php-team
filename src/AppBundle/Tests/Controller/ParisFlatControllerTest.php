@@ -6,6 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ParisFlatControllerTest extends WebTestCase
 {
+
+
+    public function testController()
+    {
+
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/user/',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /parisflat/");
+
+    }
     /*
     public function testCompleteScenario()
     {
