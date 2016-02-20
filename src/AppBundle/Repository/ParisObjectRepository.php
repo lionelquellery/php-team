@@ -232,44 +232,55 @@ class ParisObjectRepository extends EntityRepository
     public function editObject($response, $uai, $id)
     {
 
-        $objectBDD = $this->getObject($uai, $id);
+        $objectBDD = $this->getObject($uai, $id, $response['userkey']);
 
-        $updatedObject = $this->updateObject($objectBDD, $response);
-
-        $hasRights = $this->checkRights($response['owner'], $objectBDD[0]['owner']);
-
-        if( !is_null($hasRights) )
+        if ( !isset($objectBDD['error']) )
         {
 
-        $em = $this->getEntityManager();
+            $updatedObject = $this->updateObject($objectBDD, $response);
 
-        $query = $em->createQueryBuilder()
-            ->update('AppBundle:ParisObject', 'o')
-            ->set('o.uai', ':uai')
-            ->set('o.name', ':name')
-            ->set('o.price', ':price')
-            ->set('o.description', ':description')
-            ->set('o.type', ':type')
-            ->set('o.thumbnail', ':thumbnail')
-            ->set('o.album', ':album')
-            ->where('o.id = :id')
-            ->setParameter('uai', $updatedObject[0]['uai'])
-            ->setParameter('name', $updatedObject[0]['name'])
-            ->setParameter('price', $updatedObject[0]['price'])
-            ->setParameter('description', $updatedObject[0]['description'])
-            ->setParameter('type', $updatedObject[0]['type'])
-            ->setParameter('thumbnail', $updatedObject[0]['thumbnail'])
-            ->setParameter('album', $updatedObject[0]['album'])
-            ->setParameter('id', $updatedObject[0]['id'])
-            ->getQuery();
+            $em = $this->getEntityManager();
 
-            $result = $query->getResult();
+            $query = $em->createQueryBuilder()
+                ->update('AppBundle:ParisObject', 'o')
+                ->set('o.uai', ':uai')
+                ->set('o.name', ':name')
+                ->set('o.price', ':price')
+                ->set('o.description', ':description')
+                ->set('o.type', ':type')
+                ->set('o.thumbnail', ':thumbnail')
+                ->set('o.album', ':album')
+                ->where('o.id = :id')
+                ->setParameter('uai', $updatedObject[0]['uai'])
+                ->setParameter('name', $updatedObject[0]['name'])
+                ->setParameter('price', $updatedObject[0]['price'])
+                ->setParameter('description', $updatedObject[0]['description'])
+                ->setParameter('type', $updatedObject[0]['type'])
+                ->setParameter('thumbnail', $updatedObject[0]['thumbnail'])
+                ->setParameter('album', $updatedObject[0]['album'])
+                ->setParameter('id', $updatedObject[0]['id'])
+                ->getQuery();
+
+            $result = $query->getArrayResult();
+
+            if ( $result === 0 )
+            {
+                $result = array("success" => "nothing to update");
+            }
+            elseif ( $result === 1 )
+            {
+                $result = array("success" => "value(s) updated");
+            }
+            else
+            {
+                $result = array("error" => "something goes wrong");
+            }
             return $result;
 
         }
         else
         {
-            return null;
+            return $objectBDD;
         }
 
 
@@ -282,11 +293,9 @@ class ParisObjectRepository extends EntityRepository
      */
     public function deleteObject($response, $id, $uai)
     {
-        $objectBDD = $this->getObject($uai, $id);
+        $objectBDD = $this->getObject($uai, $id, $response['userkey']);
 
-        $hasRights = $this->checkRights($response['owner'], $objectBDD[0]['owner']);
-
-        if( !is_null($hasRights) )
+        if ( !isset($objectBDD['error']) )
         {
             $em = $this->getEntityManager();
             $qb = $em->createQueryBuilder();
@@ -295,14 +304,27 @@ class ParisObjectRepository extends EntityRepository
                 ->setParameter('id', $id)
                 ->getQuery();
 
-            $query->execute();
+            $result = $query->execute();
 
-            return $query->getArrayResult();
+            if ( $result === 0 )
+            {
+                $result = array("success" => "deleted");
+            }
+            elseif ( $result === 1 )
+            {
+                $result = array("success" => "deleted");
+            }
+            else
+            {
+                $result = array("error" => "something goes wrong");
+            }
+            return $result;
         }
         else
         {
-            return null;
+            return $objectBDD;
         }
+
     }
 
     /**
@@ -370,7 +392,7 @@ class ParisObjectRepository extends EntityRepository
      * @param $objectBDD
      * @return bool|null
      */
-    public function checkRights($userkey, $objectBDD)
+    public function checkUserRights($userkey, $objectBDD)
     {
 
         // If object owner is the good one

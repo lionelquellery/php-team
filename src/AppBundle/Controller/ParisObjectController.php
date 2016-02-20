@@ -32,17 +32,17 @@ class ParisObjectController extends Controller
         {
 
             $em = $this->getDoctrine()->getManager();
-            $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai, $response['userkey']);
+            $result = $em->getRepository('AppBundle:ParisObject')->getObjects($uai, $response['userkey']);
 
         }
         else
         {
 
-            $parisObjects =  array("error" => "no rights");
+            $result =  array("error" => "no rights");
 
         }
 
-        return new JsonResponse($parisObjects);
+        return new JsonResponse($result);
 
     }
 
@@ -91,17 +91,17 @@ class ParisObjectController extends Controller
         {
 
             $em = $this->getDoctrine()->getManager();
-            $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id, $response['userkey']);
+            $result = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id, $response['userkey']);
 
         }
         else
         {
 
-            $parisObject =  array("error" => "no rights");
+            $result =  array("error" => "no rights");
 
         }
 
-        return new JsonResponse($parisObject);
+        return new JsonResponse($result);
     }
 
     /**
@@ -116,10 +116,21 @@ class ParisObjectController extends Controller
         $response = $request->query->all();
 
 
-        $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
 
-        return new JsonResponse($object);
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
 
     }
 
@@ -133,10 +144,22 @@ class ParisObjectController extends Controller
     {
         $response = $request->query->all();
 
-        $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id, $uai);
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
 
-        return new JsonResponse($object);
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id, $uai);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
+
     }
 
 }
