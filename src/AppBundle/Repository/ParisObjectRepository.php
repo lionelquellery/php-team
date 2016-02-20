@@ -20,11 +20,11 @@ class ParisObjectRepository extends EntityRepository
      */
     public function getObjects($uai, $userkey)
     {
-
+      
         $em = $this->getEntityManager();
 
         $hasRight = $this->getUser($userkey);
-
+      
         if (!empty($hasRight))
         {
 
@@ -54,7 +54,7 @@ class ParisObjectRepository extends EntityRepository
             }
 
             $query = $query->getQuery()->getArrayResult();
-
+          
             if (!empty($query))
             {
                 return $query;

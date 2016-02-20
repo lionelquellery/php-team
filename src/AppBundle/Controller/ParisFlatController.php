@@ -26,11 +26,11 @@ class ParisFlatController extends Controller
         $response = $request->query->all();
 
 
-        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        if ( isset( $response['key'] ) && !empty( $response['key'] ))
         {
 
             $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->getFlats($uai, $response['userkey']);
+            $result = $em->getRepository('AppBundle:ParisFlat')->getFlats($uai, $response['key']);
 
         }
         else
@@ -54,7 +54,7 @@ class ParisFlatController extends Controller
         $response = $request->query->all();
 
 
-        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ) )
+        if ( isset( $response['key'] ) && !empty( $response['key'] ) )
         {
             $em = $this->getDoctrine()->getManager();
             $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $uai);
@@ -81,11 +81,11 @@ class ParisFlatController extends Controller
         $response = $request->query->all();
 
 
-        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        if ( isset( $response['key'] ) && !empty( $response['key'] ))
         {
 
             $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->getFlat($uai, $id, $response['userkey']);
+            $result = $em->getRepository('AppBundle:ParisFlat')->getFlat($uai, $id, $response['key']);
 
         }
         else
@@ -109,7 +109,7 @@ class ParisFlatController extends Controller
         $response = $request->query->all();
 
 
-        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        if ( isset( $response['key'] ) && !empty( $response['key'] ))
         {
 
             $em = $this->getDoctrine()->getManager();
@@ -136,7 +136,7 @@ class ParisFlatController extends Controller
     {
         $response = $request->query->all();
 
-        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        if ( isset( $response['key'] ) && !empty( $response['key'] ))
         {
 
             $em = $this->getDoctrine()->getManager();
