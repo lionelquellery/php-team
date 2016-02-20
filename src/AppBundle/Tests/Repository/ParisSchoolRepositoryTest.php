@@ -30,10 +30,12 @@ class ParisSchoolRepositoryTest extends WebTestCase
         $location =  $this->repo->getLocation(05);
         $this->assertInternalType("array",$location);
 
+
         return $location;
 
 
     }
+
 
 
 }

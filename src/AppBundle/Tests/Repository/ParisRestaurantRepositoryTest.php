@@ -19,5 +19,11 @@ class ParisRestaurantRepositoryTest extends WebTestCase
     }
 
 
+    public function testgetPerimeter()
+    {
+        $perimeter = $this->repo->getPerimeter();
+        $this->assertInternalType("float", $radiusRatio);
+
+    }
 
 }
