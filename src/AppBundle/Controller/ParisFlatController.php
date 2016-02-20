@@ -6,13 +6,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Entity\ParisFlat;
-use AppBundle\Form\ParisFlatType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * ParisFlat controller.
  *
- * @Route("flat")
+ * @Route("school/{uai}/flat")
  */
 class ParisFlatController extends Controller
 {
@@ -20,121 +19,138 @@ class ParisFlatController extends Controller
      * Lists all ParisFlat entities.
      *
      * @Route("/", name="parisflat_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function indexAction()
+    public function indexAction($uai, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $response = $request->query->all();
 
-        $parisFlats = $em->getRepository('AppBundle:ParisFlat')->findAll();
 
-        return $this->render('parisflat/index.html.twig', array(
-            'parisFlats' => $parisFlats,
-        ));
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisFlat')->getFlats($uai, $response['userkey']);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
     }
 
     /**
      * Creates a new ParisFlat entity.
      *
-     * @Route("/new", name="parisflat_new")
+     * @Route("/new/", name="parisflat_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $uai)
     {
-        $parisFlat = new ParisFlat();
-        $form = $this->createForm('AppBundle\Form\ParisFlatType', $parisFlat);
-        $form->handleRequest($request);
+        $response = $request->query->all();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ) )
+        {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($parisFlat);
-            $em->flush();
+            $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $uai);
 
-            return $this->redirectToRoute('parisflat_show', array('id' => $parisflat->getId()));
+        }
+        else
+        {
+            $parisInsert = array("error" => "No arguments passed, nothing to create");
         }
 
-        return $this->render('parisflat/new.html.twig', array(
-            'parisFlat' => $parisFlat,
-            'form' => $form->createView(),
-        ));
+
+
+        return new JsonResponse($parisInsert);
     }
 
     /**
      * Finds and displays a ParisFlat entity.
      *
-     * @Route("/{id}", name="parisflat_show")
-     * @Method("GET")
+     * @Route("/{id}/", name="parisflat_show")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(ParisFlat $parisFlat)
+    public function showAction($uai, $id, Request $request)
     {
-        $deleteForm = $this->createDeleteForm($parisFlat);
+        $response = $request->query->all();
 
-        return $this->render('parisflat/show.html.twig', array(
-            'parisFlat' => $parisFlat,
-            'delete_form' => $deleteForm->createView(),
-        ));
+
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisFlat')->getFlat($uai, $id, $response['userkey']);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
     }
 
     /**
      * Displays a form to edit an existing ParisFlat entity.
      *
-     * @Route("/{id}/edit", name="parisflat_edit")
+     * @Route("/{id}/edit/", name="parisflat_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, ParisFlat $parisFlat)
+    public function editAction(Request $request, $uai, $id)
     {
-        $deleteForm = $this->createDeleteForm($parisFlat);
-        $editForm = $this->createForm('AppBundle\Form\ParisFlatType', $parisFlat);
-        $editForm->handleRequest($request);
+        $response = $request->query->all();
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
             $em = $this->getDoctrine()->getManager();
-            $em->persist($parisFlat);
-            $em->flush();
+            $result = $em->getRepository('AppBundle:ParisFlat')->editFlat($response, $uai, $id);
 
-            return $this->redirectToRoute('parisflat_edit', array('id' => $parisFlat->getId()));
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
         }
 
-        return $this->render('parisflat/edit.html.twig', array(
-            'parisFlat' => $parisFlat,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return new JsonResponse($result);
     }
 
     /**
      * Deletes a ParisFlat entity.
      *
-     * @Route("/{id}", name="parisflat_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete/", name="parisflat_delete")
+     * @Method({"GET", "POST"})
      */
-    public function deleteAction(Request $request, ParisFlat $parisFlat)
+    public function deleteAction(Request $request, $id, $uai)
     {
-        $form = $this->createDeleteForm($parisFlat);
-        $form->handleRequest($request);
+        $response = $request->query->all();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
             $em = $this->getDoctrine()->getManager();
-            $em->remove($parisFlat);
-            $em->flush();
+            $result = $em->getRepository('AppBundle:ParisFlat')->deleteFlat($response, $id, $uai);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
         }
 
-        return $this->redirectToRoute('parisflat_index');
+        return new JsonResponse($result);
     }
 
-    /**
-     * Creates a form to delete a ParisFlat entity.
-     *
-     * @param ParisFlat $parisFlat The ParisFlat entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(ParisFlat $parisFlat)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('parisflat_delete', array('id' => $parisFlat->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }

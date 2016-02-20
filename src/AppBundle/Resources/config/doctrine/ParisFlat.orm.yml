@@ -56,4 +56,9 @@ AppBundle\Entity\ParisFlat:
             nullable: false
             length: 65535
             fixed: false
+        owner:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
     lifecycleCallbacks: {  }

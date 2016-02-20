@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use AppBundle\Entity\ParisObject;
 
 /**
  * ParisObject controller.
@@ -20,23 +19,36 @@ class ParisObjectController extends Controller
      * Lists all ParisObject entities.
      *
      * @Route("/", name="object_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function indexAction($uai)
+    public function indexAction($uai, Request $request)
     {
 
-        $em = $this->getDoctrine()->getManager();
+        $response = $request->query->all();
 
-        $parisObjects = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
 
-        return new JsonResponse($parisObjects);
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisObject')->getObjects($uai, $response['userkey']);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
 
     }
 
     /**
      * Creates a new ParisObject entity.
      *
-     * @Route("/new", name="object_new")
+     * @Route("/new/", name="object_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request, $uai)
@@ -44,33 +56,51 @@ class ParisObjectController extends Controller
 
         $response = $request->query->all();
 
-        $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ) )
+        {
+            $em = $this->getDoctrine()->getManager();
+            $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+
+        }
+        else
+        {
+            $parisInsert = array("error" => "No arguments passed, nothing to create");
+        }
 
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($object);
-        $em->flush();
 
-        $id = array('id'=>$object->getId());
-
-        return new JsonResponse($id);
+        return new JsonResponse($parisInsert);
 
     }
 
     /**
      * Finds and displays a ParisObject entity.
      *
-     * @Route("/{id}", name="object_show")
-     * @Method("GET")
+     * @Route("/{id}/", name="object_show")
+     * @Method({"GET", "POST"})
      */
-    public function showAction($uai, $id)
+    public function showAction($uai, $id, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $parisObject = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id);
+        $response = $request->query->all();
 
-        return new JsonResponse($parisObject);
+
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
+
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id, $response['userkey']);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
     }
 
     /**
@@ -85,10 +115,21 @@ class ParisObjectController extends Controller
         $response = $request->query->all();
 
 
-        $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
 
-        return new JsonResponse($object);
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
 
     }
 
@@ -102,25 +143,22 @@ class ParisObjectController extends Controller
     {
         $response = $request->query->all();
 
-        $em = $this->getDoctrine()->getManager();
-        $object = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id, $uai);
+        if ( isset( $response['userkey'] ) && !empty( $response['userkey'] ))
+        {
 
-        return new JsonResponse($object);
+            $em = $this->getDoctrine()->getManager();
+            $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id, $uai);
+
+        }
+        else
+        {
+
+            $result =  array("error" => "no rights");
+
+        }
+
+        return new JsonResponse($result);
+
     }
 
-    /**
-     * Creates a form to delete a ParisObject entity.
-     *
-     * @param ParisObject $parisObject The ParisObject entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(ParisObject $parisObject)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('object_delete', array('id' => $parisObject->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\AppBundle;
+use AppBundle\Entity\ParisFlat;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\ParisObject;
 use AppBundle\Entity\User;
@@ -10,50 +11,132 @@ use AppBundle\Entity\User;
 class ParisObjectRepository extends EntityRepository
 {
 
+
+
     /**
      * @param $uai
+     * @param null $userkey
      * @return array
      */
-    public function getObjects($uai)
+    public function getObjects($uai, $userkey)
     {
 
         $em = $this->getEntityManager();
 
-        $query = $em->createQueryBuilder()
-            ->select('o')
-            ->from('AppBundle:ParisObject', 'o')
-            ->where('o.uai = :uai');
+        $hasRight = $this->getUser($userkey);
 
-        $query->setParameters(array(
-            'uai'    => $uai
-        ));
+        if (!empty($hasRight))
+        {
 
-        return $query->getQuery()->getArrayResult();
+            if($hasRight[0]['rights'] === 1)
+            {
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai');
+
+                $query->setParameters(array(
+                    'uai' => $uai
+                ));
+            }
+            else
+            {
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai')
+                    ->andWhere('o.owner = :userkey');
+
+                $query->setParameters(array(
+                    'uai' => $uai,
+                    'userkey' => $userkey
+                ));
+            }
+
+            $query = $query->getQuery()->getArrayResult();
+
+            if (!empty($query))
+            {
+                return $query;
+            }
+            else
+            {
+                return array("error" => "Something goes wrong, maybe you havn't objects yet ?");
+            }
+
+        }
+        else
+        {
+            return array("error" => "wrong userkey");
+        }
 
     }
 
     /**
      * @param $uai
      * @param $id
+     * @param $userkey
      * @return array
      */
-    public function getObject($uai, $id)
+    public function getObject($uai, $id, $userkey)
     {
 
         $em = $this->getEntityManager();
+        $hasRight = $this->getUser($userkey);
 
-        $query = $em->createQueryBuilder()
-            ->select('o')
-            ->from('AppBundle:ParisObject', 'o')
-            ->where('o.uai = :uai')
-            ->andWhere('o.id = :id');
+        if (!empty($hasRight))
+        {
 
-        $query->setParameters(array(
-            'uai' => $uai,
-            'id' => $id
-        ));
 
-        return $query->getQuery()->getArrayResult();
+            if($hasRight[0]['rights'] === 1)
+            {
+
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai')
+                    ->andWhere('o.id = :id');
+
+                $query->setParameters(array(
+                    'uai' => $uai,
+                    'id' => $id
+                ));
+
+            }
+            else
+            {
+                $query = $em->createQueryBuilder()
+                    ->select('o')
+                    ->from('AppBundle:ParisObject', 'o')
+                    ->where('o.uai = :uai')
+                    ->andWhere('o.id = :id')
+                    ->andWhere('o.owner = :userkey');
+
+                $query->setParameters(array(
+                    'uai' => $uai,
+                    'id' => $id,
+                    'userkey' => $userkey
+                ));
+
+            }
+
+            $query = $query->getQuery()->getArrayResult();
+
+            if (!empty($query))
+            {
+                return $query;
+            }
+            else
+            {
+                return array("error" => "not authorized");
+            }
+
+        }
+        else
+        {
+            return array("error" => "wrong userkey");
+        }
+
 
     }
 
@@ -65,17 +148,81 @@ class ParisObjectRepository extends EntityRepository
     public function insertObject($response, $uai)
     {
 
-        $object = new parisObject();
-        $object->setUai($uai)
-            ->setName($response['name'])
-            ->setPrice($response['price'])
-            ->setDescription($response['description'])
-            ->setType($response['type'])
-            ->setThumbnail($response['thumbnail'])
-            ->setAlbum($response['album'])
-            ->setOwner($response['owner']);
+        $hasRight = $this->getUser($response['userkey']);
 
-        return $object;
+        if (!empty($hasRight))
+        {
+
+            $em = $this->getEntityManager();
+
+            $object = new parisObject();
+            $object->setUai($uai);
+            $object->setOwner($response['userkey']);
+
+            if ( isset($response['name']) && !empty($response['name']))
+            {
+                $object->setName($response['name']);
+            }
+            else
+            {
+                return array("error" => "missing value : name");
+            }
+
+            if ( isset($response['price']) && !empty($response['price']))
+            {
+                $object->setPrice($response['price']);
+            }
+            else
+            {
+                return array("error" => "missing value : price");
+            }
+
+            if ( isset($response['description']) && !empty($response['description']))
+            {
+                $object->setDescription($response['description']);
+            }
+            else
+            {
+                return array("error" => "missing value : description");
+            }
+
+            if ( isset($response['type']) && !empty($response['type']))
+            {
+                $object->setType($response['type']);
+            }
+            else
+            {
+                return array("error" => "missing value : type");
+            }
+
+            if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
+            {
+                $object->setThumbnail($response['thumbnail']);
+            }
+            else
+            {
+                return array("error" => "missing value : thumbnail");
+            }
+
+            if ( isset($response['album']) && !empty($response['album']))
+            {
+                $object->setAlbum($response['album']);
+            }
+            else
+            {
+                return array("error" => "missing value : album");
+            }
+
+            $em->persist($object);
+            $em->flush();
+
+            return array('Id'=> $object->getId() );
+
+        }
+        else
+        {
+            return array("error" => "wrong userkey");
+        }
     }
 
 
@@ -88,44 +235,55 @@ class ParisObjectRepository extends EntityRepository
     public function editObject($response, $uai, $id)
     {
 
-        $objectBDD = $this->getObject($uai, $id);
+        $objectBDD = $this->getObject($uai, $id, $response['userkey']);
 
-        $updatedObject = $this->updateObject($objectBDD, $response);
-
-        $hasRights = $this->checkRights($response['owner'], $objectBDD);
-
-        if( !is_null($hasRights) )
+        if ( !isset($objectBDD['error']) )
         {
 
-        $em = $this->getEntityManager();
+            $updatedObject = $this->updateObject($objectBDD, $response);
 
-        $query = $em->createQueryBuilder()
-            ->update('AppBundle:ParisObject', 'o')
-            ->set('o.uai', ':uai')
-            ->set('o.name', ':name')
-            ->set('o.price', ':price')
-            ->set('o.description', ':description')
-            ->set('o.type', ':type')
-            ->set('o.thumbnail', ':thumbnail')
-            ->set('o.album', ':album')
-            ->where('o.id = :id')
-            ->setParameter('uai', $updatedObject[0]['uai'])
-            ->setParameter('name', $updatedObject[0]['name'])
-            ->setParameter('price', $updatedObject[0]['price'])
-            ->setParameter('description', $updatedObject[0]['description'])
-            ->setParameter('type', $updatedObject[0]['type'])
-            ->setParameter('thumbnail', $updatedObject[0]['thumbnail'])
-            ->setParameter('album', $updatedObject[0]['album'])
-            ->setParameter('id', $updatedObject[0]['id'])
-            ->getQuery();
+            $em = $this->getEntityManager();
 
-            $result = $query->getResult();
+            $query = $em->createQueryBuilder()
+                ->update('AppBundle:ParisObject', 'o')
+                ->set('o.uai', ':uai')
+                ->set('o.name', ':name')
+                ->set('o.price', ':price')
+                ->set('o.description', ':description')
+                ->set('o.type', ':type')
+                ->set('o.thumbnail', ':thumbnail')
+                ->set('o.album', ':album')
+                ->where('o.id = :id')
+                ->setParameter('uai', $updatedObject[0]['uai'])
+                ->setParameter('name', $updatedObject[0]['name'])
+                ->setParameter('price', $updatedObject[0]['price'])
+                ->setParameter('description', $updatedObject[0]['description'])
+                ->setParameter('type', $updatedObject[0]['type'])
+                ->setParameter('thumbnail', $updatedObject[0]['thumbnail'])
+                ->setParameter('album', $updatedObject[0]['album'])
+                ->setParameter('id', $updatedObject[0]['id'])
+                ->getQuery();
+
+            $result = $query->getArrayResult();
+
+            if ( $result === 0 )
+            {
+                $result = array("success" => "nothing to update");
+            }
+            elseif ( $result === 1 )
+            {
+                $result = array("success" => "value(s) updated");
+            }
+            else
+            {
+                $result = array("error" => "something goes wrong");
+            }
             return $result;
 
         }
         else
         {
-            return null;
+            return $objectBDD;
         }
 
 
@@ -138,11 +296,9 @@ class ParisObjectRepository extends EntityRepository
      */
     public function deleteObject($response, $id, $uai)
     {
-        $objectBDD = $this->getObject($uai, $id);
+        $objectBDD = $this->getObject($uai, $id, $response['userkey']);
 
-        $hasRights = $this->checkRights($response['owner'], $objectBDD);
-
-        if( !is_null($hasRights) )
+        if ( !isset($objectBDD['error']) )
         {
             $em = $this->getEntityManager();
             $qb = $em->createQueryBuilder();
@@ -151,14 +307,27 @@ class ParisObjectRepository extends EntityRepository
                 ->setParameter('id', $id)
                 ->getQuery();
 
-            $query->execute();
+            $result = $query->execute();
 
-            return $query->getArrayResult();
+            if ( $result === 0 )
+            {
+                $result = array("success" => "deleted");
+            }
+            elseif ( $result === 1 )
+            {
+                $result = array("success" => "deleted");
+            }
+            else
+            {
+                $result = array("error" => "something goes wrong");
+            }
+            return $result;
         }
         else
         {
-            return null;
+            return $objectBDD;
         }
+
     }
 
     /**
@@ -206,7 +375,7 @@ class ParisObjectRepository extends EntityRepository
      * @param $userkey
      * @return array
      */
-    public function getAdmin($userkey)
+    public function getUser($userkey)
     {
         $em = $this->getEntityManager();
 
@@ -226,38 +395,26 @@ class ParisObjectRepository extends EntityRepository
      * @param $objectBDD
      * @return bool|null
      */
-    public function checkRights($userkey, $objectBDD)
+    public function checkUserRights($userkey, $objectBDD)
     {
 
         // If object owner is the good one
-        if ( $objectBDD[0]["owner"] === $userkey )
-        {
+        if ($objectBDD === $userkey) {
 
             return true;
 
-        }
-        else
-        {
+        } else {
             // Checking if the action is done by an admin
-            $admin = $this->getAdmin($userkey);
+            $admin = $this->getUser($userkey);
 
-            if (is_null($admin) || empty($admin))
-            {
+            if (is_null($admin) || empty($admin)) {
                 return null;
-            }
-            elseif ($admin[0]['rights'] === 0)
-            {
+            } elseif ($admin[0]['rights'] === 0) {
                 return null;
-            }
-            else
-            {
+            } else {
                 return true;
             }
 
         }
-
-
-
     }
-
 }
