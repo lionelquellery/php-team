@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ParisRestaurantControllerTest extends WebTestCase
 {
+
+
     public function testRouterParisRestaurant()
     {
         //test of all route  user (functional test)
