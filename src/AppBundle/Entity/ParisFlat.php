@@ -91,6 +91,13 @@ class ParisFlat
      */
     private $description;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="owner", type="string", length=50, nullable=false)
+     */
+    private $owner;
+
 
 
     /**
@@ -331,5 +338,28 @@ class ParisFlat
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     * @return ParisObject
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return string
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }

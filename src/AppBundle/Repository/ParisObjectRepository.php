@@ -3,12 +3,15 @@
 namespace AppBundle\Repository;
 
 use AppBundle\AppBundle;
+use AppBundle\Entity\ParisFlat;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\ParisObject;
 use AppBundle\Entity\User;
 
 class ParisObjectRepository extends EntityRepository
 {
+
+
 
     /**
      * @param $uai
@@ -396,34 +399,22 @@ class ParisObjectRepository extends EntityRepository
     {
 
         // If object owner is the good one
-        if ( $objectBDD === $userkey )
-        {
+        if ($objectBDD === $userkey) {
 
             return true;
 
-        }
-        else
-        {
+        } else {
             // Checking if the action is done by an admin
             $admin = $this->getUser($userkey);
 
-            if (is_null($admin) || empty($admin))
-            {
+            if (is_null($admin) || empty($admin)) {
                 return null;
-            }
-            elseif ($admin[0]['rights'] === 0)
-            {
+            } elseif ($admin[0]['rights'] === 0) {
                 return null;
-            }
-            else
-            {
+            } else {
                 return true;
             }
 
         }
-
-
-
     }
-
 }

@@ -73,7 +73,7 @@ class ParisObject
     /**
      * @var string
      *
-     * @ORM\Column(name="owner", type="integer", length=50, nullable=false)
+     * @ORM\Column(name="owner", type="string", length=50, nullable=false)
      */
     private $owner;
 
