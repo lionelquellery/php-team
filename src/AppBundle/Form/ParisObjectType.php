@@ -21,6 +21,7 @@ class ParisObjectType extends AbstractType
             ->add('type')
             ->add('thumbnail')
             ->add('album')
+            ->add('owner')
         ;
     }
     

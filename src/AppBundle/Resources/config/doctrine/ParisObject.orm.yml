@@ -1,6 +1,7 @@
 AppBundle\Entity\ParisObject:
     type: entity
     table: paris_object
+    repositoryClass : AppBundle\Repository\ParisObjectRepository
     id:
         id:
             type: integer
@@ -42,5 +43,10 @@ AppBundle\Entity\ParisObject:
             type: text
             nullable: false
             length: 65535
+            fixed: false
+        owner:
+            type: string
+            nullable: false
+            length: 50
             fixed: false
     lifecycleCallbacks: {  }

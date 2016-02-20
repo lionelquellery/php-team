@@ -15,7 +15,7 @@ class User
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -31,7 +31,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="pass", type="string", length=20, nullable=false)
+     * @ORM\Column(name="pass", type="string", length=200, nullable=false)
      */
     private $pass;
 

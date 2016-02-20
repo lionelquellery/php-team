@@ -15,7 +15,7 @@ class ParisObject
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -69,6 +69,13 @@ class ParisObject
      * @ORM\Column(name="album", type="text", length=65535, nullable=false)
      */
     private $album;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="owner", type="integer", length=50, nullable=false)
+     */
+    private $owner;
 
 
 
@@ -241,5 +248,28 @@ class ParisObject
     public function getAlbum()
     {
         return $this->album;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     * @return ParisObject
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return string
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }
