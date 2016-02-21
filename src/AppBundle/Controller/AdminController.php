@@ -243,7 +243,7 @@ class AdminController extends Controller
         ->add('Description', TextType::class, array('data' => $flat['response'][0]['description']))
         ->add('Longitude', IntegerType::class, array('data' => $flat['response'][0]['longitude']))
         ->add('Latitude', IntegerType::class, array('data' => $flat['response'][0]['latitude']))
-        ->add('save', SubmitType::class, array('label' => 'Create Task'))        
+        ->add('save', SubmitType::class, array('label' => 'Save'))        
         ->getForm();
 
       $form->handleRequest($request);
@@ -363,7 +363,7 @@ class AdminController extends Controller
         ->add('Thumbnail', TextType::class, array('data' => $object['response'][0]['thumbnail']))
         ->add('Album', TextType::class, array('data' => $object['response'][0]['album']))
         ->add('Description', TextType::class, array('data' => $object['response'][0]['description']))
-        ->add('save', SubmitType::class, array('label' => 'Create Task'))        
+        ->add('save', SubmitType::class, array('label' => 'Save'))        
         ->getForm();
 
       $form->handleRequest($request);
