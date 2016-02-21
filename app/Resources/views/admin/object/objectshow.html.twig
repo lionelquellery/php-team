@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>WELLCOME TO THE ADMINE</h1>
+
+<h2>{{object.name}}</h2>
+
+<a href="{{path('admin_objectedit', {'key': key, 'uai': object.uai, 'id': object.id})}}">Edit</a>
+<a href="{{path('admin_objectdelete', {'key': key, 'uai': object.uai, 'id': object.id})}}">Delete</a>
+
+<div>Price : {{object.price}}</div>
+<div>Type : {{object.type}}</div>
+<div>Thumbnail : {{object.thumbnail}}</div>
+<div>Price : {{object.price}}</div>
+<div>Album : {{object.album}}</div>
+<div>Description : {{object.description}}</div>
+
+<a href="{{path('admin_schoolshow', {'key': key, 'uai': object.uai})}}">Back to the school</a>
+
+{% endblock %}

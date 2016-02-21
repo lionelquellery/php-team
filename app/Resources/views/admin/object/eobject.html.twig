@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>WELLCOME TO THE ADMINE</h1>
+
+<h2>Object</h2>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
+<a href="{{path('admin_objectshow', {'key': key, 'id': app.request.get('id'), 'uai': app.request.get('uai')})}}">Back to object</a>
+
+{% endblock %}
