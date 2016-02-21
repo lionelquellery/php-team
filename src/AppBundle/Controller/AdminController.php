@@ -36,7 +36,7 @@ class AdminController extends Controller
         'key' => $key
       ));
     else{
-      $users = array('status' => 'You don\'t have the rights to access these datas');
+      $users = array('code' => 403,'response' => 'You don\'t have the rights to access these datas');
       return new JsonResponse($users);
     }
   }
@@ -62,7 +62,7 @@ class AdminController extends Controller
       ));
     }
     else{
-      $users = array('status' => 'You don\'t have the rights to access these datas');
+      $users = array('code' => 403,'response' => 'You don\'t have the rights to access these datas');
       return new JsonResponse($users);
     }
   }
@@ -82,13 +82,14 @@ class AdminController extends Controller
 
     if($em->getRepository('AppBundle:User')->verifyPermission($key) == true){
       $users = $em->getRepository('AppBundle:User')->getAllUsers($key);      
+           
       return $this->render('admin/user.html.twig', array(
-        'users' => $users,
+        'users' => $users['response'],
         'key'   => $key
       ));
     }
     else{
-      $users = array('status' => 'You don\'t have the rights to access these datas');
+      $users = array('code' => 403, 'response' => 'You don\'t have the rights to access these datas');
       return new JsonResponse($users);
     }
   }
@@ -107,13 +108,16 @@ class AdminController extends Controller
     $em = $this->getDoctrine()->getManager();
 
     if($em->getRepository('AppBundle:User')->verifyPermission($key) == true){
+      
+      $response = $em->getRepository('AppBundle:User')->deleteUser($id);
+      
       return $this->render('admin/duser.html.twig', array(
-        'id' => $id,
-        'key'   => $key
+        'response'  => $response['response'],
+        'key'       => $key
       ));
     }
     else{
-      $users = array('status' => 'You don\'t have the rights to access these datas');
+      $users = array('code' => 403,'response' => 'You don\'t have the rights to access these datas');
       return new JsonResponse($users);
     }
   }
@@ -144,7 +148,7 @@ class AdminController extends Controller
       ));
     }
     else{
-      $users = array('status' => 'You don\'t have the rights to access these datas');
+      $users = array('code' => 403,'response' => 'You don\'t have the rights to access these datas');
       return new JsonResponse($users);
     }
   }
@@ -172,7 +176,7 @@ class AdminController extends Controller
       ));
     }
     else{
-      $users = array('status' => 'You don\'t have the rights to access these datas');
+      $users = array('code' => 403,'response' => 'You don\'t have the rights to access these datas');
       return new JsonResponse($users);
     }
   }
