@@ -24,19 +24,25 @@ class ParisRestaurantController extends Controller
      * @Route("/{id}/", name="restaurant_show")
      * @Method("GET")
      */
-  public function showAction(ParisRestaurant $parisRestaurant)
+  public function showAction(ParisRestaurant $parisRestaurant, Request $request)
   {
 
-    $response = array(
-      'code'     => 200,
-      'response' => array(
-        'id'       => $parisRestaurant->getId(),
-        'category' => $parisRestaurant->getCategory(),
-        'adresse'  => $parisRestaurant->getAdresse(),
-        'lat'      => $parisRestaurant->getLatitude(),
-        'long'     => $parisRestaurant->getLongitude(),
-      )
-    );
+    $key = $request->query->get('key');
+
+    if(!is_null($key)){
+      $response = array(
+        'code'     => 200,
+        'response' => array(
+          'id'       => $parisRestaurant->getId(),
+          'category' => $parisRestaurant->getCategory(),
+          'adresse'  => $parisRestaurant->getAdresse(),
+          'lat'      => $parisRestaurant->getLatitude(),
+          'long'     => $parisRestaurant->getLongitude(),
+        )
+      );
+    }
+    else
+      $response = array('code' => 401, 'response' => 'Data missing');
 
     return new JsonResponse($response);
 

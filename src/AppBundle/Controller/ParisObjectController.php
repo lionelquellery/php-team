@@ -60,7 +60,7 @@ class ParisObjectController extends Controller
         if ( isset( $response['key'] ) && !empty( $response['key'] ) )
         {
             $em = $this->getDoctrine()->getManager();
-            $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+            $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $response['key'], $uai);
 
         }
         else
@@ -111,15 +111,14 @@ class ParisObjectController extends Controller
      */
     public function editAction(Request $request, $uai, $id)
     {
-
+      
         $response = $request->query->all();
-
 
         if ( isset( $response['key'] ) && !empty( $response['key'] ))
         {
 
             $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+            $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $response['key'], $uai, $id);
 
         }
         else
@@ -137,7 +136,7 @@ class ParisObjectController extends Controller
      * Deletes a ParisObject entity.
      *
      * @Route("/{id}/delete/", name="object_delete")
-     * @Method({"GET", "POST"})
+     * @Method({"GET", "DELETE"})
      */
     public function deleteAction(Request $request, $id, $uai)
     {
@@ -147,7 +146,7 @@ class ParisObjectController extends Controller
         {
 
             $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($response, $id, $uai);
+            $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($response['key'], $id, $uai);
 
         }
         else

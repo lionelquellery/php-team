@@ -140,10 +140,10 @@ class ParisFlatRepository extends EntityRepository
    * @param $uai
    * @return ParisFlat
    */
-  public function insertFlat($response, $uai)
+  public function insertFlat($response, $key, $uai)
   {
 
-    $hasRight = $this->getUser($response['userkey']);
+    $hasRight = $this->getUser($key);
 
     if (!empty($hasRight))
     {
@@ -152,7 +152,7 @@ class ParisFlatRepository extends EntityRepository
 
       $flat = new ParisFlat();
       $flat->setUai($uai);
-      $flat->setOwner($response['userkey']);
+      $flat->setOwner($key);
 
       if ( isset($response['name']) && !empty($response['name']))
       {
@@ -260,16 +260,15 @@ class ParisFlatRepository extends EntityRepository
 
     $flatBDD = $this->getFlat($uai, $id, $key);
 
-    if ( !isset($flatBDD['error']) )
+    if ( $flatBDD['code'] == 200 )
     {
 
-      $updatedFlat = $this->updateFlat($flatBDD, $response);
+      $updatedFlat = $this->updateFlat($flatBDD['response'], $response);
 
       $em = $this->getEntityManager();
 
       $query = $em->createQueryBuilder()
         ->update('AppBundle:ParisFlat', 'f')
-        ->set('f.uai', ':uai')
         ->set('f.name', ':name')
         ->set('f.price', ':price')
         ->set('f.description', ':description')
@@ -280,7 +279,6 @@ class ParisFlatRepository extends EntityRepository
         ->set('f.latitude', ':latitude')
         ->set('f.date', ':date')
         ->where('f.id = :id')
-        ->setParameter('uai', $updatedFlat[0]['uai'])
         ->setParameter('name', $updatedFlat[0]['name'])
         ->setParameter('price', $updatedFlat[0]['price'])
         ->setParameter('description', $updatedFlat[0]['description'])
@@ -290,7 +288,7 @@ class ParisFlatRepository extends EntityRepository
         ->setParameter('longitude', $updatedFlat[0]['longitude'])
         ->setParameter('latitude', $updatedFlat[0]['latitude'])
         ->setParameter('date', $updatedFlat[0]['date'])
-        ->setParameter('id', $updatedFlat[0]['id'])
+        ->setParameter('id', $id)
         ->getQuery();
 
       $result = $query->getArrayResult();
@@ -325,9 +323,9 @@ class ParisFlatRepository extends EntityRepository
    */
   public function deleteFlat($key, $id, $uai)
   {
-    $objectBDD = $this->getFlat($uai, $id, $key);
+    $flatBDD = $this->getFlat($uai, $id, $key);
 
-    if ( !isset($objectBDD['error']) )
+    if ( $flatBDD['code'] == 200 )
     {
       $em = $this->getEntityManager();
       $qb = $em->createQueryBuilder();
@@ -371,12 +369,6 @@ class ParisFlatRepository extends EntityRepository
     {
 
       switch ($key) {
-         case 'id':
-          $flatBDD[0]["id"] = $oneResponse;
-          break;
-        case 'uai':
-          $flatBDD[0]["uai"] = $oneResponse;
-          break;
         case 'name':
           $flatBDD[0]["name"] = $oneResponse;
           break;

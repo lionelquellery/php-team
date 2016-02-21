@@ -21,6 +21,8 @@ This app runs on:
 
 # Utilisation
 
+You must pass a key parameter containing your api token for each of these request
+
 ### /school/
 
 Return all schools in Paris
@@ -39,11 +41,89 @@ Return the school's infos and all restaurants in a given radius
 
 Return infos about the selected restaurant
 
+### /school/{uai}/object/
+
+Return all objects that belong to this school
+
+### /school/{uai}/object/{id}/
+
+Return infos of the selected object
+
+### /school/{uai}/object/new/
+
+Create a new object
+
+##### Parameters (all required):
+- name (string)
+- price (int)
+- description (string)
+- type (int)
+- thumbnail (string)
+- album (string)
+
+### /school/{uai}/object/edit/
+
+Update a existent object
+
+##### Parameters :
+- name (string)
+- price (int)
+- description (string)
+- type (int)
+- thumbnail (string)
+- album (string)
+
+### /school/{uai}/object/{id}/delete/
+
+Delete an object
+
+### /school/{uai}/flat/
+
+Return all flat that belong to this school
+
+### /school/{uai}/flat/{id}/
+
+Return infos of the selected flat
+
+### /school/{uai}/flat/new/
+
+Create a new flat
+
+##### Parameters (all required):
+- name (string)
+- price (int)
+- description (string)
+- type (int)
+- thumbnail (string)
+- album (string)
+- date (int)
+- longitude (int)
+- latitude (int)
+
+### /school/{uai}/flat/edit/
+
+Update a existent flat
+
+##### Parameters :
+- name (string)
+- price (int)
+- description (string)
+- type (int)
+- thumbnail (string)
+- album (string)
+- date (int)
+- longitude (int)
+- latitude (int)
+
+### /school/{uai}/flat/{id}/delete/
+
+Delete an flat
+
 ### /user/new/
 
 Create new user account 
 
-#### Parameters :
+##### Parameters :
 - mail (REQUIRED) : your mail
 - pass (REQUIRED) : your account password
 
@@ -51,7 +131,7 @@ Create new user account
 
 Return your account's token
 
-#### Parameters : 
+##### Parameters : 
 - mail (REQUIRED) : your mail's account
 - pass (REQUIRED) : your password's account
 
@@ -70,46 +150,46 @@ What's inside?
 
 The Symfony Standard Edition is configured with the following defaults:
 
-  * An AppBundle you can use to start coding;
+* An AppBundle you can use to start coding;
 
-  * Twig as the only configured template engine;
+* Twig as the only configured template engine;
 
-  * Doctrine ORM/DBAL;
+* Doctrine ORM/DBAL;
 
-  * Swiftmailer;
+* Swiftmailer;
 
-  * Annotations enabled for everything.
+* Annotations enabled for everything.
 
 It comes pre-configured with the following bundles:
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+* **FrameworkBundle** - The core Symfony framework bundle
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+* [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
+template and routing annotation capability
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+* [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+* [**TwigBundle**][8] - Adds support for the Twig templating engine
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+* [**SecurityBundle**][9] - Adds security by integrating Symfony's security
+component
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+* [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
+sending emails
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+* [**MonologBundle**][11] - Adds support for Monolog, a logging library
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+* **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
+the web debug toolbar
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+* **SensioDistributionBundle** (in dev/test env) - Adds functionality for
+configuring and working with Symfony distributions
 
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
+* [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
+capabilities
 
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
+* **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
+integration
 
 All libraries and bundles included in the Symfony Standard Edition are
 released under the MIT or BSD license.
@@ -124,4 +204,4 @@ Enjoy!
 [10]: https://symfony.com/doc/2.8/cookbook/email.html
 [11]: https://symfony.com/doc/2.8/cookbook/logging/monolog.html
 [13]: https://symfony.com/doc/2.8/bundles/SensioGeneratorBundle/index.html
- -->
+-->

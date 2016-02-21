@@ -28,10 +28,15 @@ class ParisSchoolController extends Controller
   public function indexAction(Request $request)
   {
 
+    $key = $request->query->get('key');
     $location = $request->query->get('location');
 
     $em = $this->getDoctrine()->getManager();
-    $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
+
+    if(!is_null($key))
+      $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
+    else
+      $school = array('code' => 401, 'response' => 'Data missing');
 
     return new JsonResponse($school);
 
@@ -47,22 +52,32 @@ class ParisSchoolController extends Controller
   {
 
     $radius = $request->query->get('radius');
+    $key = $request->query->get('key');
 
     $em = $this->getDoctrine()->getManager();
 
-    $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
+    if(!is_null($key)){
 
-    $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
+      $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
 
-    $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($parisSchool->getLatitude(), $parisSchool->getLongitude(), $radiusRatio);
+      $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
 
-    return new JsonResponse(array(
-      'code'        => 200,
-      'response'    => array(
-        'school'      => $school,
-        'restaurants' => $restaurants
-      )
-    ));
+      $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($parisSchool->getLatitude(), $parisSchool->getLongitude(), $radiusRatio);
+
+      return new JsonResponse(array(
+        'code'        => 200,
+        'response'    => array(
+          'school'      => $school,
+          'restaurants' => $restaurants
+        )
+      ));
+
+    }
+    else
+      return new JsonResponse(array(
+        'code' => 401,
+        'response' => 'Data missing'
+      ));
 
   }
 

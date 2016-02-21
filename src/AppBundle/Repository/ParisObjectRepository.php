@@ -83,7 +83,7 @@ class ParisObjectRepository extends EntityRepository
 
     $em = $this->getEntityManager();
     $hasRight = $this->getUser($userkey);
-
+    
     if (!empty($hasRight))
     {
 
@@ -121,7 +121,7 @@ class ParisObjectRepository extends EntityRepository
       }
 
       $query = $query->getQuery()->getArrayResult();
-
+      
       if (!empty($query))
       {
         return array('code' => 200, 'response' => $query);
@@ -145,10 +145,10 @@ class ParisObjectRepository extends EntityRepository
      * @param $uai
      * @return ParisObject
      */
-  public function insertObject($response, $uai)
+  public function insertObject($response, $key, $uai)
   {
 
-    $hasRight = $this->getUser($response['userkey']);
+    $hasRight = $this->getUser($key);
 
     if (!empty($hasRight))
     {
@@ -157,7 +157,7 @@ class ParisObjectRepository extends EntityRepository
 
       $object = new parisObject();
       $object->setUai($uai);
-      $object->setOwner($response['userkey']);
+      $object->setOwner($key);
 
       if ( isset($response['name']) && !empty($response['name']))
       {
@@ -237,16 +237,15 @@ class ParisObjectRepository extends EntityRepository
 
     $objectBDD = $this->getObject($uai, $id, $key);
 
-    if ( !isset($objectBDD['error']) )
+    if ( $objectBDD['code'] == 200 )
     {
 
-      $updatedObject = $this->updateObject($objectBDD, $response);
+      $updatedObject = $this->updateObject($objectBDD['response'], $response);
 
       $em = $this->getEntityManager();
 
       $query = $em->createQueryBuilder()
         ->update('AppBundle:ParisObject', 'o')
-        ->set('o.uai', ':uai')
         ->set('o.name', ':name')
         ->set('o.price', ':price')
         ->set('o.description', ':description')
@@ -254,14 +253,13 @@ class ParisObjectRepository extends EntityRepository
         ->set('o.thumbnail', ':thumbnail')
         ->set('o.album', ':album')
         ->where('o.id = :id')
-        ->setParameter('uai', $updatedObject[0]['uai'])
         ->setParameter('name', $updatedObject[0]['name'])
         ->setParameter('price', $updatedObject[0]['price'])
         ->setParameter('description', $updatedObject[0]['description'])
         ->setParameter('type', $updatedObject[0]['type'])
         ->setParameter('thumbnail', $updatedObject[0]['thumbnail'])
         ->setParameter('album', $updatedObject[0]['album'])
-        ->setParameter('id', $updatedObject[0]['id'])
+        ->setParameter('id', $id)
         ->getQuery();
 
       $result = $query->getArrayResult();
@@ -298,7 +296,7 @@ class ParisObjectRepository extends EntityRepository
   {
     $objectBDD = $this->getObject($uai, $id, $key);
 
-    if ( !isset($objectBDD['error']) )
+    if ( $objectBDD['code'] == 200 )
     {
       $em = $this->getEntityManager();
       $qb = $em->createQueryBuilder();
@@ -338,16 +336,11 @@ class ParisObjectRepository extends EntityRepository
   public function updateObject($objectBDD, $response)
   {
 
+    
     foreach ( $response as $key => $oneResponse )
     {
 
       switch ($key) {
-        case 'id':
-          $objectBDD[0]["id"] = $oneResponse;
-          break;  
-        case 'uai':
-          $objectBDD[0]["uai"] = $oneResponse;
-          break;
         case 'name':
           $objectBDD[0]["name"] = $oneResponse;
           break;

@@ -57,7 +57,7 @@ class ParisFlatController extends Controller
         if ( isset( $response['key'] ) && !empty( $response['key'] ) )
         {
             $em = $this->getDoctrine()->getManager();
-            $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $uai);
+            $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $response['key'], $uai);
 
         }
         else

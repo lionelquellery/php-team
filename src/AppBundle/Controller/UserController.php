@@ -33,13 +33,13 @@ class UserController extends Controller
     $em = $this->getDoctrine()->getManager();
 
     if(is_null($key)){
-      $users = array("statut" => 'Data missing');
+      $users = array("code" => 401, 'response' => 'Data missing');
     }
     else{
       if($em->getRepository('AppBundle:User')->verifyPermission($key) == true)
         $users = $em->getRepository('AppBundle:User')->getAllUsers();
       else
-        $users = array('status' => 'You don\'t have the rights to access these datas');
+        $users = array('code' => 403, 'response' => 'You don\'t have rights to access these datas');
     }
 
     return new JsonResponse($users);
@@ -104,7 +104,7 @@ class UserController extends Controller
 
     }
     else {
-      $status = array('status' => 'You don\'t have the rights to access these datas');
+      $status = array('code' => 403, 'response' => 'You don\'t have rights to access these datas');
     }
     return new JsonResponse($status);
 
