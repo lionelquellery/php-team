@@ -113,7 +113,7 @@ class ParisFlatController extends Controller
         {
 
             $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->editFlat($response, $uai, $id);
+            $result = $em->getRepository('AppBundle:ParisFlat')->editFlat($response, $response['key'], $uai, $id);
 
         }
         else
@@ -140,7 +140,7 @@ class ParisFlatController extends Controller
         {
 
             $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->deleteFlat($response, $id, $uai);
+            $result = $em->getRepository('AppBundle:ParisFlat')->deleteFlat($response['key'], $id, $uai);
 
         }
         else

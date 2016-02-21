@@ -6,20 +6,20 @@
 
 <h2>School</h2>
 
+<a href="{{path('admin_index', {'key':key})}}">Back to the index</a>
+
 <ul>
   {% for school in schools %}
-  
+
   <li>
-    
+
     <div>{{school.name}}</div>
     <div>{{school.uai}}</div>
     <a href="{{path('admin_schoolshow', {'key':key, 'uai': school.uai}) }}">See school</a>
-    
+
   </li>
-  
+
   {% endfor %}
 </ul>
-
-<a href="{{path('admin_index', {'key':key})}}">Back to the index</a>
 
 {% endblock %}

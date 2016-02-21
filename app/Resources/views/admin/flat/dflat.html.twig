@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>WELLCOME TO THE ADMINE</h1>
+
+<h2>Flat</h2>
+
+<div>{{response}}</div>
+
+<a href="{{path('admin_schoolshow', {'key': key, 'id': app.request.get('id'), 'uai': app.request.get('uai')})}}">Back to the school</a>
+
+{% endblock %}

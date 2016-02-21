@@ -255,10 +255,10 @@ class ParisFlatRepository extends EntityRepository
    * @param $id
    * @return array|null
    */
-  public function editFlat($response, $uai, $id)
+  public function editFlat($response, $key, $uai, $id)
   {
 
-    $flatBDD = $this->getFlat($uai, $id, $response['userkey']);
+    $flatBDD = $this->getFlat($uai, $id, $key);
 
     if ( !isset($flatBDD['error']) )
     {
@@ -323,9 +323,9 @@ class ParisFlatRepository extends EntityRepository
    * @param $id
    * @return array|null
    */
-  public function deleteFlat($response, $id, $uai)
+  public function deleteFlat($key, $id, $uai)
   {
-    $objectBDD = $this->getFlat($uai, $id, $response['userkey']);
+    $objectBDD = $this->getFlat($uai, $id, $key);
 
     if ( !isset($objectBDD['error']) )
     {
@@ -340,11 +340,11 @@ class ParisFlatRepository extends EntityRepository
 
       if ( $result === 0 )
       {
-        $result = array('code' => 200,"response" => "deleted");
+        $result = array('code' => 200,"response" => "flat ".$id." deleted");
       }
       elseif ( $result === 1 )
       {
-        $result = array('code' => 200,"response" => "deleted");
+        $result = array('code' => 200,"response" => "flat ".$id." deleted");
       }
       else
       {
@@ -371,6 +371,9 @@ class ParisFlatRepository extends EntityRepository
     {
 
       switch ($key) {
+         case 'id':
+          $flatBDD[0]["id"] = $oneResponse;
+          break;
         case 'uai':
           $flatBDD[0]["uai"] = $oneResponse;
           break;
@@ -379,6 +382,9 @@ class ParisFlatRepository extends EntityRepository
           break;
         case 'type':
           $flatBDD[0]["type"] = $oneResponse;
+          break;
+        case 'album':
+          $flatBDD[0]["album"] = $oneResponse;
           break;
         case 'longitude':
           $flatBDD[0]["longitude"] = $oneResponse;

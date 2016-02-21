@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>WELLCOME TO THE ADMINE</h1>
+
+<h2>School</h2>
+__________________________
+
+<ul>
+  {% for school in schools %}
+
+  <li>
+
+    <div>{{school.name}}</div>
+    <div>{{school.uai}}</div>
+    <div>{{school.adresse}}</div>
+    <div>{{school.cp}}</div>
+
+  </li>
+
+  {% endfor %}
+</ul>
+
+<h3>Flats</h3>
+__________________________
+
+<ul>
+
+  {% for flat in flats %}
+
+  <li>
+    <div><a href="{{path('admin_flatshow', {'key':key, 'uai': flat.uai, 'id': flat.id})}}">{{flat.name}}</a></div>
+    <div>{{flat.owner}}</div>
+    <div><a href="{{path('admin_flatdelete', {'key':key, 'uai': flat.uai, 'id': flat.id})}}">Delete</a></div>
+    <div><a href="{{path('admin_flatedit', {'key':key, 'uai': flat.uai, 'id': flat.id})}}">Edit</a></div>
+  </li>
+
+  {% endfor %}
+
+</ul>
+
+<h3>Objects</h3>
+__________________________
+
+<ul>
+  {% for object in objects %}
+
+  <li>
+
+    <div><a href="{{path('admin_objectshow', {'key':key, 'uai': object.uai, 'id': object.id})}}">{{object.name}}</a></div>
+    <div>{{object.owner}}</div>
+    <div><a href="{{path('admin_objectdelete', {'key':key, 'uai': object.uai, 'id': object.id})}}">Delete</a></div>
+    <div><a href="{{path('admin_objectedit', {'key':key, 'uai': object.uai, 'id': object.id})}}">Edit</a></div>
+
+  </li>
+
+  {% endfor %}
+</ul>
+
+<a href="{{path('admin_school', {'key':key})}}">Back to school</a>
+
+{% endblock %}
