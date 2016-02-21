@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>WELLCOME TO THE ADMINE</h1>
+
+<h2>{{flat.name}}</h2>
+
+<a href="{{path('admin_flatedit', {'key': key, 'uai': flat.uai, 'id': flat.id})}}">Edit</a>
+<a href="{{path('admin_flatdelete', {'key': key, 'uai': flat.uai, 'id': flat.id})}}">Delete</a>
+
+<div>Price : {{flat.price}}</div>
+<div>Type : {{flat.type}}</div>
+<div>Thumbnail : {{flat.thumbnail}}</div>
+<div>Date : {{flat.date}}</div>
+<div>Price : {{flat.price}}</div>
+<div>Album : {{flat.album}}</div>
+<div>Description : {{flat.description}}</div>
+<div>Long : {{flat.longitude}}</div>
+<div>Lat : {{flat.latitude}}</div>
+
+<a href="{{path('admin_schoolshow', {'key': key, 'uai': flat.uai})}}">Back to the school</a>
+
+{% endblock %}
