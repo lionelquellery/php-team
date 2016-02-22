@@ -6,7 +6,7 @@ Team members:
 - Thomas Victoria (CTO)
 - Clovis Maniguet (Back-end Developer)
 - Lucas Martin (Back-end Developer)
-- Inès Sujilens (Designer)
+- Inès Sujilen (Designer)
 
 ### Environnement
 
@@ -21,37 +21,37 @@ This app runs on:
 
 # Utilisation
 
-You must pass a key parameter containing your api token for each of these request
+You must pass a key parameter containing your api token for each of your requests
 
 ### /school/
 
-Return all schools in Paris
+Returns all schools in Paris
 
 ##### Parameters : 
-- location : the distict's number in which the school is. Retrieve all schools if empty
+- location : the distict's number in which the school is located. Retrieves all schools if empty
 
 ### /school/{uai}/
 
-Return the school's infos and all restaurants in a given radius
+Returns the school's infos and all restaurants in a given radius
 
 ##### Parameters :
 - radius : the radius in which restaurants must be to be returned. In meters. Default 100m. 
 
 ### /school/{uai}/restaurant/{id}/
 
-Return infos about the selected restaurant
+Returns infos about the selected restaurant
 
 ### /school/{uai}/object/
 
-Return all objects that belong to this school
+Returns all objects that belong to this school
 
 ### /school/{uai}/object/{id}/
 
-Return infos of the selected object
+Returns infos of the selected object
 
 ### /school/{uai}/object/new/
 
-Create a new object
+Creates a new object
 
 ##### Parameters (all required):
 - name (string)
@@ -63,7 +63,7 @@ Create a new object
 
 ### /school/{uai}/object/edit/
 
-Update a existent object
+Updates a existent object
 
 ##### Parameters :
 - name (string)
@@ -75,19 +75,19 @@ Update a existent object
 
 ### /school/{uai}/object/{id}/delete/
 
-Delete an object
+Deletes an object
 
 ### /school/{uai}/flat/
 
-Return all flat that belong to this school
+Returns all flat that belong to this school
 
 ### /school/{uai}/flat/{id}/
 
-Return infos of the selected flat
+Returns infos of the selected flat
 
 ### /school/{uai}/flat/new/
 
-Create a new flat
+Creates a new flat
 
 ##### Parameters (all required):
 - name (string)
@@ -102,7 +102,7 @@ Create a new flat
 
 ### /school/{uai}/flat/edit/
 
-Update a existent flat
+Updates an existent flat
 
 ##### Parameters :
 - name (string)
@@ -117,11 +117,11 @@ Update a existent flat
 
 ### /school/{uai}/flat/{id}/delete/
 
-Delete an flat
+Deletes a flat
 
 ### /user/new/
 
-Create new user account 
+Creates new user account 
 
 ##### Parameters :
 - mail (REQUIRED) : your mail
@@ -129,7 +129,7 @@ Create new user account
 
 ### /user/token/
 
-Return your account's token
+Returns your account's token
 
 ##### Parameters : 
 - mail (REQUIRED) : your mail's account
