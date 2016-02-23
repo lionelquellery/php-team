@@ -11,3 +11,7 @@
 /bin/
 /composer.phar
 *.DS_Store
+
+.idea/workspace.xml
+
+
