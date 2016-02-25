@@ -1,0 +1,11 @@
+AppBundle\Entity\ParisFlat:
+    dummy_{1..100}:
+        uai: <randomElement($array = array('0750728J','0751995L','0751981W','0751958W','0754197E','0753481B','0752910F','0755308M'))>
+        name: <sentence($nbWords = 6, $variableNbWords = true)>
+        type: <numberBetween(0,11)>
+        longitude: <longitude(48.9017, 48.8122)>
+        latitude: <latitude(2.2497,2.4152)>
+        price: <numberBetween(350,900)>
+        date: <date($format = 'd-m-Y', $max = 'now')>
+        description: <text($maxNbChars = 200)>
+        owner: <userName()>
