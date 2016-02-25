@@ -33,9 +33,4 @@ class ParisSchoolRepositoryTest extends WebTestCase
 
     }
 
-
-
-
-
-
 }
