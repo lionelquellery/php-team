@@ -120,7 +120,7 @@ class ParisObjectController extends Controller
      * Displays a form to edit an existing ParisObject entity.
      *
      * @Route("/{id}/edit/", name="object_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET", "POST", "UPDATE"})
      *
      * @param Request $request
      * @param $uai
@@ -154,7 +154,7 @@ class ParisObjectController extends Controller
      * Deletes a ParisObject entity.
      *
      * @Route("/{id}/delete/", name="object_delete")
-     * @Method({"GET", "DELETE"})
+     * @Method({"GET", "POST", "DELETE"})
      *
      * @param Request $request
      * @param $id

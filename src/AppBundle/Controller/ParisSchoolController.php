@@ -23,7 +23,7 @@ class ParisSchoolController extends Controller
   * Lists all ParisSchool entities.
   *
   * @Route("/", name="school_index")
-  * @Method("GET")
+  * @Method({"GET", "POST"})
   *
   * @param Request $request
   * @return JsonResponse
@@ -49,7 +49,7 @@ class ParisSchoolController extends Controller
   * Finds and displays a ParisSchool entity.
   *
   * @Route("/{uai}/", name="school_show")
-  * @Method("GET")
+  * @Method({"GET", "POST"})
   *
   * @param ParisSchool $parisSchool
   * @param Request $request

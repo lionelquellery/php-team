@@ -115,7 +115,7 @@ class ParisFlatController extends Controller
      * Displays a form to edit an existing ParisFlat entity.
      *
      * @Route("/{id}/edit/", name="parisflat_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET", "POST", "UPDATE"})
      *
      * @param Request $request
      * @param $uai
@@ -148,7 +148,7 @@ class ParisFlatController extends Controller
      * Deletes a ParisFlat entity.
      *
      * @Route("/{id}/delete/", name="parisflat_delete")
-     * @Method({"GET", "POST"})
+     * @Method({"GET", "POST", "DELETE"})
      *
      * @param Request $request
      * @param $id

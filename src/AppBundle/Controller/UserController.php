@@ -100,7 +100,7 @@ class UserController extends Controller
    * Delete a user.
    *
    * @Route("/delete/{id}/", name="user_delete")
-   * @Method({"GET", "DELETE"})
+   * @Method({"GET", "POST", "DELETE"})
    *
    * @param Request $request
    * @param $id

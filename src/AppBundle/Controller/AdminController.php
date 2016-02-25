@@ -213,7 +213,7 @@ class AdminController extends Controller
   * Delete a flat
   *
   * @Route("/school/{uai}/flat/delete/{id}/", name="admin_flatdelete")
-  * @Method({"GET", "DELETE"})
+  * @Method({"GET", "POST", "DELETE"})
   *
   * @param Request $request
   * @param $id
@@ -246,7 +246,7 @@ class AdminController extends Controller
   * Edit a flat
   *
   * @Route("/school/{uai}/flat/edit/{id}/", name="admin_flatedit")
-  * @Method({"GET", "POST"})
+  * @Method({"GET", "POST", "UPDATE"})
   *
   * @param Request $request
   * @param $id
@@ -351,7 +351,7 @@ class AdminController extends Controller
   * Delete an object
   *
   * @Route("/school/{uai}/object/delete/{id}/", name="admin_objectdelete")
-  * @Method({"GET", "DELETE"})
+  * @Method({"GET", "POST", "DELETE"})
   *
   * @param Request $request
   * @param $id
@@ -384,7 +384,7 @@ class AdminController extends Controller
   * Edit a object
   *
   * @Route("/school/{uai}/object/edit/{id}/", name="admin_objectedit")
-  * @Method({"GET", "POST"})
+  * @Method({"GET", "POST", "UPDATE"})
   *
   * @param Request $request
   * @param $id

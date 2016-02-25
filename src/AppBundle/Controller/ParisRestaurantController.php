@@ -22,7 +22,7 @@ class ParisRestaurantController extends Controller
   * Finds and displays a ParisRestaurant entity.
   *
   * @Route("/{id}/", name="restaurant_show")
-  * @Method("GET")
+  * @Method({"GET", "POST"})
   *
   * @param ParisRestaurant $parisRestaurant
   * @param Request $request
