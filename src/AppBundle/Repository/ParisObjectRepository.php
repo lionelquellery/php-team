@@ -14,6 +14,8 @@ class ParisObjectRepository extends EntityRepository
 
 
   /**
+   * Get objects by schools
+   *
      * @param $uai
      * @param null $userkey
      * @return array
@@ -56,6 +58,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Get one object
+   *
      * @param $uai
      * @param $id
      * @param $userkey
@@ -124,6 +128,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Insert object in database
+   *
      * @param $response
      * @param $uai
      * @return ParisObject
@@ -210,6 +216,8 @@ class ParisObjectRepository extends EntityRepository
 
 
   /**
+   * Edit object
+   *
      * @param $response
      * @param $uai
      * @param $id
@@ -271,6 +279,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Delete object
+   *
      * @param $response
      * @param $id
      * @return array|null
@@ -312,6 +322,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Updates object
+   *
      * @param $objectBDD
      * @param $response
      * @return mixed
@@ -351,6 +363,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Get user ID
+   *
      * @param $userkey
      * @return array
      */
@@ -370,6 +384,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Checks user rights
+   *
      * @param $userkey
      * @param $objectBDD
      * @return bool|null

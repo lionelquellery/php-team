@@ -71,7 +71,14 @@ class ParisSchoolRepository extends EntityRepository
     return $school;
     
   }
-  
+
+  /**
+   *
+   * Get school by Uai
+   *
+   * @param $uai
+   * @return array
+   */
   public function getByUai($uai)
   {
     
