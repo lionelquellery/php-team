@@ -36,7 +36,7 @@ class ParisSchoolRepositoryTest extends WebTestCase
     public function testgetByUai()
     {
         $trust = $this->repo->getByUai("0750728J");
-
+        $this->assertInternalType("array", $trust);
 
     }
 
