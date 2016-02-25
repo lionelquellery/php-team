@@ -20,6 +20,10 @@ class ParisFlatController extends Controller
      *
      * @Route("/", name="parisflat_index")
      * @Method({"GET", "POST"})
+     *
+     * @param $uai
+     * @param Request $request
+     * @return JsonResponse
      */
     public function indexAction($uai, Request $request)
     {
@@ -48,6 +52,10 @@ class ParisFlatController extends Controller
      *
      * @Route("/new/", name="parisflat_new")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param $uai
+     * @return JsonResponse
      */
     public function newAction(Request $request, $uai)
     {
@@ -75,6 +83,11 @@ class ParisFlatController extends Controller
      *
      * @Route("/{id}/", name="parisflat_show")
      * @Method({"GET", "POST"})
+     *
+     * @param $uai
+     * @param $id
+     * @param Request $request
+     * @return JsonResponse
      */
     public function showAction($uai, $id, Request $request)
     {
@@ -103,6 +116,11 @@ class ParisFlatController extends Controller
      *
      * @Route("/{id}/edit/", name="parisflat_edit")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param $uai
+     * @param $id
+     * @return JsonResponse
      */
     public function editAction(Request $request, $uai, $id)
     {
@@ -131,6 +149,11 @@ class ParisFlatController extends Controller
      *
      * @Route("/{id}/delete/", name="parisflat_delete")
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param $id
+     * @param $uai
+     * @return JsonResponse
      */
     public function deleteAction(Request $request, $id, $uai)
     {

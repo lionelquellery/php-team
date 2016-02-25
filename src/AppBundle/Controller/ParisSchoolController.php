@@ -20,11 +20,14 @@ use AppBundle\Form\ParisSchoolType;
 class ParisSchoolController extends Controller
 {
   /**
-     * Lists all ParisSchool entities.
-     *
-     * @Route("/", name="school_index")
-     * @Method("GET")
-     */
+  * Lists all ParisSchool entities.
+  *
+  * @Route("/", name="school_index")
+  * @Method("GET")
+  *
+  * @param Request $request
+  * @return JsonResponse
+  */
   public function indexAction(Request $request)
   {
 
@@ -43,11 +46,15 @@ class ParisSchoolController extends Controller
   }
 
   /**
-     * Finds and displays a ParisSchool entity.
-     *
-     * @Route("/{uai}/", name="school_show")
-     * @Method("GET")
-     */
+  * Finds and displays a ParisSchool entity.
+  *
+  * @Route("/{uai}/", name="school_show")
+  * @Method("GET")
+  *
+  * @param ParisSchool $parisSchool
+  * @param Request $request
+  * @return JsonResponse
+  */
   public function showAction(ParisSchool $parisSchool, Request $request)
   {
 

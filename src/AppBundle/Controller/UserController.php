@@ -20,11 +20,14 @@ class UserController extends Controller
 {
 
   /**
-     * Lists all User entities.
-     *
-     * @Route("/", name="user_index")
-     * @Method({"GET", "POST"})
-     */
+  * Lists all User entities.
+  *
+  * @Route("/", name="user_index")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @return JsonResponse
+  */
   public function indexAction(Request $request)
   {
 
@@ -46,11 +49,14 @@ class UserController extends Controller
   }
 
   /**
-     * Creates a new User entity.
-     *
-     * @Route("/new/", name="user_new")
-     * @Method({"GET", "POST"})
-     */
+  * Creates a new User entity.
+  *
+  * @Route("/new/", name="user_new")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @return JsonResponse
+  */
   public function newAction(Request $request)
   {
 
@@ -67,11 +73,14 @@ class UserController extends Controller
   }
 
   /**
-     * Returns user token.
-     *
-     * @Route("/token/", name="user_token")
-     * @Method({"GET", "POST"})
-     */
+  * Returns user token.
+  *
+  * @Route("/token/", name="user_token")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @return JsonResponse
+  */
   public function tokenAction(Request $request)
   {
 
@@ -92,6 +101,10 @@ class UserController extends Controller
    *
    * @Route("/delete/{id}/", name="user_delete")
    * @Method({"GET", "DELETE"})
+   *
+   * @param Request $request
+   * @param $id
+   * @return JsonResponse
    */
   public function deleteAction(Request $request, $id)
   {

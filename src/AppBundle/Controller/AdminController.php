@@ -22,13 +22,15 @@ use AppBundle\Entity\ParisFlat;
 class AdminController extends Controller
 {
   /**
-     * Index of Admin.
-     *
-     * @Route("/", name="admin_index")
-     * @Method({"GET", "POST"})
-     */
-  public function indexAction(Request $request)
-  {
+   * Index of Admin.
+   *
+   * @Route("/", name="admin_index")
+   * @Method({"GET", "POST"})
+   *
+   * @param Request $request
+   * @return JsonResponse|Response
+   */
+  public function indexAction(Request $request){
 
     $key = $request->query->get('key');
 
@@ -45,11 +47,14 @@ class AdminController extends Controller
   }
 
   /**
-     * See all schools
-     *
-     * @Route("/school/", name="admin_school")
-     * @Method({"GET", "POST"})
-     */
+  * See all schools
+  *
+  * @Route("/school/", name="admin_school")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @return JsonResponse|Response
+  */
   public function schoolAction(Request $request)
   {
 
@@ -71,11 +76,14 @@ class AdminController extends Controller
   }
 
   /**
-     * See all users
-     *
-     * @Route("/user/", name="admin_user")
-     * @Method({"GET", "POST"})
-     */
+  * See all users
+  *
+  * @Route("/user/", name="admin_user")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @return JsonResponse|Response
+  */
   public function userAction(Request $request)
   {
 
@@ -98,11 +106,16 @@ class AdminController extends Controller
   }
 
   /**
-     * Delete user
-     *
-     * @Route("/user/delete/{id}/", name="admin_deleteuser")
-     * @Method({"GET", "POST", "DELETE"})
-     */
+  * Delete user
+  *
+  * @Route("/user/delete/{id}/", name="admin_deleteuser")
+  * @Method({"GET", "POST", "DELETE"})
+  *
+  *
+  * @param Request $request
+  * @param $id
+  * @return JsonResponse|Response
+  */
   public function duserAction(Request $request, $id)
   {
 
@@ -126,11 +139,15 @@ class AdminController extends Controller
   }
 
   /**
-     * See one school
-     *
-     * @Route("/school/{uai}/", name="admin_schoolshow")
-     * @Method({"GET", "POST"})
-     */
+  * See one school
+  *
+  * @Route("/school/{uai}/", name="admin_schoolshow")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @param $uai
+  * @return JsonResponse|Response
+  */
   public function schoolshowAction(Request $request, $uai)
   {
 
@@ -160,11 +177,16 @@ class AdminController extends Controller
   }
 
   /**
-     * See flat's details
-     *
-     * @Route("/school/{uai}/flat/{id}/", name="admin_flatshow")
-     * @Method({"GET", "POST"})
-     */
+  * See flat's details
+  *
+  * @Route("/school/{uai}/flat/{id}/", name="admin_flatshow")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @param $id
+  * @param $uai
+  * @return JsonResponse|Response
+  */
   public function flatshowAction(Request $request, $id, $uai)
   {
 
@@ -188,11 +210,16 @@ class AdminController extends Controller
   }
 
   /**
-     * Delete a flat
-     *
-     * @Route("/school/{uai}/flat/delete/{id}/", name="admin_flatdelete")
-     * @Method({"GET", "DELETE"})
-     */
+  * Delete a flat
+  *
+  * @Route("/school/{uai}/flat/delete/{id}/", name="admin_flatdelete")
+  * @Method({"GET", "DELETE"})
+  *
+  * @param Request $request
+  * @param $id
+  * @param $uai
+  * @return JsonResponse|Response
+  */
   public function flatdeleteAction(Request $request, $id, $uai)
   {
 
@@ -216,11 +243,16 @@ class AdminController extends Controller
   }
 
   /**
-     * Edit a flat
-     *
-     * @Route("/school/{uai}/flat/edit/{id}/", name="admin_flatedit")
-     * @Method({"GET", "POST"})
-     */
+  * Edit a flat
+  *
+  * @Route("/school/{uai}/flat/edit/{id}/", name="admin_flatedit")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @param $id
+  * @param $uai
+  * @return JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse|Response
+  */
   public function flateditAction(Request $request, $id, $uai)
   {
 
@@ -283,11 +315,16 @@ class AdminController extends Controller
   }
   
   /**
-     * See object's details
-     *
-     * @Route("/school/{uai}/object/{id}/", name="admin_objectshow")
-     * @Method({"GET", "POST"})
-     */
+  * See object's details
+  *
+  * @Route("/school/{uai}/object/{id}/", name="admin_objectshow")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @param $id
+  * @param $uai
+  * @return JsonResponse|Response
+  */
   public function objectshowAction(Request $request, $id, $uai)
   {
 
@@ -311,11 +348,16 @@ class AdminController extends Controller
   }
 
   /**
-     * Delete an object
-     *
-     * @Route("/school/{uai}/object/delete/{id}/", name="admin_objectdelete")
-     * @Method({"GET", "DELETE"})
-     */
+  * Delete an object
+  *
+  * @Route("/school/{uai}/object/delete/{id}/", name="admin_objectdelete")
+  * @Method({"GET", "DELETE"})
+  *
+  * @param Request $request
+  * @param $id
+  * @param $uai
+  * @return JsonResponse|Response
+  */
   public function objectdeleteAction(Request $request, $id, $uai)
   {
 
@@ -339,11 +381,16 @@ class AdminController extends Controller
   }
 
   /**
-     * Edit a object
-     *
-     * @Route("/school/{uai}/object/edit/{id}/", name="admin_objectedit")
-     * @Method({"GET", "POST"})
-     */
+  * Edit a object
+  *
+  * @Route("/school/{uai}/object/edit/{id}/", name="admin_objectedit")
+  * @Method({"GET", "POST"})
+  *
+  * @param Request $request
+  * @param $id
+  * @param $uai
+  * @return JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse|Response
+  */
   public function objecteditAction(Request $request, $id, $uai)
   {
 

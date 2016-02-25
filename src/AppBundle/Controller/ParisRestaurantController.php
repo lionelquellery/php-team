@@ -19,11 +19,15 @@ use AppBundle\Form\ParisRestaurantType;
 class ParisRestaurantController extends Controller
 {
   /**
-     * Finds and displays a ParisRestaurant entity.
-     *
-     * @Route("/{id}/", name="restaurant_show")
-     * @Method("GET")
-     */
+  * Finds and displays a ParisRestaurant entity.
+  *
+  * @Route("/{id}/", name="restaurant_show")
+  * @Method("GET")
+  *
+  * @param ParisRestaurant $parisRestaurant
+  * @param Request $request
+  * @return JsonResponse
+  */
   public function showAction(ParisRestaurant $parisRestaurant, Request $request)
   {
 
