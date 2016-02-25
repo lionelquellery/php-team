@@ -6,7 +6,7 @@ Team members:
 - Thomas Victoria (CTO)
 - Clovis Maniguet (Back-end Developer)
 - Lucas Martin (Back-end Developer)
-- Inès Sujilen (Designer)
+- Inès Sujilen (Developer)
 
 ### Environnement
 
