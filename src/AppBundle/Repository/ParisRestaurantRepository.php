@@ -6,7 +6,14 @@ use Doctrine\ORM\EntityRepository;
 
 class ParisRestaurantRepository extends EntityRepository
 {
-
+  /**
+   * Get restaurant in given radius
+   *
+   * @param $lat
+   * @param $long
+   * @param $distance
+   * @return array
+   */
   public function getPerimeter($lat, $long, $distance)
   {
 
