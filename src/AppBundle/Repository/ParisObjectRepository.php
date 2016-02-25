@@ -14,6 +14,8 @@ class ParisObjectRepository extends EntityRepository
 
 
   /**
+   * Get objects by schools
+   *
      * @param $uai
      * @param null $userkey
      * @return array
@@ -25,33 +27,16 @@ class ParisObjectRepository extends EntityRepository
 
     $hasRight = $this->getUser($userkey);
 
-    if (!empty($hasRight))
-    {
+    if (!empty($hasRight)){
 
-      if($hasRight[0]['rights'] === 1)
-      {
-        $query = $em->createQueryBuilder()
-          ->select('o')
-          ->from('AppBundle:ParisObject', 'o')
-          ->where('o.uai = :uai');
+      $query = $em->createQueryBuilder()
+        ->select('o')
+        ->from('AppBundle:ParisObject', 'o')
+        ->where('o.uai = :uai');
 
-        $query->setParameters(array(
-          'uai' => $uai
-        ));
-      }
-      else
-      {
-        $query = $em->createQueryBuilder()
-          ->select('o')
-          ->from('AppBundle:ParisObject', 'o')
-          ->where('o.uai = :uai')
-          ->andWhere('o.owner = :userkey');
-
-        $query->setParameters(array(
-          'uai' => $uai,
-          'userkey' => $userkey
-        ));
-      }
+      $query->setParameters(array(
+        'uai' => $uai
+      ));
 
       $query = $query->getQuery()->getArrayResult();
 
@@ -73,6 +58,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Get one object
+   *
      * @param $uai
      * @param $id
      * @param $userkey
@@ -83,7 +70,7 @@ class ParisObjectRepository extends EntityRepository
 
     $em = $this->getEntityManager();
     $hasRight = $this->getUser($userkey);
-    
+
     if (!empty($hasRight))
     {
 
@@ -121,7 +108,7 @@ class ParisObjectRepository extends EntityRepository
       }
 
       $query = $query->getQuery()->getArrayResult();
-      
+
       if (!empty($query))
       {
         return array('code' => 200, 'response' => $query);
@@ -141,6 +128,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Insert object in database
+   *
      * @param $response
      * @param $uai
      * @return ParisObject
@@ -227,6 +216,8 @@ class ParisObjectRepository extends EntityRepository
 
 
   /**
+   * Edit object
+   *
      * @param $response
      * @param $uai
      * @param $id
@@ -288,6 +279,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Delete object
+   *
      * @param $response
      * @param $id
      * @return array|null
@@ -329,6 +322,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Updates object
+   *
      * @param $objectBDD
      * @param $response
      * @return mixed
@@ -336,7 +331,7 @@ class ParisObjectRepository extends EntityRepository
   public function updateObject($objectBDD, $response)
   {
 
-    
+
     foreach ( $response as $key => $oneResponse )
     {
 
@@ -368,6 +363,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Get user ID
+   *
      * @param $userkey
      * @return array
      */
@@ -387,6 +384,8 @@ class ParisObjectRepository extends EntityRepository
   }
 
   /**
+   * Checks user rights
+   *
      * @param $userkey
      * @param $objectBDD
      * @return bool|null

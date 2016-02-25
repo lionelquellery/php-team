@@ -7,6 +7,13 @@ use AppBundle\Entity\User;
 class UserRepository extends EntityRepository
 {
 
+  /**
+   *
+   * Verify the user permissions
+   *
+   * @param $key
+   * @return bool
+   */
   public function verifyPermission($key)
   {
 
@@ -29,6 +36,12 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Get all users registered
+   *
+   * @return array
+   */
   public function getAllUsers()
   {
 
@@ -41,6 +54,13 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Verify key given by user
+   *
+   * @param $key
+   * @return bool
+   */
   public function verifyKey($key)
   {
 
@@ -57,6 +77,12 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Generate user who will be assigned to user
+   *
+   * @return string
+   */
   public function generateToken()
   {
 
@@ -76,6 +102,15 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Create a new user with his user token assigned
+   *
+   * @param $token
+   * @param $mail
+   * @param $pass
+   * @return array
+   */
   public function newUser($token, $mail, $pass)
   {
 
@@ -92,6 +127,15 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Insert the user in the database
+   *
+   * @param $token
+   * @param $mail
+   * @param $pass
+   * @return array
+   */
   public function insertNewUser($token, $mail, $pass)
   {
 
@@ -112,6 +156,14 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Init the user creation
+   *
+   * @param $mail
+   * @param $pass
+   * @return array
+   */
   public function registerNewUser($mail,$pass)
   {
 
@@ -122,6 +174,14 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Return a user's token when he given his mail and password
+   *
+   * @param $mail
+   * @param $pass
+   * @return array
+   */
   public function verifyUser($mail, $pass) 
   {
 
@@ -143,6 +203,13 @@ class UserRepository extends EntityRepository
 
   }
 
+  /**
+   *
+   * Delete a user
+   *
+   * @param $id
+   * @return array
+   */
   public function deleteUser($id)
   {
     $em = $this->getEntityManager();
