@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="931068f5-5956-40b1-bb3b-24661335c3f9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/.htaccess" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.AppBundle.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Controller.AdminController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Controller.DefaultController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Controller.ParisFlatController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Controller.ParisObjectController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Controller.ParisRestaurantController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Controller.ParisSchoolController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Controller.UserController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Entity.ParisFlat.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Entity.ParisObject.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Entity.ParisRestaurant.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Entity.ParisSchool.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Entity.User.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Form.ParisFlatType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Form.ParisObjectType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Form.ParisRestaurantType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Form.ParisSchoolType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Form.UserType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Repository.ParisFlatRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Repository.ParisObjectRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Repository.ParisRestaurantRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Repository.ParisSchoolRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Repository.UserRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Service.ParisObjectService.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Tests.Controller.ParisFlatControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Tests.Controller.ParisObjectControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Tests.Controller.ParisRestaurantControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Tests.Controller.ParisSchoolControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Tests.Controller.UserControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/classes/AppBundle.Tests.Repository.ParisSchoolRepositoryTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/bootstrap-combined.no-icons.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/jquery.iviewer.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/Read Me.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/fonts/phpdocumentor-clean-icons.dev.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/fonts/phpdocumentor-clean-icons.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/fonts/phpdocumentor-clean-icons.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/fonts/phpdocumentor-clean-icons.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/fonts/phpdocumentor-clean-icons.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/lte-ie7.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/phpdocumentor-clean-icons/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/prism.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/css/template.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/AppBundle.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/AppBundle.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller.AdminController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller.DefaultController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller.ParisFlatController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller.ParisObjectController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller.ParisRestaurantController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller.ParisSchoolController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller.UserController.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller/AdminController.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller/DefaultController.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller/ParisFlatController.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller/ParisObjectController.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller/ParisRestaurantController.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller/ParisSchoolController.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Controller/UserController.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity.ParisFlat.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity.ParisObject.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity.ParisRestaurant.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity.ParisSchool.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity.User.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity/ParisFlat.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity/ParisObject.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity/ParisRestaurant.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity/ParisSchool.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Entity/User.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form.ParisFlatType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form.ParisObjectType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form.ParisRestaurantType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form.ParisSchoolType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form.UserType.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form/ParisFlatType.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form/ParisObjectType.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form/ParisRestaurantType.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form/ParisSchoolType.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Form/UserType.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository.ParisFlatRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository.ParisObjectRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository.ParisRestaurantRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository.ParisSchoolRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository.UserRepository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository/ParisFlatRepository.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository/ParisObjectRepository.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository/ParisRestaurantRepository.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository/ParisSchoolRepository.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Repository/UserRepository.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Service.ParisObjectService.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Service/ParisObjectService.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests.Controller.ParisFlatControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests.Controller.ParisObjectControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests.Controller.ParisRestaurantControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests.Controller.ParisSchoolControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests.Controller.UserControllerTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests.Repository.ParisSchoolRepositoryTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests/Controller/ParisFlatControllerTest.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests/Controller/ParisObjectControllerTest.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests/Controller/ParisRestaurantControllerTest.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests/Controller/ParisSchoolControllerTest.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests/Controller/UserControllerTest.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/files/Tests/Repository/ParisSchoolRepositoryTest.php.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/font/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/font/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/font/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/font/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/font/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/graphs/class.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/apple-touch-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/apple-touch-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/custom-icons.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/hierarchy-item.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/icon-class-13x13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/icon-class.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/icon-interface-13x13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/icon-interface.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/icon-trait-13x13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/icon-trait.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/grab.cur" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/hand.cur" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/iviewer.rotate_left.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/iviewer.rotate_right.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/iviewer.zoom_fit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/iviewer.zoom_in.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/iviewer.zoom_out.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/images/iviewer/iviewer.zoom_zero.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/html5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/jquery-1.11.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/jquery.dotdotdot-1.5.9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/jquery.dotdotdot-1.5.9.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/jquery.iviewer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/jquery.iviewer.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/jquery.mousewheel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/jquery.smooth-scroll.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/prism.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/js/ui/1.10.4/jquery-ui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Controller.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Entity.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Form.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Repository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Service.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Tests.Controller.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Tests.Repository.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.Tests.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/AppBundle.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/namespaces/default.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-00/phpdoc-cache-file_8a77e72ad68b5512a6d7ffe02200ae5f.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-05/phpdoc-cache-file_4543fc957f9ea33af4317954a843a114.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-0d/phpdoc-cache-file_166141e4c359cc32f60d0ba30d78cfbd.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-16/phpdoc-cache-file_838ed6541408d4952146bcfe3bfa76e0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-24/phpdoc-cache-file_f86ea8573e1d987e6948a4093ab9da6f.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-2c/phpdoc-cache-file_4f1aecb14e622df869fa6d99c2abdc00.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-2e/phpdoc-cache-settings.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-33/phpdoc-cache-file_4b5e46cfaf5dc14a987548bb84363ab8.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-3a/phpdoc-cache-file_2c96f2221d46b2956a29e97d6899e4b9.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-45/phpdoc-cache-file_8bf82be6ade801fdfc1312fbe64770d5.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-6a/phpdoc-cache-file_db68e2a4386c5b5629b27ea7804bbbb4.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-70/phpdoc-cache-file_447e7e940ede6dc8c16d188d7242549b.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-7a/phpdoc-cache-file_6ac0ab161e7a20645a99f7d2f17334f4.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-7a/phpdoc-cache-file_e45da9c77bf01e538e6f768510118894.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-7e/phpdoc-cache-file_a5150fdf788e32b669c4549a1d352a1e.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-81/phpdoc-cache-file_d19406706f673ed3fb0da3f3bcb4bfbd.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-89/phpdoc-cache-file_2b3e02de54ea533ff352b041e73e0f1e.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-91/phpdoc-cache-file_f00e84312fa950cae33ecffd825d954c.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-97/phpdoc-cache-file_a02a2289da78e9c88275c11133a59fe7.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-a2/phpdoc-cache-file_ddd9e0b5b1f5f9eba7408dcaad93c9c9.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-b4/phpdoc-cache-file_9e6d270814e4fd33159f1eaa948480f0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-b7/phpdoc-cache-file_50de1c52f987ef40869154f0713eea6e.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-cd/phpdoc-cache-file_bc883bedd7051bc567704a42d5f4a77e.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-cf/phpdoc-cache-file_62c9b7320ab9a72b0937318d66dc15fe.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-cf/phpdoc-cache-file_f8d3ec160ded431d29631947ea05d3c9.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-d6/phpdoc-cache-file_fffb30342b66974fdc9ae78fd4dafbba.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-db/phpdoc-cache-file_add825ba8b7ca58e75f523bd23a3184b.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-e9/phpdoc-cache-file_e97a7f898e5597d6a616de1c8f4a869a.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-ee/phpdoc-cache-file_bfc318995e1bfd03fe3a07862c909edb.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-f6/phpdoc-cache-file_da59f8d02b4017cc751835c5164252e8.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/phpdoc-cache-fa/phpdoc-cache-file_8fb713aee95032d4c59529e8faa04d7e.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/reports/deprecated.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/reports/errors.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/api/reports/markers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Service/ParisObjectService.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="php-team.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="php-team" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ParisObjectController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-71.84615">
+              <caret line="122" column="39" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParisRestaurantController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisRestaurantController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.0566038">
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParisSchoolController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.226415">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParisFlatRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-96.53846">
+              <caret line="437" column="0" selection-start-line="437" selection-start-column="0" selection-end-line="437" selection-end-column="0" />
+              <folding>
+                <marker date="1456424343266" expanded="true" signature="9218:9279" placeholder="SELECT u FRO... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParisFlatController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-73.15385">
+              <caret line="117" column="39" selection-start-line="117" selection-start-column="39" selection-end-line="117" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35474452">
+              <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParisFlat.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-27.076923">
+              <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="php app/console doctrine:mapping:import --force AppBundle annotation" />
+      <command text="php app/console doctrine:generate:entities AppBundle" />
+      <command text="php app/console generate crud" />
+      <command text="php app/console doctrine:generate:crud" />
+      <command text="php app/console server:run" />
+      <command text="clear" />
+      <command text="phpdoc" />
+      <command text="phpdocumentor\phpdocumentor\bin\phpdoc.bat" />
+      <command text="\phpdocumentor\phpdocumentor\bin\phpdoc.bat" />
+      <command text="\vendor\phpdocumentor\phpdocumentor\bin\phpdoc.bat" />
+    </commandsHistory>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SchoolController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/parisschool/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ParisRestaurant.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/parisschool/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisFlat.orm.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisSchoolRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisRestaurantRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Tests/Repository/ParisObjectRepositoryTest.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisRestaurantController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="doctrine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php-team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="931068f5-5956-40b1-bb3b-24661335c3f9" name="Default" comment="" />
+      <created>1454506489907</created>
+      <option name="number" value="Default" />
+      <updated>1454506489907</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917964" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.4975" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883817" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="98" column="42" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="118" column="12" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisFlat.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1456424343266" expanded="true" signature="9218:9279" placeholder="SELECT u FRO... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisRestaurantController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisRestaurantController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisRestaurantController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/ParisRestaurantControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/ParisSchoolControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/UserControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.52">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/ParisFlatControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisRestaurant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.15824176">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/AppBundle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisSchool.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6207865">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisObject.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6474719">
+          <caret line="75" column="57" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisFlat.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/ParisObject.orm.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="228" column="1" selection-start-line="228" selection-start-column="1" selection-end-line="228" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisSchoolRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="1" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisRestaurantRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisObjectRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="242" column="16" selection-start-line="242" selection-start-column="16" selection-end-line="242" selection-end-column="16" />
+          <folding>
+            <element signature="e#40#64#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpdocumentor/phpdocumentor/bin/phpdoc.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpdocumentor/phpdocumentor/bin/phpdoc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59562045">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/ParisObjectControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Repository/ParisSchoolRepositoryTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.119382024">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ParisFlat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-27.076923">
+          <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ParisFlatRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-96.53846">
+          <caret line="437" column="0" selection-start-line="437" selection-start-column="0" selection-end-line="437" selection-end-column="0" />
+          <folding>
+            <marker date="1456424343266" expanded="true" signature="9218:9279" placeholder="SELECT u FRO... AppBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.64525545">
+          <caret line="386" column="36" selection-start-line="386" selection-start-column="36" selection-end-line="386" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31039324">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisFlatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-73.15385">
+          <caret line="117" column="39" selection-start-line="117" selection-start-column="39" selection-end-line="117" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisObjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-71.84615">
+          <caret line="122" column="39" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisRestaurantController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0566038">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ParisSchoolController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.226415">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35474452">
+          <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Tests\Controller;
 
+use AppBundle\Controller\ParisFlatController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ParisFlatControllerTest extends WebTestCase
@@ -12,10 +13,25 @@ class ParisFlatControllerTest extends WebTestCase
     {
 
         $client = static::createClient();
-        $crawler = $client->request('GET', '/user/',array('CONTENT_TYPE'=>'application/json'));
+        $crawler = $client->request('GET', '/school/0750728J/flat/?key=123',array('CONTENT_TYPE'=>'application/json'));
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /parisflat/");
 
+
     }
+
+    public function testcontain()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/school/?key=123',array('CONTENT_TYPE'=>'application/json'));
+        $this->assertContainsOnly('string', array('id'));
+        $this->assertContainsOnly('string',array('longitude','response','latitude','name','uai'));
+
+    }
+
+
+
+
+
     /*
     public function testCompleteScenario()
     {
