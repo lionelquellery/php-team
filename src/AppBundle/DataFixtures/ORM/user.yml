@@ -1,5 +1,9 @@
 # src/AppBundle/DataFixtures/ORM/dummy.yml
 
-AppBundle\Entity\Dummy:
-    dummy_{1..10}:
-        name: <name()>
+AppBundle\Entity\User:
+    dummy_{1..100}:
+        userkey: <userName()>
+        pass: <sha256()>
+        mail: <safeEmail()>
+        rights: 0
+
