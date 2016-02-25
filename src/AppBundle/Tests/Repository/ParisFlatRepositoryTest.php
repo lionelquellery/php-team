@@ -1,0 +1,39 @@
+<?php
+
+namespace AppBundle\Tests\Repository;
+
+use AppBundle\Entity\ParisFlat;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+class ParisFlatRepositoryTest extends WebTestCase
+{
+    private $repo;
+
+    protected function setUp()
+    {
+        self::bootKernel();
+
+        $this->repo = static::$kernel->getContainer()
+            ->get('doctrine.orm.entity_manager')
+            ->getRepository('AppBundle:ParisFlat');
+    }
+
+
+    public function testgetFlats(){
+        $this->repo->getFlats("075728J",123);
+
+
+    }
+
+    public function testgetFlat()
+    {
+        $this->repo->getFlat("0750728J",1,123);
+
+    }
+
+    public function testinsertFlat()
+    {
+     $this->repo->insertFlat(100,"0750728J",123);
+
+    }
+}
