@@ -9,6 +9,8 @@ class ParisFlatRepository extends EntityRepository
 {
 
   /**
+   * Get flats by schools
+   *
    * @param $uai
    * @param null $userkey
    * @return array
@@ -68,6 +70,9 @@ class ParisFlatRepository extends EntityRepository
   }
 
   /**
+   *
+   * Get one flat
+   *
    * @param $uai
    * @param $id
    * @param $userkey
@@ -136,6 +141,9 @@ class ParisFlatRepository extends EntityRepository
   }
 
   /**
+   *
+   * Insert flat in database
+   *
    * @param $response
    * @param $uai
    * @return ParisFlat
@@ -250,6 +258,9 @@ class ParisFlatRepository extends EntityRepository
 
 
   /**
+   *
+   * Edit flats
+   *
    * @param $response
    * @param $uai
    * @param $id
@@ -317,6 +328,8 @@ class ParisFlatRepository extends EntityRepository
   }
 
   /**
+   * Delete flats
+   *
    * @param $response
    * @param $id
    * @return array|null
@@ -358,6 +371,8 @@ class ParisFlatRepository extends EntityRepository
   }
 
   /**
+   * Update flats
+   *
    * @param $flatBDD
    * @param $response
    * @return mixed
@@ -405,6 +420,8 @@ class ParisFlatRepository extends EntityRepository
   }
 
   /**
+   * Get user
+   *
    * @param $userkey
    * @return array
    */
@@ -424,6 +441,8 @@ class ParisFlatRepository extends EntityRepository
   }
 
   /**
+   * Checks user rights
+   *
    * @param $userkey
    * @param $flatBDD
    * @return bool|null

@@ -6,6 +6,14 @@ use Doctrine\ORM\EntityRepository;
 
 class ParisSchoolRepository extends EntityRepository
 {
+
+  /**
+   *
+   * Return school by zip code. Return all of param empty
+   *
+   * @param $location
+   * @return array
+   */
   public function getLocation($location)
   {
 
@@ -21,6 +29,13 @@ class ParisSchoolRepository extends EntityRepository
     return array('code' => 200, 'response' => $school);
   }
 
+  /**
+   *
+   * Convert metric param to GPS values
+   *
+   * @param $radius
+   * @return float
+   */
   public function getRadius($radius)
   {
     
@@ -32,7 +47,14 @@ class ParisSchoolRepository extends EntityRepository
     return $distance;
 
   }
-  
+
+  /**
+   *
+   * Get school data
+   *
+   * @param $parisSchool
+   * @return array
+   */
   public function getArray($parisSchool)
   {
     
@@ -49,7 +71,14 @@ class ParisSchoolRepository extends EntityRepository
     return $school;
     
   }
-  
+
+  /**
+   *
+   * Get school by Uai
+   *
+   * @param $uai
+   * @return array
+   */
   public function getByUai($uai)
   {
     
