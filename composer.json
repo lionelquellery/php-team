@@ -22,6 +22,8 @@
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
         "symfony/phpunit-bridge": "~2.7",
+        "hautelook/alice-bundle": "^0.2.0",
+        "doctrine/data-fixtures": "^1.1",
         "phpdocumentor/phpdocumentor": "2.*"
     },
     "scripts": {

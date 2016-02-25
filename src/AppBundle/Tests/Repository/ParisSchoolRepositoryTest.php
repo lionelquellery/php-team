@@ -33,6 +33,8 @@ class ParisSchoolRepositoryTest extends WebTestCase
 
     }
 
+<<<<<<< HEAD
+=======
     public function testgetByUai()
     {
         $trust = $this->repo->getByUai("0750728J");
@@ -46,4 +48,5 @@ class ParisSchoolRepositoryTest extends WebTestCase
 
 
 
+>>>>>>> ce4357e0d162e3055114974bed5f4d1220b46cd6
 }
