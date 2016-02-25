@@ -1,7 +1,6 @@
 <?php 
 
 namespace AppBundle\Repository;
-
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\ParisFlat;
 
@@ -22,33 +21,16 @@ class ParisFlatRepository extends EntityRepository
 
     $hasRight = $this->getUser($userkey);
 
-    if (!empty($hasRight))
-    {
+    if (!empty($hasRight)){
 
-      if($hasRight[0]['rights'] === 1)
-      {
-        $query = $em->createQueryBuilder()
-          ->select('f')
-          ->from('AppBundle:ParisFlat', 'f')
-          ->where('f.uai = :uai');
+      $query = $em->createQueryBuilder()
+        ->select('f')
+        ->from('AppBundle:ParisFlat', 'f')
+        ->where('f.uai = :uai');
 
-        $query->setParameters(array(
-          'uai' => $uai
-        ));
-      }
-      else
-      {
-        $query = $em->createQueryBuilder()
-          ->select('f')
-          ->from('AppBundle:ParisFlat', 'f')
-          ->where('f.uai = :uai')
-          ->andWhere('f.owner = :userkey');
-
-        $query->setParameters(array(
-          'uai' => $uai,
-          'userkey' => $userkey
-        ));
-      }
+      $query->setParameters(array(
+        'uai' => $uai
+      ));
 
       $query = $query->getQuery()->getArrayResult();
 
