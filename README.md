@@ -1,12 +1,21 @@
 # php-team | H3 - Symfony project 
 
+Project : STUDENT CHECK
+Help students find good deals near their school's geographical area (restaurants, flats, objects, ...)
+
+URL :
+http://188.166.147.133:8000/
+
+Complete API documentation : 
+http://lucasmartin.fr/StudentCheckDocumentation/namespaces/AppBundle.html
+
 Team members:
 
 - Lionel Quellery (CEO)
 - Thomas Victoria (CTO)
 - Clovis Maniguet (Back-end Developer)
 - Lucas Martin (Back-end Developer)
-- Inès Sujilen (Developer)
+- Inès Suijlen (Developer)
 
 ### Environnement
 
