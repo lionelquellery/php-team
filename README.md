@@ -1,5 +1,11 @@
 # php-team | H3 - Symfony project 
 
+Project : STUDENT CHECK
+Help students find good deals near their school's geographical area (restaurants, flats, objects, ...)
+
+URL :
+http://188.166.147.133:8000/
+
 Team members:
 
 - Lionel Quellery (CEO)
