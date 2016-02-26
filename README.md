@@ -25,7 +25,7 @@ You must pass a key parameter containing your api token for each of your request
 
 ### Postman Script
 To test the API you can use [Postman](https://www.getpostman.com) and load the script below:
-- [Script Postman](https://infinit.io/_/tUqBkn5)
+- [Script Postman](https://infinit.io/_/WiTRrJ2)
 
 ### /school/
 
