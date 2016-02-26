@@ -347,7 +347,7 @@ class ParisFlatRepository extends EntityRepository
     }
     else
     {
-      return $objectBDD;
+      return $flatBDD;
     }
 
   }
