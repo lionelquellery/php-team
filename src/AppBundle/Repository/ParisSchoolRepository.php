@@ -38,7 +38,7 @@ class ParisSchoolRepository extends EntityRepository
    */
   public function getRadius($radius)
   {
-    
+
     if($radius != NULL)
       $distance = $radius/100000;
     else
@@ -57,7 +57,7 @@ class ParisSchoolRepository extends EntityRepository
    */
   public function getArray($parisSchool)
   {
-    
+
     $school = array(
       'id'       => $parisSchool->getId(),
       'uai'      => $parisSchool->getUai(),
@@ -67,9 +67,9 @@ class ParisSchoolRepository extends EntityRepository
       'lat'      => $parisSchool->getLatitude(),
       'long'     => $parisSchool->getLongitude(),
     );
-    
+
     return $school;
-    
+
   }
 
   /**
@@ -79,16 +79,19 @@ class ParisSchoolRepository extends EntityRepository
    * @param $uai
    * @return array
    */
-  public function getByUai($uai)
+  public function getByUai($uai, $array = null)
   {
-    
+
     $em = $this->getEntityManager();
 
     $query = $em
       ->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.uai = :uai')
       ->setParameter('uai', $uai);
-    
-    return $query->getResult();
+
+    if(is_null($array))
+      return $query->getResult();
+    else
+      return $query->getArrayResult();
     
   }
 
