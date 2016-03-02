@@ -65,26 +65,15 @@ class ParisSchoolController extends Controller
 
     if(!is_null($key)){
 
-      $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
-
       $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
 
-      $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($parisSchool->getLatitude(), $parisSchool->getLongitude(), $radiusRatio);
-
-      return new JsonResponse(array(
-        'code'        => 200,
-        'response'    => array(
-          'school'      => $school,
-          'restaurants' => $restaurants
-        )
-      ));
+      $response = array('code' => 200, 'response' => $school);
 
     }
     else
-      return new JsonResponse(array(
-        'code' => 401,
-        'response' => 'Data missing'
-      ));
+      $response = array('code' => 401, 'response' => 'Data missing');
+
+    return new JsonResponse($response);
 
   }
 

@@ -41,7 +41,11 @@ Returns all schools in Paris
 
 ### /school/{uai}/
 
-Returns the school's infos and all restaurants in a given radius
+Returns the school's infos
+
+### /school/{uai}/restaurant/
+
+Return all resturant around the school in a given radius. Default 100 meters.
 
 ##### Parameters :
 - radius : the radius in which restaurants must be to be returned. In meters. Default 100m. 
