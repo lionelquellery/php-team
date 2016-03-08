@@ -32,23 +32,17 @@ class ParisRestaurantController extends Controller
   public function indexAction(Request $request, $uai)
   {
 
-    $key = $request->query->get('key');
     $radius = $request->query->get('radius');
 
-    if(!is_null($key)){
-      
-      $em = $this->getDoctrine()->getManager();
-      $school = $em->getRepository('AppBundle:ParisSchool')->getByUai($uai, true);
+    $em = $this->getDoctrine()->getManager();
+    $school = $em->getRepository('AppBundle:ParisSchool')->getByUai($uai, true);
 
-      $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
+    $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
 
-      $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($school[0]['latitude'], $school[0]['longitude'], $radiusRatio);
+    $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($school[0]['latitude'], $school[0]['longitude'], $radiusRatio);
 
-      $response = array('code' => 200, 'response' => $restaurants);
+    $response = array('code' => 200, 'response' => $restaurants);
 
-    }
-    else
-      $reponse = array('code' => 401, 'response' => 'Data missing');
 
     return new JsonResponse($response);
 
@@ -67,22 +61,16 @@ class ParisRestaurantController extends Controller
   public function showAction(ParisRestaurant $parisRestaurant, Request $request)
   {
 
-    $key = $request->query->get('key');
-
-    if(!is_null($key)){
-      $response = array(
-        'code'     => 200,
-        'response' => array(
-          'id'       => $parisRestaurant->getId(),
-          'category' => $parisRestaurant->getCategory(),
-          'adresse'  => $parisRestaurant->getAdresse(),
-          'lat'      => $parisRestaurant->getLatitude(),
-          'long'     => $parisRestaurant->getLongitude(),
-        )
-      );
-    }
-    else
-      $response = array('code' => 401, 'response' => 'Data missing');
+    $response = array(
+      'code'     => 200,
+      'response' => array(
+        'id'       => $parisRestaurant->getId(),
+        'category' => $parisRestaurant->getCategory(),
+        'adresse'  => $parisRestaurant->getAdresse(),
+        'lat'      => $parisRestaurant->getLatitude(),
+        'long'     => $parisRestaurant->getLongitude(),
+      )
+    );
 
     return new JsonResponse($response);
 

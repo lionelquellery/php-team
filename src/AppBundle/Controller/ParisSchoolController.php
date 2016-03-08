@@ -31,15 +31,11 @@ class ParisSchoolController extends Controller
   public function indexAction(Request $request)
   {
 
-    $key = $request->query->get('key');
     $location = $request->query->get('location');
 
     $em = $this->getDoctrine()->getManager();
 
-    if(!is_null($key))
-      $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
-    else
-      $school = array('code' => 401, 'response' => 'Data missing');
+    $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
 
     return new JsonResponse($school);
 
@@ -59,19 +55,12 @@ class ParisSchoolController extends Controller
   {
 
     $radius = $request->query->get('radius');
-    $key = $request->query->get('key');
 
     $em = $this->getDoctrine()->getManager();
 
-    if(!is_null($key)){
+    $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
 
-      $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
-
-      $response = array('code' => 200, 'response' => $school);
-
-    }
-    else
-      $response = array('code' => 401, 'response' => 'Data missing');
+    $response = array('code' => 200, 'response' => $school);
 
     return new JsonResponse($response);
 
