@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ParisFlatController extends Controller
 {
-    /**
+  /**
      * Lists all ParisFlat entities.
      *
      * @Route("/", name="parisflat_index")
@@ -25,29 +25,16 @@ class ParisFlatController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function indexAction($uai, Request $request)
-    {
-        $response = $request->query->all();
+  public function indexAction($uai, Request $request)
+  {
 
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisFlat')->getFlats($uai);
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
+    return new JsonResponse($result);
+  }
 
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->getFlats($uai, $response['key']);
-
-        }
-        else
-        {
-
-            $result =  array('code' => 401, "response" => "Data missing");
-
-        }
-
-        return new JsonResponse($result);
-    }
-
-    /**
+  /**
      * Creates a new ParisFlat entity.
      *
      * @Route("/new/", name="parisflat_new")
@@ -57,28 +44,18 @@ class ParisFlatController extends Controller
      * @param $uai
      * @return JsonResponse
      */
-    public function newAction(Request $request, $uai)
-    {
-        $response = $request->query->all();
+  public function newAction(Request $request, $uai)
+  {
 
+    $response = $request->query->all();
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ) )
-        {
-            $em = $this->getDoctrine()->getManager();
-            $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $response['key'], $uai);
+    $em = $this->getDoctrine()->getManager();
+    $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $uai);
 
-        }
-        else
-        {
-            $parisInsert = array('code' => 401, "response" => "No arguments passed, nothing to create");
-        }
+    return new JsonResponse($parisInsert);
+  }
 
-
-
-        return new JsonResponse($parisInsert);
-    }
-
-    /**
+  /**
      * Finds and displays a ParisFlat entity.
      *
      * @Route("/{id}/", name="parisflat_show")
@@ -89,29 +66,16 @@ class ParisFlatController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function showAction($uai, $id, Request $request)
-    {
-        $response = $request->query->all();
+  public function showAction($uai, $id, Request $request)
+  {
 
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisFlat')->getFlat($uai, $id);
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
+    return new JsonResponse($result);
+  }
 
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->getFlat($uai, $id, $response['key']);
-
-        }
-        else
-        {
-
-            $result =   array('code' => 401, "response" => "Data missing");
-
-        }
-
-        return new JsonResponse($result);
-    }
-
-    /**
+  /**
      * Displays a form to edit an existing ParisFlat entity.
      *
      * @Route("/{id}/edit/", name="parisflat_edit")
@@ -122,29 +86,18 @@ class ParisFlatController extends Controller
      * @param $id
      * @return JsonResponse
      */
-    public function editAction(Request $request, $uai, $id)
-    {
-        $response = $request->query->all();
+  public function editAction(Request $request, $uai, $id)
+  {
 
+    $response = $request->query->all();
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisFlat')->editFlat($response, $uai, $id);
 
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->editFlat($response, $response['key'], $uai, $id);
+    return new JsonResponse($result);
+  }
 
-        }
-        else
-        {
-
-            $result =   array('code' => 401, "response" => "Data missing");
-
-        }
-
-        return new JsonResponse($result);
-    }
-
-    /**
+  /**
      * Deletes a ParisFlat entity.
      *
      * @Route("/{id}/delete/", name="parisflat_delete")
@@ -155,25 +108,13 @@ class ParisFlatController extends Controller
      * @param $uai
      * @return JsonResponse
      */
-    public function deleteAction(Request $request, $id, $uai)
-    {
-        $response = $request->query->all();
+  public function deleteAction(Request $request, $id, $uai)
+  {
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisFlat')->deleteFlat($id, $uai);
 
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisFlat')->deleteFlat($response['key'], $id, $uai);
-
-        }
-        else
-        {
-
-            $result =   array('code' => 401, "response" => "Data missing");
-
-        }
-
-        return new JsonResponse($result);
-    }
+    return new JsonResponse($result);
+  }
 
 }

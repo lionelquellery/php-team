@@ -11,42 +11,31 @@ class ParisFlatRepository extends EntityRepository
    * Get flats by schools
    *
    * @param $uai
-   * @param null $userkey
    * @return array
    */
-  public function getFlats($uai, $userkey)
+  public function getFlats($uai)
   {
 
     $em = $this->getEntityManager();
 
-    $hasRight = $this->getUser($userkey);
+    $query = $em->createQueryBuilder()
+      ->select('f')
+      ->from('AppBundle:ParisFlat', 'f')
+      ->where('f.uai = :uai');
 
-    if (!empty($hasRight)){
+    $query->setParameters(array(
+      'uai' => $uai
+    ));
 
-      $query = $em->createQueryBuilder()
-        ->select('f')
-        ->from('AppBundle:ParisFlat', 'f')
-        ->where('f.uai = :uai');
+    $query = $query->getQuery()->getArrayResult();
 
-      $query->setParameters(array(
-        'uai' => $uai
-      ));
-
-      $query = $query->getQuery()->getArrayResult();
-
-      if (!empty($query))
-      {
-        return array('code' => 200, 'response' => $query);
-      }
-      else
-      {
-        return array('code' => 404, "response" => "Something goes wrong, maybe you havn't objects yet ?");
-      }
-
+    if (!empty($query))
+    {
+      return array('code' => 200, 'response' => $query);
     }
     else
     {
-      return array('code' => 403,"response" => "wrong userkey");
+      return array('code' => 404, "response" => "Something goes wrong, maybe you havn't objects yet ?");
     }
 
   }
@@ -57,68 +46,34 @@ class ParisFlatRepository extends EntityRepository
    *
    * @param $uai
    * @param $id
-   * @param $userkey
    * @return array
    */
-  public function getFlat($uai, $id, $userkey)
+  public function getFlat($uai, $id)
   {
 
     $em = $this->getEntityManager();
-    $hasRight = $this->getUser($userkey);
 
-    if (!empty($hasRight))
+    $query = $em->createQueryBuilder()
+      ->select('f')
+      ->from('AppBundle:ParisFlat', 'f')
+      ->where('f.uai = :uai')
+      ->andWhere('f.id = :id');
+
+    $query->setParameters(array(
+      'uai' => $uai,
+      'id' => $id
+    ));
+
+    $query = $query->getQuery()->getArrayResult();
+
+    if (!empty($query))
     {
-
-
-      if($hasRight[0]['rights'] === 1)
-      {
-
-        $query = $em->createQueryBuilder()
-          ->select('f')
-          ->from('AppBundle:ParisFlat', 'f')
-          ->where('f.uai = :uai')
-          ->andWhere('f.id = :id');
-
-        $query->setParameters(array(
-          'uai' => $uai,
-          'id' => $id
-        ));
-
-      }
-      else
-      {
-        $query = $em->createQueryBuilder()
-          ->select('f')
-          ->from('AppBundle:ParisFlat', 'f')
-          ->where('f.uai = :uai')
-          ->andWhere('f.id = :id')
-          ->andWhere('f.owner = :userkey');
-
-        $query->setParameters(array(
-          'uai' => $uai,
-          'id' => $id,
-          'userkey' => $userkey
-        ));
-
-      }
-
-      $query = $query->getQuery()->getArrayResult();
-
-      if (!empty($query))
-      {
-        return array('code' => 200, 'response' => $query);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "not authorized");
-      }
-
+      return array('code' => 200, 'response' => $query);
     }
     else
     {
-      return array('code' => 401,"response" => "wrong userkey");
+      return array('code' => 404,"response" => "Somthing went wrong");
     }
-
 
   }
 
@@ -130,112 +85,110 @@ class ParisFlatRepository extends EntityRepository
    * @param $uai
    * @return ParisFlat
    */
-  public function insertFlat($response, $key, $uai)
+  public function insertFlat($response, $uai)
   {
 
-    $hasRight = $this->getUser($key);
+    $em = $this->getEntityManager();
 
-    if (!empty($hasRight))
+    $flat = new ParisFlat();
+    $flat->setUai($uai);
+    
+    if ( isset($response['id']) && !empty($response['id']))
     {
-
-      $em = $this->getEntityManager();
-
-      $flat = new ParisFlat();
-      $flat->setUai($uai);
-      $flat->setOwner($key);
-
-      if ( isset($response['name']) && !empty($response['name']))
-      {
-        $flat->setName($response['name']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : name");
-      }
-
-      if ( isset($response['price']) && !empty($response['price']))
-      {
-        $flat->setPrice($response['price']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : price");
-      }
-
-      if ( isset($response['description']) && !empty($response['description']))
-      {
-        $flat->setDescription($response['description']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : description");
-      }
-
-      if ( isset($response['type']) && !empty($response['type']))
-      {
-        $flat->setType($response['type']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : type");
-      }
-
-      if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
-      {
-        $flat->setThumbnail($response['thumbnail']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : thumbnail");
-      }
-
-      if ( isset($response['album']) && !empty($response['album']))
-      {
-        $flat->setAlbum($response['album']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : album");
-      }
-
-      if ( isset($response['longitude']) && !empty($response['longitude']))
-      {
-        $flat->setLongitude($response['longitude']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : longitude");
-      }
-
-      if ( isset($response['latitude']) && !empty($response['latitude']))
-      {
-        $flat->setLatitude($response['latitude']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : latitude");
-      }
-
-      if ( isset($response['date']) && !empty($response['date']))
-      {
-        $flat->setDate($response['date']);
-      }
-      else
-      {
-        return array('code' => 401,"response" => "missing value : date");
-      }
-
-
-      $em->persist($flat);
-      $em->flush();
-
-      return array('code' => 200, 'response' => array('Id'=> $flat->getId() ));
-
+      $flat->setOwner($response['id']);
     }
     else
     {
-      return array('code' => 403,"response" => "wrong userkey");
+      return array('code' => 401,"response" => "missing value : id");
     }
+
+    if ( isset($response['name']) && !empty($response['name']))
+    {
+      $flat->setName($response['name']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : name");
+    }
+
+    if ( isset($response['price']) && !empty($response['price']))
+    {
+      $flat->setPrice($response['price']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : price");
+    }
+
+    if ( isset($response['description']) && !empty($response['description']))
+    {
+      $flat->setDescription($response['description']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : description");
+    }
+
+    if ( isset($response['type']) && !empty($response['type']))
+    {
+      $flat->setType($response['type']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : type");
+    }
+
+    if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
+    {
+      $flat->setThumbnail($response['thumbnail']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : thumbnail");
+    }
+
+    if ( isset($response['album']) && !empty($response['album']))
+    {
+      $flat->setAlbum($response['album']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : album");
+    }
+
+    if ( isset($response['longitude']) && !empty($response['longitude']))
+    {
+      $flat->setLongitude($response['longitude']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : longitude");
+    }
+
+    if ( isset($response['latitude']) && !empty($response['latitude']))
+    {
+      $flat->setLatitude($response['latitude']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : latitude");
+    }
+
+    if ( isset($response['date']) && !empty($response['date']))
+    {
+      $flat->setDate($response['date']);
+    }
+    else
+    {
+      return array('code' => 401,"response" => "missing value : date");
+    }
+
+
+    $em->persist($flat);
+    $em->flush();
+
+    return array('code' => 200, 'response' => array('Id'=> $flat->getId() ));
+
   }
 
 
@@ -248,10 +201,10 @@ class ParisFlatRepository extends EntityRepository
    * @param $id
    * @return array|null
    */
-  public function editFlat($response, $key, $uai, $id)
+  public function editFlat($response, $uai, $id)
   {
 
-    $flatBDD = $this->getFlat($uai, $id, $key);
+    $flatBDD = $this->getFlat($uai, $id);
 
     if ( $flatBDD['code'] == 200 )
     {
@@ -316,9 +269,9 @@ class ParisFlatRepository extends EntityRepository
    * @param $id
    * @return array|null
    */
-  public function deleteFlat($key, $id, $uai)
+  public function deleteFlat($id, $uai)
   {
-    $flatBDD = $this->getFlat($uai, $id, $key);
+    $flatBDD = $this->getFlat($uai, $id);
 
     if ( $flatBDD['code'] == 200 )
     {
@@ -398,68 +351,6 @@ class ParisFlatRepository extends EntityRepository
     }
 
     return $flatBDD;
-
-  }
-
-  /**
-   * Get user
-   *
-   * @param $userkey
-   * @return array
-   */
-  public function getUser($userkey)
-  {
-    $em = $this->getEntityManager();
-
-    $query = $em->createQuery('SELECT u FROM AppBundle:User u
-    WHERE u.userkey = :userkey
-    ');
-
-    $query->setParameters(array(
-      'userkey' => $userkey
-    ));
-
-    return $query->getArrayResult();
-  }
-
-  /**
-   * Checks user rights
-   *
-   * @param $userkey
-   * @param $flatBDD
-   * @return bool|null
-   */
-  public function checkUserRights($userkey, $flatBDD)
-  {
-
-    // If object owner is the good one
-    if ( $flatBDD === $userkey )
-    {
-
-      return true;
-
-    }
-    else
-    {
-      // Checking if the action is done by an admin
-      $admin = $this->getUser($userkey);
-
-      if (is_null($admin) || empty($admin))
-      {
-        return null;
-      }
-      elseif ($admin[0]['rights'] === 0)
-      {
-        return null;
-      }
-      else
-      {
-        return true;
-      }
-
-    }
-
-
 
   }
 
