@@ -11,10 +11,20 @@ AppBundle\Entity\User:
             generator:
                 strategy: IDENTITY
     fields:
-        userkey:
+        uai:
             type: string
             nullable: false
-            length: 50
+            length: 10
+            fixed: false
+        nom:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        picture:
+            type: string
+            nullable: false
+            length: 200
             fixed: false
         pass:
             type: string
@@ -26,8 +36,9 @@ AppBundle\Entity\User:
             nullable: false
             length: 200
             fixed: false
-        rights:
-            type: integer
+        number:
+            type: string
             nullable: false
+            lenght: 100
             unsigned: false
     lifecycleCallbacks: {  }

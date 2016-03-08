@@ -31,19 +31,9 @@ class UserController extends Controller
   public function indexAction(Request $request)
   {
 
-    $key = $request->query->get('key');
-
     $em = $this->getDoctrine()->getManager();
 
-    if(is_null($key)){
-      $users = array("code" => 401, 'response' => 'Data missing');
-    }
-    else{
-      if($em->getRepository('AppBundle:User')->verifyPermission($key) == true)
-        $users = $em->getRepository('AppBundle:User')->getAllUsers();
-      else
-        $users = array('code' => 403, 'response' => 'You don\'t have rights to access these datas');
-    }
+    $users = $em->getRepository('AppBundle:User')->getAllUsers();
 
     return new JsonResponse($users);
   }
@@ -53,44 +43,60 @@ class UserController extends Controller
   *
   * @Route("/new/", name="user_new")
   * @Method({"GET", "POST"})
-  *
+  * 
   * @param Request $request
   * @return JsonResponse
   */
   public function newAction(Request $request)
   {
 
-    $mail = $request->query->get('mail');
-
-    $pass = $request->query->get('pass');
+    $response = $request->query->all();
 
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->registerNewUser($mail,$pass);
+    $response = $em->getRepository('AppBundle:User')->registerNewUser($response);
 
     return new JsonResponse($response);
 
   }
 
   /**
-  * Returns user token.
+  * Show user.
   *
-  * @Route("/token/", name="user_token")
+  * @Route("/id/{id}/", name="user_show")
   * @Method({"GET", "POST"})
-  *
+  * 
   * @param Request $request
   * @return JsonResponse
   */
-  public function tokenAction(Request $request)
+  public function showAction($id, Request $request)
   {
-
-    $mail = $request->query->get('mail');
-
-    $pass = $request->query->get('pass');
 
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->verifyUser($mail,$pass);
+    $response = $em->getRepository('AppBundle:User')->getUser($id);
+
+    return new JsonResponse($response);
+
+  }
+
+  /**
+  * Show edit.
+  *
+  * @Route("/{id}/edit/", name="user_edit")
+  * @Method({"GET", "POST"})
+  * 
+  * @param Request $request
+  * @return JsonResponse
+  */
+  public function editAction($id, Request $request)
+  {
+
+    $response = $request->query->all();
+
+    $em = $this->getDoctrine()->getManager();
+
+    $response = $em->getRepository('AppBundle:User')->editUser($response, $id);
 
     return new JsonResponse($response);
 
@@ -99,7 +105,7 @@ class UserController extends Controller
   /**
    * Delete a user.
    *
-   * @Route("/delete/{id}/", name="user_delete")
+   * @Route("/{id}/delete/", name="user_delete")
    * @Method({"GET", "POST", "DELETE"})
    *
    * @param Request $request
@@ -108,18 +114,55 @@ class UserController extends Controller
    */
   public function deleteAction(Request $request, $id)
   {
-    $key = $request->query->get('key');
+
     $em = $this->getDoctrine()->getManager();
 
-    if($em->getRepository('AppBundle:User')->verifyPermission($key)){
+    $status = $em->getRepository('AppBundle:User')->deleteUser($id);
 
-      $status = $em->getRepository('AppBundle:User')->deleteUser($id);
-
-    }
-    else {
-      $status = array('code' => 403, 'response' => 'You don\'t have rights to access these datas');
-    }
     return new JsonResponse($status);
+
+  }
+
+  /**
+   * Get user by uai.
+   *
+   * @Route("/uai/{uai}/", name="user_uai")
+   * @Method({"GET"})
+   *
+   * @param Request $request
+   * @param $uai
+   * @return JsonResponse
+   */
+  public function uaiAction(Request $request, $uai)
+  {
+
+    $em = $this->getDoctrine()->getManager();
+
+    $response = $em->getRepository('AppBundle:User')->getUserByUai($uai);
+
+    return new JsonResponse($response);
+
+  }
+
+  /**
+   * Autentify a user.
+   *
+   * @Route("/connect/", name="user_connect")
+   * @Method({"GET"})
+   *
+   * @param Request $request
+   * @return JsonResponse
+   */
+  public function connectAction(Request $request)
+  {
+
+    $response = $request->query->all();
+
+    $em = $this->getDoctrine()->getManager();
+
+    $response = $em->getRepository('AppBundle:User')->userConnect($response);
+
+    return new JsonResponse($response);
 
   }
 

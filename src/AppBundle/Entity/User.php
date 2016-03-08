@@ -12,144 +12,183 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
-    /**
+  /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+  private $id;
 
-    /**
+  /**
      * @var string
      *
-     * @ORM\Column(name="userkey", type="string", length=50, nullable=false)
+     * @ORM\Column(name="uai", type="string", length=10, nullable=false)
      */
-    private $userkey;
+  private $uai;
 
-    /**
+  /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100, nullable=false)
+     */
+  private $nom;
+
+  /**
+     * @var string
+     *
+     * @ORM\Column(name="picture", type="string", length=200, nullable=false)
+     */
+  private $picture;
+
+
+  /**
      * @var string
      *
      * @ORM\Column(name="pass", type="string", length=200, nullable=false)
      */
-    private $pass;
+  private $pass;
 
-    /**
+  /**
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=200, nullable=false)
      */
-    private $mail;
+  private $mail;
 
-    /**
-     * @var integer
+  /**
+     * @var string
      *
-     * @ORM\Column(name="rights", type="integer", nullable=false)
+     * @ORM\Column(name="number", type="integer", nullable=false)
      */
-    private $rights;
+  private $number;
 
 
 
-    /**
+  /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Set userkey
-     *
-     * @param string $userkey
-     * @return User
-     */
-    public function setUserkey($userkey)
-    {
-        $this->userkey = $userkey;
-
-        return $this;
-    }
-
-    /**
-     * Get userkey
-     *
-     * @return string 
-     */
-    public function getUserkey()
-    {
-        return $this->userkey;
-    }
-
-    /**
+  /**
      * Set pass
      *
      * @param string $pass
      * @return User
      */
-    public function setPass($pass)
-    {
-        $this->pass = $pass;
+  public function setPass($pass)
+  {
+    $this->pass = $pass;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
+  /**
      * Get pass
      *
      * @return string 
      */
-    public function getPass()
-    {
-        return $this->pass;
-    }
+  public function getPass()
+  {
+    return $this->pass;
+  }
 
-    /**
+  /**
      * Set mail
      *
      * @param string $mail
      * @return User
      */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
+  public function setMail($mail)
+  {
+    $this->mail = $mail;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
+  /**
      * Get mail
      *
      * @return string 
      */
-    public function getMail()
-    {
-        return $this->mail;
-    }
+  public function getMail()
+  {
+    return $this->mail;
+  }
 
-    /**
-     * Set rights
+  /**
+     * Set uai
      *
-     * @param integer $rights
+     * @param string $uai
      * @return User
      */
-    public function setRights($rights)
-    {
-        $this->rights = $rights;
+  public function setUai($uai)
+  {
+    $this->uai = $uai;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get rights
+  /**
+     * Get uai
      *
-     * @return integer 
+     * @return string 
      */
-    public function getRights()
-    {
-        return $this->rights;
-    }
+  public function getUai()
+  {
+    return $this->uai;
+  }
+
+  /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return User
+     */
+  public function setNom($nom)
+  {
+    $this->nom = $nom;
+
+    return $this;
+  }
+
+  /**
+     * Get nom
+     *
+     * @return string 
+     */
+  public function getNom()
+  {
+    return $this->nom;
+  }
+
+  /**
+     * Set picture
+     *
+     * @param string $picture
+     * @return User
+     */
+  public function setPicture($picture)
+  {
+    $this->picture = $picture;
+
+    return $this;
+  }
+
+  /**
+     * Get picture
+     *
+     * @return string 
+     */
+  public function getPicture()
+  {
+    return $this->picture;
+  }
+
 }

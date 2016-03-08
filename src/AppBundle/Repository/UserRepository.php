@@ -9,35 +9,6 @@ class UserRepository extends EntityRepository
 
   /**
    *
-   * Verify the user permissions
-   *
-   * @param $key
-   * @return bool
-   */
-  public function verifyPermission($key)
-  {
-
-    $em = $this->getEntityManager();
-
-    $query = $em
-      ->createQuery('SELECT u FROM AppBundle:User u WHERE u.userkey = :key')
-      ->setParameter('key', $key);
-
-    $rights = $query->getArrayResult();
-
-    if(!empty($rights)){
-      if($rights[0]['rights'] == '1')
-        return true;
-      else
-        return false;
-    }
-    else
-      return false;
-
-  }
-
-  /**
-   *
    * Get all users registered
    *
    * @return array
@@ -56,103 +27,102 @@ class UserRepository extends EntityRepository
 
   /**
    *
-   * Verify key given by user
-   *
-   * @param $key
-   * @return bool
-   */
-  public function verifyKey($key)
-  {
-
-    $em = $this->getEntityManager();
-
-    $query = $em
-      ->createQuery('SELECT u FROM AppBundle:User u WHERE u.userkey = :key ')
-      ->setParameter('key', $key);
-
-    if(empty($query->getResult()))
-      return false;
-    else
-      return true;
-
-  }
-
-  /**
-   *
    * Generate user who will be assigned to user
    *
    * @return string
    */
-  public function generateToken()
+  public function editUser($response, $id)
   {
 
-    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    $token = array();
-    $charactersLength = strlen($characters) - 1;
+    $UserBDD = $this->getUser($id);
 
-    for ($i = 0; $i < 10; $i++)
+    if ( $UserBDD['code'] == 200 )
+    {
+      
+      $updatedUser = $this->updateUser($UserBDD['response'], $response);
+
+      $em = $this->getEntityManager();
+
+      $query = $em->createQueryBuilder()
+        ->update('AppBundle:User', 'f')
+        ->set('f.nom', ':nom')
+        ->set('f.uai', ':uai')
+        ->set('f.picture', ':picture')
+        ->set('f.pass', ':pass')
+        ->set('f.mail', ':mail')
+        ->set('f.number', ':number')
+        ->where('f.id = :id')
+        ->setParameter('nom', $updatedUser[0]['nom'])
+        ->setParameter('uai', $updatedUser[0]['uai'])
+        ->setParameter('picture', $updatedUser[0]['picture'])
+        ->setParameter('pass', $updatedUser[0]['pass'])
+        ->setParameter('mail', $updatedUser[0]['mail'])
+        ->setParameter('number', $updatedUser[0]['number'])
+        ->setParameter('id', $id)
+        ->getQuery();
+
+      $result = $query->getArrayResult();
+
+      if ( $result === 0 )
+      {
+        $result = array('code' => 200, "response" => "nothing to update");
+      }
+      elseif ( $result === 1 )
+      {
+        $result = array('code' => 200,"response" => "value(s) updated");
+      }
+      else
+      {
+        $result = array('code' => 500,"response" => "something goes wrong");
+      }
+      return $result;
+
+    }
+    else
+    {
+      return $flatBDD;
+    }
+
+  }
+
+  /**
+   * Updates User
+   *
+     * @param $objectBDD
+     * @param $response
+     * @return mixed
+     */
+  public function updateUser($UserBDD, $response)
+  {
+
+
+    foreach ( $response as $key => $oneResponse )
     {
 
-      $n = rand(0, $charactersLength);
-      $token[] = $characters[$n];
+      switch ($key) {
+        case 'uai':
+          $UserBDD[0]["uai"] = $oneResponse;
+          break;
+        case 'nom':
+          $UserBDD[0]["nom"] = $oneResponse;
+          break;
+        case 'picture':
+          $UserBDD[0]["picture"] = $oneResponse;
+          break;
+        case 'pass':
+          $UserBDD[0]["pass"] = hash('sha256', $oneResponse);
+          break;
+        case 'mail':
+          $UserBDD[0]["mail"] = $oneResponse;
+          break;
+        case 'number':
+          $UserBDD[0]["number"] = $oneResponse;
+          break;
+      }
 
     }
 
-    return implode($token);
-
-  }
-
-  /**
-   *
-   * Create a new user with his user token assigned
-   *
-   * @param $token
-   * @param $mail
-   * @param $pass
-   * @return array
-   */
-  public function newUser($token, $mail, $pass)
-  {
-
-    $em = $this->getEntityManager();
-
-    $query = $em
-      ->createQuery('SELECT u FROM AppBundle:User u WHERE u.mail = :mail')
-      ->setParameter('mail', $mail);
-
-    if(empty($query->getResult()))
-      return $this->insertNewUser($token, $mail, $pass);
-    else
-      return array('code'   => 409 ,'response' => 'user already registered');
-
-  }
-
-  /**
-   *
-   * Insert the user in the database
-   *
-   * @param $token
-   * @param $mail
-   * @param $pass
-   * @return array
-   */
-  public function insertNewUser($token, $mail, $pass)
-  {
-
-    $hashPassword = hash('sha256',$pass);
-
-    $user = new User();
-    $user->setMail($mail);
-    $user->setUserkey($token);
-    $user->setRights(0);
-    $user->setPass($hashPassword);
-
-    $em = $this->getEntityManager();
-
-    $em->persist($user);
-    $em->flush();
-
-    return array("code"   =>  200 ,"response" => 'User saved');
+    return $UserBDD;
 
   }
 
@@ -164,44 +134,58 @@ class UserRepository extends EntityRepository
    * @param $pass
    * @return array
    */
-  public function registerNewUser($mail,$pass)
+  public function registerNewUser($response)
   {
-
-    if(is_null($mail) || is_null($pass))
-      return array('code'   => 401 ,"response" => 'Data missing');
-    else
-      return $this->newUser($this->generateToken(), $mail, $pass);
-
-  }
-
-  /**
-   *
-   * Return a user's token when he given his mail and password
-   *
-   * @param $mail
-   * @param $pass
-   * @return array
-   */
-  public function verifyUser($mail, $pass) 
-  {
-
-    if(is_null($mail) || is_null($pass))
-      return array('code'   => 401 ,"response" => 'Data missing');
 
     $em = $this->getEntityManager();
 
-    $query = $em
-      ->createQuery('SELECT u FROM AppBundle:User u WHERE u.mail = :mail')
-      ->setParameter('mail', $mail);
+    $user = new User();
 
-    $user = $query->getArrayResult();
-
-    if(hash('sha256', $pass) == $user[0]["pass"])
-      return array('code' => 200, 'response' => $user[0]["userkey"]);
+    if ( isset($response['uai']) && !empty($response['uai']))
+    {
+      $user->setUai($response['uai']);
+    }
     else
-      return array('code' => 403, 'response' => 'Not valid password');
+    {
+      return array('code' => 401, "response" => "missing value : uai");
+    }
+
+    if ( isset($response['nom']) && !empty($response['nom']))
+    {
+      $user->setNom($response['nom']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : nom");
+    }
+
+    if ( isset($response['pass']) && !empty($response['pass']))
+    {
+      $hashPassword = hash('sha256', $response['pass']);
+      $user->setPass($hashPassword);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : pass");
+    }
+
+    if ( isset($response['mail']) && !empty($response['mail']))
+    {
+      $user->setMail($response['mail']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : mail");
+    }
+
+    $em->persist($user);
+    $em->flush();
+
+    return array('code' => 200 , 'response' => array('Id'=> $user->getId()) );
 
   }
+
+
 
   /**
    *
@@ -223,6 +207,112 @@ class UserRepository extends EntityRepository
       return array('code' => 200, 'response' => 'user '. $id .' deleted');
     else
       return array('code' => 409,'response' => 'an error occured');
+
+  }
+
+  /**
+   *
+   * Get one User
+   *
+   * @param $uai
+   * @param $id
+   * @return array
+   */
+  public function getUser($id)
+  {
+
+    $em = $this->getEntityManager();
+
+    $query = $em->createQueryBuilder()
+      ->select('u')
+      ->from('AppBundle:User', 'u')
+      ->where('u.id = :id');
+
+    $query->setParameters(array(
+      'id' => $id
+    ));
+
+    $query = $query->getQuery()->getArrayResult();
+
+    if (!empty($query))
+    {
+      return array('code' => 200, 'response' => $query);
+    }
+    else
+    {
+      return array('code' => 404,"response" => "Somthing went wrong");
+    }
+
+  }
+  
+  /**
+   *
+   * Get user by school
+   *
+   * @param $uai
+   * @return array
+   */
+  public function getUserByUai($uai)
+  {
+    
+    $em = $this->getEntityManager();
+
+    $query = $em->createQueryBuilder()
+      ->select('u')
+      ->from('AppBundle:User', 'u')
+      ->where('u.uai = :uai');
+
+    $query->setParameters(array(
+      'uai' => $uai
+    ));
+
+    $query = $query->getQuery()->getArrayResult();
+
+    if (!empty($query))
+    {
+      return array('code' => 200, 'response' => $query);
+    }
+    else
+    {
+      return array('code' => 404,"response" => "Somthing went wrong");
+    }
+
+  }
+  
+  /**
+   *
+   * Connect user
+   *
+   * @return array
+   */
+  public function userConnect($response)
+  {
+    
+    $em = $this->getEntityManager();
+
+    $hashPassword = hash('sha256', $response['pass']);
+        
+    $query = $em->createQueryBuilder()
+      ->select('u')
+      ->from('AppBundle:User', 'u')
+      ->where('u.pass = :pass')
+      ->andWhere('u.mail = :mail');
+
+    $query->setParameters(array(
+      'pass' => $hashPassword,
+      'mail' => $response['mail']
+    ));
+
+    $query = $query->getQuery()->getArrayResult();
+
+    if (!empty($query))
+    {
+      return array('code' => 200, 'response' => $query);
+    }
+    else
+    {
+      return array('code' => 404,"response" => "Somthing went wrong");
+    }
 
   }
 
