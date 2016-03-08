@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ParisObjectController extends Controller
 {
-    /**
+  /**
      * Lists all ParisObject entities.
      *
      * @Route("/", name="object_index")
@@ -25,31 +25,17 @@ class ParisObjectController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function indexAction($uai, Request $request)
-    {
+  public function indexAction($uai, Request $request)
+  {
 
-        $response = $request->query->all();
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
 
+    return new JsonResponse($result);
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
+  }
 
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisObject')->getObjects($uai, $response['key']);
-
-        }
-        else
-        {
-
-            $result =  array('code' => 401, "response" => "data missing");
-
-        }
-
-        return new JsonResponse($result);
-
-    }
-
-    /**
+  /**
      * Creates a new ParisObject entity.
      *
      * @Route("/new/", name="object_new")
@@ -59,30 +45,19 @@ class ParisObjectController extends Controller
      * @param $uai
      * @return JsonResponse
      */
-    public function newAction(Request $request, $uai)
-    {
+  public function newAction(Request $request, $uai)
+  {
 
-        $response = $request->query->all();
+    $response = $request->query->all();
 
+    $em = $this->getDoctrine()->getManager();
+    $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ) )
-        {
-            $em = $this->getDoctrine()->getManager();
-            $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $response['key'], $uai);
+    return new JsonResponse($parisInsert);
 
-        }
-        else
-        {
-            $parisInsert = array('code' => 401, "response" => "No arguments passed, nothing to create");
-        }
+  }
 
-
-
-        return new JsonResponse($parisInsert);
-
-    }
-
-    /**
+  /**
      * Finds and displays a ParisObject entity.
      *
      * @Route("/{id}/", name="object_show")
@@ -93,30 +68,16 @@ class ParisObjectController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function showAction($uai, $id, Request $request)
-    {
+  public function showAction($uai, $id, Request $request)
+  {
 
-        $response = $request->query->all();
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id);
 
+    return new JsonResponse($result);
+  }
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
-
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id, $response['key']);
-
-        }
-        else
-        {
-
-            $result =  array('code' => 401, "response" => "Data missing");
-
-        }
-
-        return new JsonResponse($result);
-    }
-
-    /**
+  /**
      * Displays a form to edit an existing ParisObject entity.
      *
      * @Route("/{id}/edit/", name="object_edit")
@@ -127,30 +88,19 @@ class ParisObjectController extends Controller
      * @param $id
      * @return JsonResponse
      */
-    public function editAction(Request $request, $uai, $id)
-    {
-      
-        $response = $request->query->all();
+  public function editAction(Request $request, $uai, $id)
+  {
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
+    $response = $request->query->all();
 
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $response['key'], $uai, $id);
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
 
-        }
-        else
-        {
+    return new JsonResponse($result);
 
-            $result =   array('code' => 401, "response" => "Data missing");
+  }
 
-        }
-
-        return new JsonResponse($result);
-
-    }
-
-    /**
+  /**
      * Deletes a ParisObject entity.
      *
      * @Route("/{id}/delete/", name="object_delete")
@@ -161,26 +111,14 @@ class ParisObjectController extends Controller
      * @param $uai
      * @return JsonResponse
      */
-    public function deleteAction(Request $request, $id, $uai)
-    {
-        $response = $request->query->all();
+  public function deleteAction(Request $request, $id, $uai)
+  {
 
-        if ( isset( $response['key'] ) && !empty( $response['key'] ))
-        {
+    $em = $this->getDoctrine()->getManager();
+    $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($id, $uai);
 
-            $em = $this->getDoctrine()->getManager();
-            $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($response['key'], $id, $uai);
+    return new JsonResponse($result);
 
-        }
-        else
-        {
-
-            $result =  array('code' => 401, "response" => "Data missing");
-
-        }
-
-        return new JsonResponse($result);
-
-    }
+  }
 
 }

@@ -17,42 +17,32 @@ class ParisObjectRepository extends EntityRepository
    * Get objects by schools
    *
      * @param $uai
-     * @param null $userkey
      * @return array
      */
-  public function getObjects($uai, $userkey)
+  public function getObjects($uai)
   {
 
     $em = $this->getEntityManager();
 
-    $hasRight = $this->getUser($userkey);
 
-    if (!empty($hasRight)){
+    $query = $em->createQueryBuilder()
+      ->select('o')
+      ->from('AppBundle:ParisObject', 'o')
+      ->where('o.uai = :uai');
 
-      $query = $em->createQueryBuilder()
-        ->select('o')
-        ->from('AppBundle:ParisObject', 'o')
-        ->where('o.uai = :uai');
+    $query->setParameters(array(
+      'uai' => $uai
+    ));
 
-      $query->setParameters(array(
-        'uai' => $uai
-      ));
+    $query = $query->getQuery()->getArrayResult();
 
-      $query = $query->getQuery()->getArrayResult();
-
-      if (!empty($query))
-      {
-        return array('code' => 200, 'response' => $query);
-      }
-      else
-      {
-        return array('code' => 404, "response" => "Something goes wrong, maybe you havn't objects yet ?");
-      }
-
+    if (!empty($query))
+    {
+      return array('code' => 200, 'response' => $query);
     }
     else
     {
-      return array('code' => 403, "response" => "wrong userkey");
+      return array('code' => 404, "response" => "Something went wrong");
     }
 
   }
@@ -62,66 +52,33 @@ class ParisObjectRepository extends EntityRepository
    *
      * @param $uai
      * @param $id
-     * @param $userkey
      * @return array
      */
-  public function getObject($uai, $id, $userkey)
+  public function getObject($uai, $id)
   {
 
     $em = $this->getEntityManager();
-    $hasRight = $this->getUser($userkey);
 
-    if (!empty($hasRight))
+    $query = $em->createQueryBuilder()
+      ->select('o')
+      ->from('AppBundle:ParisObject', 'o')
+      ->where('o.uai = :uai')
+      ->andWhere('o.id = :id');
+
+    $query->setParameters(array(
+      'uai' => $uai,
+      'id' => $id
+    ));
+
+    $query = $query->getQuery()->getArrayResult();
+
+    if (!empty($query))
     {
-
-
-      if($hasRight[0]['rights'] === 1)
-      {
-
-        $query = $em->createQueryBuilder()
-          ->select('o')
-          ->from('AppBundle:ParisObject', 'o')
-          ->where('o.uai = :uai')
-          ->andWhere('o.id = :id');
-
-        $query->setParameters(array(
-          'uai' => $uai,
-          'id' => $id
-        ));
-
-      }
-      else
-      {
-        $query = $em->createQueryBuilder()
-          ->select('o')
-          ->from('AppBundle:ParisObject', 'o')
-          ->where('o.uai = :uai')
-          ->andWhere('o.id = :id')
-          ->andWhere('o.owner = :userkey');
-
-        $query->setParameters(array(
-          'uai' => $uai,
-          'id' => $id,
-          'userkey' => $userkey
-        ));
-
-      }
-
-      $query = $query->getQuery()->getArrayResult();
-
-      if (!empty($query))
-      {
-        return array('code' => 200, 'response' => $query);
-      }
-      else
-      {
-        return array('code' => 403, "response" => "not authorized");
-      }
-
+      return array('code' => 200, 'response' => $query);
     }
     else
     {
-      return array('code' => 401, "response" => "wrong userkey");
+      return array('code' => 403, "response" => "not authorized");
     }
 
 
@@ -134,84 +91,82 @@ class ParisObjectRepository extends EntityRepository
      * @param $uai
      * @return ParisObject
      */
-  public function insertObject($response, $key, $uai)
+  public function insertObject($response, $uai)
   {
 
-    $hasRight = $this->getUser($key);
+    $em = $this->getEntityManager();
 
-    if (!empty($hasRight))
+    $object = new parisObject();
+    $object->setUai($uai);
+
+    if ( isset($response['id']) && !empty($response['id']))
     {
-
-      $em = $this->getEntityManager();
-
-      $object = new parisObject();
-      $object->setUai($uai);
-      $object->setOwner($key);
-
-      if ( isset($response['name']) && !empty($response['name']))
-      {
-        $object->setName($response['name']);
-      }
-      else
-      {
-        return array('code' => 401, "response" => "missing value : name");
-      }
-
-      if ( isset($response['price']) && !empty($response['price']))
-      {
-        $object->setPrice($response['price']);
-      }
-      else
-      {
-        return array('code' => 401, "response" => "missing value : price");
-      }
-
-      if ( isset($response['description']) && !empty($response['description']))
-      {
-        $object->setDescription($response['description']);
-      }
-      else
-      {
-        return array('code' => 401, "response" => "missing value : description");
-      }
-
-      if ( isset($response['type']) && !empty($response['type']))
-      {
-        $object->setType($response['type']);
-      }
-      else
-      {
-        return array('code' => 401, "response" => "missing value : type");
-      }
-
-      if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
-      {
-        $object->setThumbnail($response['thumbnail']);
-      }
-      else
-      {
-        return array('code' => 401, "response" => "missing value : thumbnail");
-      }
-
-      if ( isset($response['album']) && !empty($response['album']))
-      {
-        $object->setAlbum($response['album']);
-      }
-      else
-      {
-        return array('code' => 401, "response" => "missing value : album");
-      }
-
-      $em->persist($object);
-      $em->flush();
-
-      return array('code' => 200 , 'response' => array('Id'=> $object->getId()) );
-
+      $object->setOwner($response['id']);
     }
     else
     {
-      return array('code' => 401, "response" => "wrong userkey");
+      return array('code' => 401, "response" => "missing value : id");
     }
+
+    if ( isset($response['name']) && !empty($response['name']))
+    {
+      $object->setName($response['name']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : name");
+    }
+
+    if ( isset($response['price']) && !empty($response['price']))
+    {
+      $object->setPrice($response['price']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : price");
+    }
+
+    if ( isset($response['description']) && !empty($response['description']))
+    {
+      $object->setDescription($response['description']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : description");
+    }
+
+    if ( isset($response['type']) && !empty($response['type']))
+    {
+      $object->setType($response['type']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : type");
+    }
+
+    if ( isset($response['thumbnail']) && !empty($response['thumbnail']))
+    {
+      $object->setThumbnail($response['thumbnail']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : thumbnail");
+    }
+
+    if ( isset($response['album']) && !empty($response['album']))
+    {
+      $object->setAlbum($response['album']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : album");
+    }
+
+    $em->persist($object);
+    $em->flush();
+
+    return array('code' => 200 , 'response' => array('Id'=> $object->getId()) );
+
   }
 
 
@@ -223,10 +178,10 @@ class ParisObjectRepository extends EntityRepository
      * @param $id
      * @return array|null
      */
-  public function editObject($response, $key, $uai, $id)
+  public function editObject($response, $uai, $id)
   {
 
-    $objectBDD = $this->getObject($uai, $id, $key);
+    $objectBDD = $this->getObject($uai, $id);
 
     if ( $objectBDD['code'] == 200 )
     {
@@ -285,9 +240,9 @@ class ParisObjectRepository extends EntityRepository
      * @param $id
      * @return array|null
      */
-  public function deleteObject($key, $id, $uai)
+  public function deleteObject($id, $uai)
   {
-    $objectBDD = $this->getObject($uai, $id, $key);
+    $objectBDD = $this->getObject($uai, $id);
 
     if ( $objectBDD['code'] == 200 )
     {
@@ -362,54 +317,4 @@ class ParisObjectRepository extends EntityRepository
 
   }
 
-  /**
-   * Get user ID
-   *
-     * @param $userkey
-     * @return array
-     */
-  public function getUser($userkey)
-  {
-    $em = $this->getEntityManager();
-
-    $query = $em->createQuery('SELECT u FROM AppBundle:User u
-    WHERE u.userkey = :userkey
-    ');
-
-    $query->setParameters(array(
-      'userkey' => $userkey
-    ));
-
-    return $query->getArrayResult();
-  }
-
-  /**
-   * Checks user rights
-   *
-     * @param $userkey
-     * @param $objectBDD
-     * @return bool|null
-     */
-  public function checkUserRights($userkey, $objectBDD)
-  {
-
-    // If object owner is the good one
-    if ($objectBDD === $userkey) {
-
-      return true;
-
-    } else {
-      // Checking if the action is done by an admin
-      $admin = $this->getUser($userkey);
-
-      if (is_null($admin) || empty($admin)) {
-        return null;
-      } elseif ($admin[0]['rights'] === 0) {
-        return null;
-      } else {
-        return true;
-      }
-
-    }
-  }
 }
