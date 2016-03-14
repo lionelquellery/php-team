@@ -38,7 +38,7 @@ class UserRepository extends EntityRepository
 
     if ( $UserBDD['code'] == 200 )
     {
-      
+
       $updatedUser = $this->updateUser($UserBDD['response'], $response);
 
       $em = $this->getEntityManager();
@@ -232,19 +232,45 @@ class UserRepository extends EntityRepository
       'id' => $id
     ));
 
-    $query = $query->getQuery()->getArrayResult();
+    $user = $query->getQuery()->getArrayResult();
+
+    $query = $em->createQueryBuilder()
+      ->select('o')
+      ->from('AppBundle:ParisObject', 'o')
+      ->where('o.owner = :id');
+
+    $query->setParameters(array(
+      'id' => $id
+    ));
+
+    $object = $query->getQuery()->getArrayResult();
+
+    $query = $em->createQueryBuilder()
+      ->select('f')
+      ->from('AppBundle:ParisFlat', 'f')
+      ->where('f.owner = :id');
+
+    $query->setParameters(array(
+      'id' => $id
+    ));
+
+    $flat = $query->getQuery()->getArrayResult();
 
     if (!empty($query))
     {
-      return array('code' => 200, 'response' => $query);
+      return array('code' => 200, 'response' => array(
+        'user'    => $user,
+        'objects' => $object,
+        'flats'    => $flat
+      ));
     }
     else
     {
-      return array('code' => 404,"response" => "Somthing went wrong");
+      return array('code' => 404,"response" => "Something went wrong");
     }
 
   }
-  
+
   /**
    *
    * Get user by school
@@ -254,7 +280,7 @@ class UserRepository extends EntityRepository
    */
   public function getUserByUai($uai)
   {
-    
+
     $em = $this->getEntityManager();
 
     $query = $em->createQueryBuilder()
@@ -278,7 +304,7 @@ class UserRepository extends EntityRepository
     }
 
   }
-  
+
   /**
    *
    * Connect user
@@ -287,11 +313,11 @@ class UserRepository extends EntityRepository
    */
   public function userConnect($response)
   {
-    
+
     $em = $this->getEntityManager();
 
     $hashPassword = hash('sha256', $response['pass']);
-        
+
     $query = $em->createQueryBuilder()
       ->select('u')
       ->from('AppBundle:User', 'u')
