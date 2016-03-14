@@ -156,11 +156,34 @@ class UserController extends Controller
   public function connectAction(Request $request)
   {
 
-    $response = $request->query->all();
+    $pass = $request->query->get('pass');
+    $mail = $request->query->get('mail');
 
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->userConnect($response);
+    $response = $em->getRepository('AppBundle:User')->userConnect($pass, $mail);
+
+    return new JsonResponse($response);
+
+  }
+  
+  /**
+   * Disconnect user
+   *
+   * @Route("/disconnect/", name="user_disconnect")
+   * @Method({"GET"})
+   *
+   * @param Request $request
+   * @return JsonResponse
+   */
+  public function disconnetAction(Request $request)
+  {
+
+    $token = $request->query->get('token');
+
+    $em = $this->getDoctrine()->getManager();
+
+    $response = $em->getRepository('AppBundle:User')->disconnect($token);
 
     return new JsonResponse($response);
 

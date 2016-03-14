@@ -3,6 +3,7 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Token;
 
 class UserRepository extends EntityRepository
 {
@@ -159,6 +160,24 @@ class UserRepository extends EntityRepository
       return array('code' => 401, "response" => "missing value : nom");
     }
 
+    if ( isset($response['picture']) && !empty($response['picture']))
+    {
+      $user->setPicture($response['picture']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : picture");
+    }
+
+    if ( isset($response['number']) && !empty($response['number']))
+    {
+      $user->setNumber($response['number']);
+    }
+    else
+    {
+      return array('code' => 401, "response" => "missing value : number");
+    }
+
     if ( isset($response['pass']) && !empty($response['pass']))
     {
       $hashPassword = hash('sha256', $response['pass']);
@@ -311,35 +330,103 @@ class UserRepository extends EntityRepository
    *
    * @return array
    */
-  public function userConnect($response)
+  public function userConnect($pass, $mail)
+  {
+
+    if($pass && $mail)
+    {
+      $em = $this->getEntityManager();
+
+      $hashPassword = hash('sha256', $pass);
+
+      $query = $em->createQueryBuilder()
+        ->select('u')
+        ->from('AppBundle:User', 'u')
+        ->where('u.pass = :pass')
+        ->andWhere('u.mail = :mail');
+
+      $query->setParameters(array(
+        'pass' => $hashPassword,
+        'mail' => $mail
+      ));
+
+      $query = $query->getQuery()->getArrayResult();
+
+      if (!empty($query))
+      {
+
+        $verif = $em->createQueryBuilder()
+          ->select('t')
+          ->from('AppBundle:Token', 't')
+          ->where('t.user = :user');
+
+        $verif->setParameters(array(
+          'user' => $query[0]['id'],
+        ));
+
+        $session = $verif->getQuery()->getArrayResult();
+
+        if(count($session) != 0)
+          return array('code' => 404,"response" => "Session already exist");
+
+        $sessionToken = $this->token();
+
+        $token = new Token();
+        $token->setToken($sessionToken);
+        $token->setUser($query[0]['id']);
+
+        $em->persist($token);
+        $em->flush();
+
+        return array('code' => 404,"response" => array(
+          'user'  => $query,
+          'token' => $sessionToken
+
+        ));
+
+      }
+      else
+      {
+        return array('code' => 404,"response" => "Somthing went wrong");
+      }
+
+    }
+    else
+      return array('code' => 401,"response" => "Nique ta mere");
+
+  }
+
+  public function token()
+  {
+
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+
+    for ($i = 0; $i < 10; $i++) {
+      $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+
+    return $randomString;
+
+  }
+
+  public function disconnect($token)
   {
 
     $em = $this->getEntityManager();
+    $query = $em
+      ->createQuery('DELETE FROM AppBundle:Token t WHERE t.token = :token')
+      ->setParameter('token', $token);
 
-    $hashPassword = hash('sha256', $response['pass']);
+    $result = $query->execute();
 
-    $query = $em->createQueryBuilder()
-      ->select('u')
-      ->from('AppBundle:User', 'u')
-      ->where('u.pass = :pass')
-      ->andWhere('u.mail = :mail');
-
-    $query->setParameters(array(
-      'pass' => $hashPassword,
-      'mail' => $response['mail']
-    ));
-
-    $query = $query->getQuery()->getArrayResult();
-
-    if (!empty($query))
-    {
-      return array('code' => 200, 'response' => $query);
-    }
+    if($result == 1)
+      return array('code' => 200, 'response' => 'User disconnected');
     else
-    {
-      return array('code' => 404,"response" => "Somthing went wrong");
-    }
+      return array('code' => 409,'response' => 'an error occured');
 
   }
 
 }
+

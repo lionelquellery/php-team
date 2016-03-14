@@ -190,5 +190,28 @@ class User
   {
     return $this->picture;
   }
+  
+  /**
+     * Set number
+     *
+     * @param string $number
+     * @return number
+     */
+  public function setNumber($number)
+  {
+    $this->number = $number;
+
+    return $this;
+  }
+
+  /**
+     * Get number
+     *
+     * @return number 
+     */
+  public function getNumber()
+  {
+    return $this->number;
+  }
 
 }
