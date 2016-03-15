@@ -30,43 +30,45 @@ This app runs on:
 
 # Utilisation
 
-You must pass a key parameter containing your api token for each of your requests
+To access to all these data you need first to make a session and pass the token returned as parameter
+
+#### Test session token : 123
 
 ### Postman Script
 To test the API you can use [Postman](https://www.getpostman.com) and load the script below:
 - [Script Postman](https://infinit.io/_/WiTRrJ2)
 
-### /school/
+### /school/ GET
 
 Returns all schools in Paris
 
 ##### Parameters : 
 - location : the distict's number in which the school is located. Retrieves all schools if empty
 
-### /school/{uai}/
+### /school/{uai}/ GET
 
 Returns the school's infos
 
-### /school/{uai}/restaurant/
+### /school/{uai}/restaurant/ GET
 
 Return all resturant around the school in a given radius. Default 100 meters.
 
 ##### Parameters :
 - radius : the radius in which restaurants must be to be returned. In meters. Default 100m. 
 
-### /school/{uai}/restaurant/{id}/
+### /school/{uai}/restaurant/{id}/ GET
 
 Returns infos about the selected restaurant
 
-### /school/{uai}/object/
+### /school/{uai}/object/ GET
 
 Returns all objects that belong to this school
 
-### /school/{uai}/object/{id}/
+### /school/{uai}/object/{id}/ GET
 
 Returns infos of the selected object
 
-### /school/{uai}/object/new/
+### /school/{uai}/object/new/ POST
 
 Creates a new object
 
@@ -78,7 +80,7 @@ Creates a new object
 - thumbnail (string)
 - album (string)
 
-### /school/{uai}/object/edit/
+### /school/{uai}/object/edit/ POST
 
 Updates a existent object
 
@@ -90,19 +92,19 @@ Updates a existent object
 - thumbnail (string)
 - album (string)
 
-### /school/{uai}/object/{id}/delete/
+### /school/{uai}/object/{id}/delete/ DELETE
 
 Deletes an object
 
-### /school/{uai}/flat/
+### /school/{uai}/flat/ GET
 
 Returns all flat that belong to this school
 
-### /school/{uai}/flat/{id}/
+### /school/{uai}/flat/{id}/ GET
 
 Returns infos of the selected flat
 
-### /school/{uai}/flat/new/
+### /school/{uai}/flat/new/ POST
 
 Creates a new flat
 
@@ -117,7 +119,7 @@ Creates a new flat
 - longitude (int)
 - latitude (int)
 
-### /school/{uai}/flat/edit/
+### /school/{uai}/flat/edit/ POST
 
 Updates an existent flat
 
@@ -132,27 +134,59 @@ Updates an existent flat
 - longitude (int)
 - latitude (int)
 
-### /school/{uai}/flat/{id}/delete/
+### /school/{uai}/flat/{id}/delete/ DELETE
 
 Deletes a flat
 
-### /user/new/
+### /user/ GET
+
+Return all users
+
+### /user/new/ POST
 
 Creates new user account 
 
 ##### Parameters :
 - mail (REQUIRED) : your mail
 - pass (REQUIRED) : your account password
+- nom (REQUIRED) : your account nom
+- number (REQUIRED) : your account number
+- pic (REQUIRED) : your account picture link
 
-### /user/token/
+### /user/uai/{uai}/ GET
 
-Returns your account's token
+Return users by uai
+
+### /user/id/{id}/ GET
+
+Return user by id
+
+### /user/{id}/edit/ POST
+
+Edit a user
+
+##### Parameters :
+- mail : your mail
+- pass : your account password
+- nom : your account nom
+- number : your account number
+- pic : your account picture link
+
+### /user/{id}/delete/ DELETE
+
+Delete a user
+
+### /user/connect/ POST
+
+Return user and session token
 
 ##### Parameters : 
 - mail (REQUIRED) : your mail's account
 - pass (REQUIRED) : your password's account
 
+### /user/disconnect/{id}/ GET
 
+Disconnect the user from his session
 
 ### The MIT License (MIT)
 

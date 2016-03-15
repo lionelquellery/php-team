@@ -23,7 +23,7 @@ class ParisRestaurantController extends Controller
   * Return all restaurant in a given radius
   *
   * @Route("/", name="restaurant_index")
-  * @Method({"GET", "POST"})
+  * @Method({"GET"})
   *
   * @param ParisRestaurant $parisRestaurant
   * @param Request $request
@@ -33,16 +33,21 @@ class ParisRestaurantController extends Controller
   {
 
     $radius = $request->query->get('radius');
+    $token  = $request->query->get('token');
 
     $em = $this->getDoctrine()->getManager();
-    $school = $em->getRepository('AppBundle:ParisSchool')->getByUai($uai, true);
+    if($em->getRepository('AppBundle:User')->verifySession($token)){
 
-    $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
+      $school = $em->getRepository('AppBundle:ParisSchool')->getByUai($uai, true);
 
-    $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($school[0]['latitude'], $school[0]['longitude'], $radiusRatio);
+      $radiusRatio = $em->getRepository('AppBundle:ParisSchool')->getRadius($radius);
 
-    $response = array('code' => 200, 'response' => $restaurants);
+      $restaurants = $em->getRepository('AppBundle:ParisRestaurant')->getPerimeter($school[0]['latitude'], $school[0]['longitude'], $radiusRatio);
 
+      $response = array('code' => 200, 'response' => $restaurants);
+    }
+    else
+      $response = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($response);
 
@@ -61,7 +66,10 @@ class ParisRestaurantController extends Controller
   public function showAction(ParisRestaurant $parisRestaurant, Request $request)
   {
 
-    $response = array(
+    $token = $request->query->get('token');
+
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $response = array(
       'code'     => 200,
       'response' => array(
         'id'       => $parisRestaurant->getId(),
@@ -71,6 +79,8 @@ class ParisRestaurantController extends Controller
         'long'     => $parisRestaurant->getLongitude(),
       )
     );
+    else
+      $response = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($response);
 

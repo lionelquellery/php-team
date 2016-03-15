@@ -23,7 +23,7 @@ class UserController extends Controller
   * Lists all User entities.
   *
   * @Route("/", name="user_index")
-  * @Method({"GET", "POST"})
+  * @Method({"GET"})
   *
   * @param Request $request
   * @return JsonResponse
@@ -31,9 +31,14 @@ class UserController extends Controller
   public function indexAction(Request $request)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
 
-    $users = $em->getRepository('AppBundle:User')->getAllUsers();
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $users = $em->getRepository('AppBundle:User')->getAllUsers();
+    else
+      $users = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($users);
   }
@@ -42,7 +47,7 @@ class UserController extends Controller
   * Creates a new User entity.
   *
   * @Route("/new/", name="user_new")
-  * @Method({"GET", "POST"})
+  * @Method({"POST"})
   * 
   * @param Request $request
   * @return JsonResponse
@@ -50,11 +55,11 @@ class UserController extends Controller
   public function newAction(Request $request)
   {
 
-    $response = $request->query->all();
+    $params = $request->request->all();
 
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->registerNewUser($response);
+    $response = $em->getRepository('AppBundle:User')->registerNewUser($params);
 
     return new JsonResponse($response);
 
@@ -64,17 +69,21 @@ class UserController extends Controller
   * Show user.
   *
   * @Route("/id/{id}/", name="user_show")
-  * @Method({"GET", "POST"})
+  * @Method({"GET"})
   * 
   * @param Request $request
   * @return JsonResponse
   */
   public function showAction($id, Request $request)
   {
+    $token = $request->query->get('token');
 
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->getUser($id);
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $response = $em->getRepository('AppBundle:User')->getUser($id);
+    else
+      $response = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($response);
 
@@ -84,7 +93,7 @@ class UserController extends Controller
   * Show edit.
   *
   * @Route("/{id}/edit/", name="user_edit")
-  * @Method({"GET", "POST"})
+  * @Method({"POST"})
   * 
   * @param Request $request
   * @return JsonResponse
@@ -92,11 +101,15 @@ class UserController extends Controller
   public function editAction($id, Request $request)
   {
 
-    $response = $request->query->all();
+    $params = $request->request->all();
 
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->editUser($response, $id);
+    if($em->getRepository('AppBundle:User')->verifySession(params['token']))
+      $response = $em->getRepository('AppBundle:User')->editUser($params, $id);
+    else
+      $response = $em->getRepository('AppBundle:User')->error();
+
 
     return new JsonResponse($response);
 
@@ -106,7 +119,7 @@ class UserController extends Controller
    * Delete a user.
    *
    * @Route("/{id}/delete/", name="user_delete")
-   * @Method({"GET", "POST", "DELETE"})
+   * @Method({"DELETE"})
    *
    * @param Request $request
    * @param $id
@@ -115,9 +128,14 @@ class UserController extends Controller
   public function deleteAction(Request $request, $id)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
 
-    $status = $em->getRepository('AppBundle:User')->deleteUser($id);
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $status = $em->getRepository('AppBundle:User')->deleteUser($id);
+    else
+      $status = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($status);
 
@@ -136,9 +154,14 @@ class UserController extends Controller
   public function uaiAction(Request $request, $uai)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->getUserByUai($uai);
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $response = $em->getRepository('AppBundle:User')->getUserByUai($uai);
+    else
+      $response = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($response);
 
@@ -148,7 +171,7 @@ class UserController extends Controller
    * Autentify a user.
    *
    * @Route("/connect/", name="user_connect")
-   * @Method({"GET"})
+   * @Method({"POST"})
    *
    * @param Request $request
    * @return JsonResponse
@@ -156,8 +179,8 @@ class UserController extends Controller
   public function connectAction(Request $request)
   {
 
-    $pass = $request->query->get('pass');
-    $mail = $request->query->get('mail');
+    $pass = $request->request->get('pass');
+    $mail = $request->request->get('mail');
 
     $em = $this->getDoctrine()->getManager();
 
@@ -166,24 +189,22 @@ class UserController extends Controller
     return new JsonResponse($response);
 
   }
-  
+
   /**
    * Disconnect user
    *
-   * @Route("/disconnect/", name="user_disconnect")
+   * @Route("/disconnect/{id}/", name="user_disconnect")
    * @Method({"GET"})
    *
    * @param Request $request
    * @return JsonResponse
    */
-  public function disconnetAction(Request $request)
+  public function disconnetAction(Request $request, $id)
   {
-
-    $token = $request->query->get('token');
 
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->disconnect($token);
+    $response = $em->getRepository('AppBundle:User')->disconnect($id);
 
     return new JsonResponse($response);
 

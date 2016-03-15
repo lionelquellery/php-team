@@ -19,7 +19,7 @@ class ParisObjectController extends Controller
      * Lists all ParisObject entities.
      *
      * @Route("/", name="object_index")
-     * @Method({"GET", "POST"})
+     * @Method({"GET"})
      *
      * @param $uai
      * @param Request $request
@@ -28,8 +28,14 @@ class ParisObjectController extends Controller
   public function indexAction($uai, Request $request)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
+
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $result = $em->getRepository('AppBundle:ParisObject')->getObjects($uai);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
 
@@ -39,7 +45,7 @@ class ParisObjectController extends Controller
      * Creates a new ParisObject entity.
      *
      * @Route("/new/", name="object_new")
-     * @Method({"GET", "POST"})
+     * @Method({"POST"})
      *
      * @param Request $request
      * @param $uai
@@ -48,10 +54,14 @@ class ParisObjectController extends Controller
   public function newAction(Request $request, $uai)
   {
 
-    $response = $request->query->all();
+    $response = $request->request->all();
 
     $em = $this->getDoctrine()->getManager();
-    $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+
+    if($em->getRepository('AppBundle:User')->verifySession($response['token']))
+      $parisInsert = $em->getRepository('AppBundle:ParisObject')->insertObject($response, $uai);
+    else
+      $parisInsert = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($parisInsert);
 
@@ -61,7 +71,7 @@ class ParisObjectController extends Controller
      * Finds and displays a ParisObject entity.
      *
      * @Route("/{id}/", name="object_show")
-     * @Method({"GET", "POST"})
+     * @Method({"GET"})
      *
      * @param $uai
      * @param $id
@@ -71,8 +81,14 @@ class ParisObjectController extends Controller
   public function showAction($uai, $id, Request $request)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id);
+
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $result = $em->getRepository('AppBundle:ParisObject')->getObject($uai, $id);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
   }
@@ -81,7 +97,7 @@ class ParisObjectController extends Controller
      * Displays a form to edit an existing ParisObject entity.
      *
      * @Route("/{id}/edit/", name="object_edit")
-     * @Method({"GET", "POST", "UPDATE"})
+     * @Method({"POST"})
      *
      * @param Request $request
      * @param $uai
@@ -91,10 +107,14 @@ class ParisObjectController extends Controller
   public function editAction(Request $request, $uai, $id)
   {
 
-    $response = $request->query->all();
+    $response = $request->request->all();
 
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+
+    if($em->getRepository('AppBundle:User')->verifySession($response['token']))
+      $result = $em->getRepository('AppBundle:ParisObject')->editObject($response, $uai, $id);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
 
@@ -104,7 +124,7 @@ class ParisObjectController extends Controller
      * Deletes a ParisObject entity.
      *
      * @Route("/{id}/delete/", name="object_delete")
-     * @Method({"GET", "POST", "DELETE"})
+     * @Method({"DELETE"})
      *
      * @param Request $request
      * @param $id
@@ -114,8 +134,14 @@ class ParisObjectController extends Controller
   public function deleteAction(Request $request, $id, $uai)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($id, $uai);
+
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $result = $em->getRepository('AppBundle:ParisObject')->deleteObject($id, $uai);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
 

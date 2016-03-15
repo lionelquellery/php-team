@@ -23,7 +23,7 @@ class ParisSchoolController extends Controller
   * Lists all ParisSchool entities.
   *
   * @Route("/", name="school_index")
-  * @Method({"GET", "POST"})
+  * @Method({"GET"})
   *
   * @param Request $request
   * @return JsonResponse
@@ -32,10 +32,14 @@ class ParisSchoolController extends Controller
   {
 
     $location = $request->query->get('location');
+    $token    = $request->query->get('token');
 
     $em = $this->getDoctrine()->getManager();
 
-    $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
+    else
+      $school = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($school);
 
@@ -45,7 +49,7 @@ class ParisSchoolController extends Controller
   * Finds and displays a ParisSchool entity.
   *
   * @Route("/{uai}/", name="school_show")
-  * @Method({"GET", "POST"})
+  * @Method({"GET"})
   *
   * @param ParisSchool $parisSchool
   * @param Request $request
@@ -55,12 +59,18 @@ class ParisSchoolController extends Controller
   {
 
     $radius = $request->query->get('radius');
+    $token = $request->query->get('token');
 
     $em = $this->getDoctrine()->getManager();
 
-    $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
+    if($em->getRepository('AppBundle:User')->verifySession($token)){
 
-    $response = array('code' => 200, 'response' => $school);
+      $school = $em->getRepository('AppBundle:ParisSchool')->getArray($parisSchool);    
+
+      $response = array('code' => 200, 'response' => $school);
+    }
+    else
+      $response = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($response);
 

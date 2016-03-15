@@ -19,7 +19,7 @@ class ParisFlatController extends Controller
      * Lists all ParisFlat entities.
      *
      * @Route("/", name="parisflat_index")
-     * @Method({"GET", "POST"})
+     * @Method({"GET"})
      *
      * @param $uai
      * @param Request $request
@@ -28,8 +28,14 @@ class ParisFlatController extends Controller
   public function indexAction($uai, Request $request)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisFlat')->getFlats($uai);
+
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $result = $em->getRepository('AppBundle:ParisFlat')->getFlats($uai);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
   }
@@ -38,7 +44,7 @@ class ParisFlatController extends Controller
      * Creates a new ParisFlat entity.
      *
      * @Route("/new/", name="parisflat_new")
-     * @Method({"GET", "POST"})
+     * @Method({"POST"})
      *
      * @param Request $request
      * @param $uai
@@ -47,10 +53,14 @@ class ParisFlatController extends Controller
   public function newAction(Request $request, $uai)
   {
 
-    $response = $request->query->all();
+    $response = $request->request->all();
 
     $em = $this->getDoctrine()->getManager();
-    $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $uai);
+
+    if($em->getRepository('AppBundle:User')->verifySession($response['token']))
+      $parisInsert = $em->getRepository('AppBundle:ParisFlat')->insertFlat($response, $uai);
+    else
+      $parisInsert = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($parisInsert);
   }
@@ -59,7 +69,7 @@ class ParisFlatController extends Controller
      * Finds and displays a ParisFlat entity.
      *
      * @Route("/{id}/", name="parisflat_show")
-     * @Method({"GET", "POST"})
+     * @Method({"GET"})
      *
      * @param $uai
      * @param $id
@@ -69,8 +79,14 @@ class ParisFlatController extends Controller
   public function showAction($uai, $id, Request $request)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisFlat')->getFlat($uai, $id);
+
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $result = $em->getRepository('AppBundle:ParisFlat')->getFlat($uai, $id);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
   }
@@ -79,7 +95,7 @@ class ParisFlatController extends Controller
      * Displays a form to edit an existing ParisFlat entity.
      *
      * @Route("/{id}/edit/", name="parisflat_edit")
-     * @Method({"GET", "POST", "UPDATE"})
+     * @Method({"POST"})
      *
      * @param Request $request
      * @param $uai
@@ -89,10 +105,14 @@ class ParisFlatController extends Controller
   public function editAction(Request $request, $uai, $id)
   {
 
-    $response = $request->query->all();
+    $response = $request->request->all();
 
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisFlat')->editFlat($response, $uai, $id);
+
+    if($em->getRepository('AppBundle:User')->verifySession($response['token']))
+      $result = $em->getRepository('AppBundle:ParisFlat')->editFlat($response, $uai, $id);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
   }
@@ -101,7 +121,7 @@ class ParisFlatController extends Controller
      * Deletes a ParisFlat entity.
      *
      * @Route("/{id}/delete/", name="parisflat_delete")
-     * @Method({"GET", "POST", "DELETE"})
+     * @Method({"DELETE"})
      *
      * @param Request $request
      * @param $id
@@ -111,8 +131,14 @@ class ParisFlatController extends Controller
   public function deleteAction(Request $request, $id, $uai)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
-    $result = $em->getRepository('AppBundle:ParisFlat')->deleteFlat($id, $uai);
+
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $result = $em->getRepository('AppBundle:ParisFlat')->deleteFlat($id, $uai);
+    else
+      $result = $em->getRepository('AppBundle:User')->error();
 
     return new JsonResponse($result);
   }

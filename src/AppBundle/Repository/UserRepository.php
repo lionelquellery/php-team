@@ -53,12 +53,12 @@ class UserRepository extends EntityRepository
         ->set('f.mail', ':mail')
         ->set('f.number', ':number')
         ->where('f.id = :id')
-        ->setParameter('nom', $updatedUser[0]['nom'])
-        ->setParameter('uai', $updatedUser[0]['uai'])
-        ->setParameter('picture', $updatedUser[0]['picture'])
-        ->setParameter('pass', $updatedUser[0]['pass'])
-        ->setParameter('mail', $updatedUser[0]['mail'])
-        ->setParameter('number', $updatedUser[0]['number'])
+        ->setParameter('nom', $updatedUser['user'][0]['nom'])
+        ->setParameter('uai', $updatedUser['user'][0]['uai'])
+        ->setParameter('picture', $updatedUser['user'][0]['picture'])
+        ->setParameter('pass', $updatedUser['user'][0]['pass'])
+        ->setParameter('mail', $updatedUser['user'][0]['mail'])
+        ->setParameter('number', $updatedUser['user'][0]['number'])
         ->setParameter('id', $id)
         ->getQuery();
 
@@ -96,28 +96,27 @@ class UserRepository extends EntityRepository
   public function updateUser($UserBDD, $response)
   {
 
-
     foreach ( $response as $key => $oneResponse )
     {
 
       switch ($key) {
         case 'uai':
-          $UserBDD[0]["uai"] = $oneResponse;
+          $UserBDD['user'][0]["uai"] = $oneResponse;
           break;
         case 'nom':
-          $UserBDD[0]["nom"] = $oneResponse;
+          $UserBDD['user'][0]["nom"] = $oneResponse;
           break;
         case 'picture':
-          $UserBDD[0]["picture"] = $oneResponse;
+          $UserBDD['user'][0]["picture"] = $oneResponse;
           break;
         case 'pass':
-          $UserBDD[0]["pass"] = hash('sha256', $oneResponse);
+          $UserBDD['user'][0]["pass"] = hash('sha256', $oneResponse);
           break;
         case 'mail':
-          $UserBDD[0]["mail"] = $oneResponse;
+          $UserBDD['user'][0]["mail"] = $oneResponse;
           break;
         case 'number':
-          $UserBDD[0]["number"] = $oneResponse;
+          $UserBDD['user'][0]["number"] = $oneResponse;
           break;
       }
 
@@ -378,7 +377,7 @@ class UserRepository extends EntityRepository
         $em->persist($token);
         $em->flush();
 
-        return array('code' => 404,"response" => array(
+        return array('code' => 200,"response" => array(
           'user'  => $query,
           'token' => $sessionToken
 
@@ -387,7 +386,7 @@ class UserRepository extends EntityRepository
       }
       else
       {
-        return array('code' => 404,"response" => "Somthing went wrong");
+        return array('code' => 404,"response" => "Something went wrong");
       }
 
     }
@@ -411,20 +410,49 @@ class UserRepository extends EntityRepository
 
   }
 
-  public function disconnect($token)
+  public function disconnect($id)
+  {
+
+    if($id != 0)
+    {
+      $em = $this->getEntityManager();
+      $query = $em
+        ->createQuery('DELETE FROM AppBundle:Token t WHERE t.user = :user')
+        ->setParameter('user', $id);
+
+      $result = $query->execute();
+
+      if($result == 1)
+        return array('code' => 200, 'response' => 'User disconnected');
+      else
+        return array('code' => 409,'response' => 'An error occured');
+    }
+    else
+      return array('code' => 500,'response' => "You don't have rights to do that, asshole");
+
+  }
+
+  public function verifySession($token)
   {
 
     $em = $this->getEntityManager();
     $query = $em
-      ->createQuery('DELETE FROM AppBundle:Token t WHERE t.token = :token')
+      ->createQuery('SELECT t.token FROM AppBundle:Token t WHERE t.token = :token')
       ->setParameter('token', $token);
 
-    $result = $query->execute();
+    $query = $query->getArrayResult();
 
-    if($result == 1)
-      return array('code' => 200, 'response' => 'User disconnected');
-    else
-      return array('code' => 409,'response' => 'an error occured');
+    if($query)
+      return true;
+    else 
+      return false;
+
+  }
+
+  public function error()
+  {
+
+    return array('code' => 403, 'response' =>'No session');
 
   }
 
