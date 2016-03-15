@@ -202,9 +202,15 @@ class UserController extends Controller
   public function disconnetAction(Request $request, $id)
   {
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
 
-    $response = $em->getRepository('AppBundle:User')->disconnect($id);
+    if($em->getRepository('AppBundle:User')->verifySession($token))
+      $response = $em->getRepository('AppBundle:User')->disconnect($id);
+    else
+      $response = $em->getRepository('AppBundle:User')->error();
+
 
     return new JsonResponse($response);
 
