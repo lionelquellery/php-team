@@ -186,6 +186,11 @@ Return user and session token
 
 ### /user/disconnect/{id}/ GET
 
+### /mail/ POST
+
+##### Parameters : 
+- mail (REQUIRED) : mail to enter in database
+
 Disconnect the user from his session
 
 ### The MIT License (MIT)
