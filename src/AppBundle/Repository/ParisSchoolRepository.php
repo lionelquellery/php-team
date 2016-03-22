@@ -14,19 +14,25 @@ class ParisSchoolRepository extends EntityRepository
    * @param $location
    * @return array
    */
-  public function getLocation($location)
+  public function search($string = null)
   {
 
-    if(is_null($location)){
-      $query = $this->getEntityManager()->createQuery('SELECT s FROM AppBundle:ParisSchool s');
-    }else{
-      $query = $this->getEntityManager()->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.cp = :loc')
-        ->setParameter('loc', '750'.$location);
+    if(is_null($string))
+      return array('code' => 404, 'response' => 'No data passed');
+    else{
+
+      $em = $this->getEntityManager();
+
+      $query = $em
+      ->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.name LIKE :name OR s.sigle LIKE :name')
+      ->setParameter('name', $string.'%');
+
+      $schools = $query->getArrayResult();
+
+      return  array('code' => 200, 'response' => $schools);
+
     }
 
-    $school = $query->getArrayResult();
-
-    return array('code' => 200, 'response' => $school);
   }
 
   /**
@@ -66,7 +72,7 @@ class ParisSchoolRepository extends EntityRepository
       'cp'       => $parisSchool->getCp(),
       'lat'      => $parisSchool->getLatitude(),
       'long'     => $parisSchool->getLongitude(),
-    );
+      );
 
     return $school;
 
@@ -85,8 +91,8 @@ class ParisSchoolRepository extends EntityRepository
     $em = $this->getEntityManager();
 
     $query = $em
-      ->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.uai = :uai')
-      ->setParameter('uai', $uai);
+    ->createQuery('SELECT s FROM AppBundle:ParisSchool s WHERE s.uai = :uai')
+    ->setParameter('uai', $uai);
 
     if(is_null($array))
       return $query->getResult();

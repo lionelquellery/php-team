@@ -31,15 +31,11 @@ class ParisSchoolController extends Controller
   public function indexAction(Request $request)
   {
 
-    $location = $request->query->get('location');
-    $token    = $request->query->get('token');
+    $string = $request->query->get('search');
 
     $em = $this->getDoctrine()->getManager();
 
-    if($em->getRepository('AppBundle:User')->verifySession($token))
-      $school = $em->getRepository('AppBundle:ParisSchool')->getLocation($location);
-    else
-      $school = $em->getRepository('AppBundle:User')->error();
+    $school = $em->getRepository('AppBundle:ParisSchool')->search($string);
 
     return new JsonResponse($school);
 

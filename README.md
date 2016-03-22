@@ -40,7 +40,10 @@ To test the API you can use [Postman](https://www.getpostman.com) and load the s
 
 ### /school/ GET
 
-Returns all schools in Paris
+Search for a school by his name of his sigle
+
+##### Parameters :
+- search :  
 
 ##### Parameters : 
 - location : the distict's number in which the school is located. Retrieves all schools if empty

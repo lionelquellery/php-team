@@ -21,6 +21,11 @@ AppBundle\Entity\ParisSchool:
             nullable: false
             length: 100
             fixed: false
+        sigle:
+            type: string
+            nullable: true
+            lenght: 100
+            fixed: false
         adresse:
             type: text
             nullable: false

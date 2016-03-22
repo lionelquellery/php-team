@@ -38,6 +38,13 @@ class ParisSchool
     /**
      * @var string
      *
+     * @ORM\Column(name="sigle", type="string", length=100, nullable=true)
+     */
+    private $sigle;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adresse", type="text", length=65535, nullable=false)
      */
     private $adresse;
@@ -119,6 +126,29 @@ class ParisSchool
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set sigle
+     *
+     * @param string $sigle
+     * @return ParisSchool
+     */
+    public function setSigle($sigle)
+    {
+        $this->sigle = $sigle;
+
+        return $this;
+    }
+
+    /**
+     * Get sigle
+     *
+     * @return string 
+     */
+    public function getSigle()
+    {
+        return $this->sigle;
     }
 
     /**
