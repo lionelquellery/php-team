@@ -103,9 +103,11 @@ class UserController extends Controller
 
     $params = $request->request->all();
 
+    $token = $request->query->get('token');
+
     $em = $this->getDoctrine()->getManager();
 
-    if($em->getRepository('AppBundle:User')->verifySession(params['token']))
+    if($em->getRepository('AppBundle:User')->verifySession($token))
       $response = $em->getRepository('AppBundle:User')->editUser($params, $id);
     else
       $response = $em->getRepository('AppBundle:User')->error();
